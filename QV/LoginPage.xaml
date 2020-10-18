@@ -8,6 +8,7 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Button Text="LOGIN" Clicked="LoginButton_Clicked"/>
+            <Button Text="REGISTRATION" Clicked="RegistrationButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

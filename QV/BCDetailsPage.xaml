@@ -4,7 +4,7 @@
              x:Class="QV.BCDetailsPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="BCDetailsPage"
+            <Label x:Name ="Text" Text="BCDetailsPage"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>
