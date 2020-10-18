@@ -8,11 +8,19 @@ using Xamarin.Forms;
 
 namespace QV
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : Shell
     {
         public MainPage()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(BCDetailsPage), typeof(BCDetailsPage));
+            Navigation.PushModalAsync(new LoginPage());
+        }
+
+        private void Logout_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.FlyoutIsPresented = false;
+            Navigation.PushModalAsync(new LoginPage());
         }
     }
 }

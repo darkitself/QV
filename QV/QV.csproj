@@ -13,5 +13,41 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.1141" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="ZXing.Net.Mobile.Forms" Version="3.0.0-beta5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Pages\AllMyBCsPage.xaml.cs">
+      <DependentUpon>AllMyBCsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\AllAliensBCsPage.xaml.cs">
+      <DependentUpon>AllAliensBCsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\BCDetailsPage.xaml.cs">
+      <DependentUpon>BCDetailsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\CreateBСPage.xaml.cs">
+      <DependentUpon>CreateBСPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\QRCodePage.xaml.cs">
+      <DependentUpon>QRCodePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\RegistrationPage.xaml.cs">
+      <DependentUpon>RegistrationPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\UserDataPage.xaml.cs">
+      <DependentUpon>UserDataPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
