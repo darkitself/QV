@@ -86,9 +86,6 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\QV\QV.csproj">
       <Project>{79D77598-4369-4762-B30C-804FBD1EC622}</Project>
       <Name>QV</Name>

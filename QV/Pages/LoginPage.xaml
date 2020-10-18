@@ -1,13 +1,34 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="QV.LoginPage">
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns = "http://xamarin.com/schemas/2014/forms"
+             xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class = "QV.LoginPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="LoginPage"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Button Text="LOGIN" Clicked="LoginButton_Clicked"/>
+        <StackLayout Orientation = "Vertical"
+                     Padding = "20">
+            <Image HorizontalOptions = "CenterAndExpand"
+                   VerticalOptions = "CenterAndExpand"/>
+            <Entry x:Name = "Login"
+                   TextColor = "{StaticResource TextDarkGray}"
+                   HorizontalOptions = "CenterAndExpand"
+                   Keyboard = "Email"
+                   Placeholder = "Логин"
+                   PlaceholderColor = "{StaticResource AlfaBrandRed}"
+            />
+            <Entry x:Name = "Password"
+                   TextColor = "{StaticResource TextDarkGray}"
+                   HorizontalOptions = "CenterAndExpand"
+                   Keyboard = "Default"
+                   Placeholder = "Пароль"
+                   PlaceholderColor = "{StaticResource AlfaBrandRed}"
+                   IsPassword = "True" />
+            <Button Text = "Войти"
+                    TextColor = "{StaticResource TextDarkBlue}"
+                    BackgroundColor = "{StaticResource Background}"
+                    Font = "{StaticResource Font}"
+                    FontSize = "Medium"
+                    CornerRadius = "10"
+                    VerticalOptions = "Center" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -3,6 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="QV.App">
     <Application.Resources>
-
+        <Color x:Key="AlfaBrandRed">#EF3124</Color>
+        <Color x:Key = "DarkBlue">#0B1F35</Color>
+        <Color x:Key="Gray">#6D7986</Color>
+        <Color x:Key="Pink">#FF5C5C</Color>
+        <Color x:Key="Green">#2FC26E</Color>
+        <Color x:Key="TextDarkBlue">#0B1F35</Color>
+        <Color x:Key="TextDarkGray">#6D7986</Color>
+        <Color x:Key="TextGray">#B6BCC3</Color>
+        <Color x:Key="Background">#F3F4F5</Color>
+        <Font x:Key="Font">Roboto</Font>
     </Application.Resources>
 </Application>
