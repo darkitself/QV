@@ -3,10 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="QV.BCDetailsPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label x:Name ="Text" Text="BCDetailsPage"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Vertical" Margin="30">
+            <Label x:Name ="Surname" Text="BCDetailsPage"/>
+            <Label x:Name ="Name" Text="BCDetailsPage"/>
+            <Label x:Name ="MiddleName" Text="BCDetailsPage"/>
+            <Label x:Name ="TeleponeNumber" Text="BCDetailsPage"/>
+            <Label x:Name ="Email" Text="BCDetailsPage"/>
+            <Label x:Name ="VKLink" Text="BCDetailsPage"/>
+            <Label x:Name ="FaceBookLink" Text="BCDetailsPage"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

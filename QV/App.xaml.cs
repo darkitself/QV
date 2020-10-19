@@ -16,11 +16,25 @@ namespace QV
 
             var dict = new Dictionary<string, BC>
             {
-                ["1"] = new BC { Id = "1", Text = "Item 1" },
-                ["2"] = new BC { Id = "2", Text = "Item 2" },
-                ["3"] = new BC { Id = "3", Text = "Item 3" },
-                ["4"] = new BC { Id = "4", Text = "Item 4" },
-                ["5"] = new BC { Id = "5", Text = "Item 5" }
+                ["1"] = new BC {
+                    Id = "1",
+                    Name = "Name",
+                    Surname = "Surname",
+                    Email = "Email",
+                    FaceBookLink = "FaceBookLink",
+                    MiddleName = "MiddleName",
+                    TeleponeNumber = "TelephoneNumber",
+                    VKLink = "VKLink"
+                },
+                ["2"] = new BC
+                {
+                    Id = "2",
+                    Name = "Name2",
+                    Surname = "Surname2",
+                    Email = "Email2",
+                    TeleponeNumber = "TelephoneNumber2",
+                    VKLink = "VKLink2"
+                },
             };
 
             Properties["AlienBCsDict"] = dict;

@@ -28,7 +28,13 @@ namespace QV
 
         private void SetAllProperties()
         {
-            Text.Text = Bc.Text;
+            var a = this.GetType().GetFields().ToArray();
+            foreach (var p in Bc.GetType().GetProperties().Where(p => p.Name != "Id"))
+            {
+                var label = this.FindByName<Label>(p.Name);
+                label.Text = (string)p.GetValue(Bc);
+                label.IsVisible = label.Text != null;
+            }
         }
 
         public BCDetailsPage()
