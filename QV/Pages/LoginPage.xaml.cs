@@ -15,6 +15,7 @@ namespace QV
         public LoginPage()
         {
             InitializeComponent();
+            LogoImage.Source = ImageSource.FromResource("QV.Images.qvlogo.png");
         }
 
         private void LoginButton_Clicked(object sender, EventArgs e)

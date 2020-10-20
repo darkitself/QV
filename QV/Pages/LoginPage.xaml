@@ -5,22 +5,32 @@
              x:Class = "QV.LoginPage">
     <ContentPage.Content>
         <StackLayout Orientation = "Vertical"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="CenterAndExpand"
                      Padding = "20">
-            <Image HorizontalOptions = "CenterAndExpand"
-                   VerticalOptions = "CenterAndExpand"/>
+            <Image x:Name="LogoImage"
+                   WidthRequest="200"
+                   HeightRequest="200"
+                   IsVisible="True"/>
             <Entry x:Name = "Login"
-                   TextColor = "{StaticResource TextDarkGray}"
+                   Margin="20"
+                   TextColor = "{StaticResource TextDarkBlue}"
                    HorizontalOptions = "CenterAndExpand"
                    Keyboard = "Email"
+                   IsTextPredictionEnabled="True"
+                   
+                   WidthRequest="300"
                    Placeholder = "Логин"
-                   PlaceholderColor = "{StaticResource AlfaBrandRed}"
+                   PlaceholderColor = "{StaticResource TextDarkGray}"
             />
             <Entry x:Name = "Password"
-                   TextColor = "{StaticResource TextDarkGray}"
+                   Margin="20"
+                   TextColor = "{StaticResource TextDarkBlue}"
                    HorizontalOptions = "CenterAndExpand"
                    Keyboard = "Default"
+                   WidthRequest="300"
                    Placeholder = "Пароль"
-                   PlaceholderColor = "{StaticResource AlfaBrandRed}"
+                   PlaceholderColor = "{StaticResource TextDarkGray}"
                    IsPassword = "True" />
             <Button Text = "Войти"
                     TextColor = "{StaticResource TextDarkBlue}"
