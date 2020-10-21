@@ -9,6 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+QV.Android/Resources/Resource.designer.cs
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

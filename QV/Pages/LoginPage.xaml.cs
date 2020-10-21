@@ -18,9 +18,15 @@ namespace QV
             LogoImage.Source = ImageSource.FromResource("QV.Images.qvlogo.png");
         }
 
-        private void LoginButton_Clicked(object sender, EventArgs e)
+        private void LoginButtonClicked(object sender, EventArgs e)
         {
             Application.Current.MainPage = new MainPage();
+        }
+
+        private void LoginUnfocused(object sender, FocusEventArgs e)
+        {
+            IsRightEmail = new Image();
+            
         }
     }
 }

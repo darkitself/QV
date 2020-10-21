@@ -6,4 +6,13 @@
     <color name="colorAccent">#FF4081</color>
     <color name="entry_background">#ffffff</color>
     <color name="entry_border">#BDBDBD</color>
+    <color name="AlfaBrandRed">#EF3124</color>
+    <color name = "DarkBlue">#0B1F35</color>
+    <color name="Gray">#6D7986</color>
+    <color name="Pink">#FF5C5C</color>
+    <color name="Green">#2FC26E</color>
+    <color name="TextDarkBlue">#0B1F35</color>
+    <color name="TextDarkGray">#6D7986</color>
+    <color name="TextGray">#B6BCC3</color>
+    <color name="Background">#F3F4F5</color>
 </resources>
