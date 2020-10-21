@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.Net.Mail;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace QV
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class LoginPage 
     {
         public LoginPage()
         {
@@ -25,17 +21,13 @@ namespace QV
 
         private async void LoginButtonClicked(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync();
+            await Navigation.PopModalAsync();
         }
         private void RegistrationButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new RegistrationPage());
         }
-        protected override bool OnBackButtonPressed()
-        {
-            return false;
-        }
-
+        
         private void LoginUnfocused(object sender, FocusEventArgs e)
         {
             IsRightEmail = new Image();

@@ -50,6 +50,14 @@
                     VerticalOptions = "Center"
                     Clicked="LoginButtonClicked"
                     />
+            <Button Text="Регистрация"
+                    TextColor="{StaticResource TextDarkBlue}"
+                    BackgroundColor="{StaticResource Background}"
+                    Font = "{StaticResource Font}"
+                    FontSize="Medium"
+                    CornerRadius="10"
+                    VerticalOptions="Center"
+                    Clicked="RegistrationButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
