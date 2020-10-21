@@ -9,9 +9,9 @@ namespace QV
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new LoginPage());
-            
+            var page = new NavigationPage(new MainPage());
+            page.PushAsync(new LoginPage());
+            MainPage = page;
         }
 
         protected override void OnStart()

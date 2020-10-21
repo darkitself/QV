@@ -4,9 +4,16 @@
              x:Class="QV.QRCodePage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="QRCodePage"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label x:Name="QrScanningResult"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Text="Здесь будет отображаться рещультат сканрования"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="CenterAndExpand" />
+            <Button x:Name="StartScanning"
+                    TextColor="{StaticResource TextDarkBlue}"
+                    Clicked="StartScanning_OnClicked"
+                    HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

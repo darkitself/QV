@@ -18,7 +18,12 @@ namespace QV
             LogoImage.Source = ImageSource.FromResource("QV.Images.qvlogo.png");
         }
 
-        private void LoginButtonClicked(object sender, EventArgs e)
+        protected override bool OnBackButtonPressed()
+        {
+            return false;
+        }
+
+        private async void LoginButtonClicked(object sender, EventArgs e)
         {
             Application.Current.MainPage = new MainPage();
         }
@@ -26,7 +31,7 @@ namespace QV
         private void LoginUnfocused(object sender, FocusEventArgs e)
         {
             IsRightEmail = new Image();
-            
+            //TODO icon that would be show is email right
         }
     }
 }
