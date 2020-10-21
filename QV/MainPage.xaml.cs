@@ -13,11 +13,14 @@ namespace QV
         public MainPage()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(BCDetailsPage), typeof(BCDetailsPage));
+            Navigation.PushModalAsync(new LoginPage());
         }
 
         private void Logout_Clicked(object sender, EventArgs e)
         {
-            //???
+            Shell.Current.FlyoutIsPresented = false;
+            Navigation.PushModalAsync(new LoginPage());
         }
     }
 }

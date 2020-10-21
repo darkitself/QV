@@ -25,7 +25,15 @@ namespace QV
 
         private async void LoginButtonClicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new MainPage();
+            Navigation.PopModalAsync();
+        }
+        private void RegistrationButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new RegistrationPage());
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            return false;
         }
 
         private void LoginUnfocused(object sender, FocusEventArgs e)
