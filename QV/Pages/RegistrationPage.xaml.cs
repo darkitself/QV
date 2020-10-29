@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,7 +10,9 @@ namespace QV
         public RegistrationPage()
         {
             InitializeComponent();
-            Image.Source = ImageSource.FromResource("QV.Images.qvlogo.png");
+            RightImage.Source = ImageSource.FromResource("QV.Images.success (1).png");
+            WrongImage.Source = ImageSource.FromResource("QV.Images.cross.png");
+
         }
 
         private void RegisterButtonClicked(object sender, EventArgs e)
@@ -24,9 +21,33 @@ namespace QV
             //TODO registratipon
         }
 
-        protected override bool OnBackButtonPressed()
+
+        private void ConfirmPasswordOnCompleted(object sender, EventArgs e)
         {
-            return false;
+            if (sender is Entry entry && entry.Text.Length != 0)
+            {
+                if (IsConfirmPasswordRight())
+                {
+                    WrongImage.IsVisible = false;
+                    RightImage.IsVisible = true;
+                }
+
+                else
+                {
+                    RightImage.IsVisible = false;
+                    WrongImage.IsVisible = true;
+                }
+            }
+            else
+            {
+                RightImage.IsVisible = false;
+                WrongImage.IsVisible = false;
+            }
+        }
+
+        private bool IsConfirmPasswordRight()
+        {
+            return Password.Text.Equals(ConfirmPassword.Text);
         }
     }
 }

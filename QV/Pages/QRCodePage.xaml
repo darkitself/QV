@@ -3,7 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="QV.QRCodePage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout VerticalOptions="Center"
+                     HorizontalOptions="Center"
+                     
+                     >
             <Label x:Name="QrScanningResult"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"
@@ -11,6 +14,7 @@
                     VerticalOptions="Center" 
                     HorizontalOptions="CenterAndExpand" />
             <Button x:Name="StartScanning"
+                    Text="Scan QR"
                     TextColor="{StaticResource TextDarkBlue}"
                     Clicked="StartScanning_OnClicked"
                     HorizontalOptions="CenterAndExpand"/>

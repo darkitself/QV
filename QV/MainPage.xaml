@@ -1,20 +1,38 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Shell xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:pages="clr-namespace:QV"
-             mc:Ignorable="d"
-             x:Class="QV.MainPage">
-    <FlyoutItem Title="QR Code" Route="QRCode">
-        <ShellContent Title="QR Code" ContentTemplate="{DataTemplate pages:QRCodePage}" />
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Shell xmlns = "http://xamarin.com/schemas/2014/forms"
+       xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d = "http://xamarin.com/schemas/2014/forms/design"
+       xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:pages="clr-namespace:QV"
+       mc:Ignorable = "d"
+       BackgroundColor="Transparent"
+       x:Class = "QV.MainPage">
+    <Shell.FlyoutHeader>
+        <Image x:Name="Logo"
+               WidthRequest="300"
+               HeightRequest="300"
+               Aspect="Fill"
+               BackgroundColor="Transparent"/>
+    </Shell.FlyoutHeader>
+    <FlyoutItem x:Name = "QrCode"
+                Title = "QR Code"
+                Route = "QRCode">
+        <ShellContent Title = "QR Code"
+                      ContentTemplate = "{DataTemplate pages:QRCodePage}" />
     </FlyoutItem>
-    <FlyoutItem Title="All Aliens BCs">
-        <ShellContent Title="All Aliens BCs" ContentTemplate="{DataTemplate pages:AllAliensBCsPage}" />
+    <FlyoutItem x:Name = "AliensBc"
+                Title = "All Aliens BCs">
+        <ShellContent Title = "All Aliens BCs"
+                      ContentTemplate = "{DataTemplate pages:AllAliensBCsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="All My BCs">
-        <ShellContent Title="All My BCs" ContentTemplate="{DataTemplate pages:AllMyBCsPage}" />
-        <ShellContent Title="Create BC" ContentTemplate="{DataTemplate pages:CreateBCPage}" />
+    <FlyoutItem x:Name = "OwnBCs"
+                Title = "All My BCs">
+        <ShellContent Title = "All My BCs"
+                      ContentTemplate = "{DataTemplate pages:AllMyBCsPage}" />
+        <ShellContent Title = "Create BC"
+                      ContentTemplate = "{DataTemplate pages:CreateBCPage}" />
     </FlyoutItem>
-    <MenuItem Text="Logout" Clicked="Logout_Clicked"/>
+    <MenuItem Text = "Logout"
+              Clicked = "Logout_Clicked" />
 </Shell>

@@ -55,5 +55,11 @@
     <EmbeddedResource Include="Images\qvlogo.png">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Remove="Images\AllAliensBusinessCards.png" />
+    <EmbeddedResource Include="Images\AllAliensBusinessCards.png" />
+    <None Remove="Images\AllMyBusinessCards.png" />
+    <EmbeddedResource Include="Images\AllMyBusinessCards.png" />
+    <None Remove="Images\QR.png" />
+    <EmbeddedResource Include="Images\QR.png" />
   </ItemGroup>
 </Project>
