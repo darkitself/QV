@@ -12,11 +12,9 @@ namespace QV
     {
         public MainPage()
         {
-            if (!App.Current.Properties.ContainsKey("Logged"))
-                App.Current.Properties["Logged"] = false;
             InitializeComponent();
             Routing.RegisterRoute(nameof(BCDetailsPage), typeof(BCDetailsPage));
-            if (App.Current.Properties.TryGetValue("Logged", out object logged) && !(bool)logged)
+            if (!App.Current.Properties.TryGetValue("Logged", out object logged) || (logged is null) || !(bool)logged)
                 Navigation.PushModalAsync(new LoginPage());
         }
 

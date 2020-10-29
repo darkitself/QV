@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Text.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,7 +15,7 @@ namespace QV
     {
         public UserDataPage()
         {
-            BindingContext = (App.Current.Properties["User"] as User).Data;
+            BindingContext = JsonSerializer.Deserialize<User>(App.Current.Properties["User"] as string).Data;
             InitializeComponent();
         }
         private void SaveButton_Clicked(object sender, EventArgs e)

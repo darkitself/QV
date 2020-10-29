@@ -3,10 +3,47 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="QV.CreateBCPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="CreateBCPage"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Vertical" Margin="20">
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Select All" HorizontalOptions="CenterAndExpand" Clicked="SelectAllButton_Clicked"/>
+                <Button Text="Deselct All" HorizontalOptions="CenterAndExpand" Clicked="DeselctAllButton_Clicked"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Surname" WidthRequest="200"/>
+                <CheckBox x:Name="Surname" IsChecked="False" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Name" WidthRequest="200"/>
+                <CheckBox x:Name="Name" IsChecked="False" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="MiddleName" WidthRequest="200"/>
+                <CheckBox x:Name="MiddleName" IsChecked="False" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="TelephoneNumber" WidthRequest="200"/>
+                <CheckBox x:Name="TelephoneNumber" IsChecked="False" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Email" WidthRequest="200"/>
+                <CheckBox x:Name="Email" IsChecked="False" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="VKLink" WidthRequest="200"/>
+                <CheckBox x:Name="VKLink" IsChecked="False" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="FaceBookLink" WidthRequest="200"/>
+                <CheckBox x:Name="FaceBookLink" IsChecked="False" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            <Entry x:Name="BCName" Placeholder="Your BC Name" HorizontalOptions="Fill"/>
+            <Button Text="Create" HorizontalOptions="Fill" Clicked="CreateButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

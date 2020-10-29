@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -22,7 +23,7 @@ namespace QV
             get => id;
             set
             {
-                Bc = (App.Current.Properties[Dict] as Dictionary<string, BC>)[value];
+                Bc = JsonSerializer.Deserialize<Dictionary<string, BC>>(App.Current.Properties[Dict] as string)[value];
                 id = value;
                 SetAllProperties();
             }
