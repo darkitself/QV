@@ -14,7 +14,7 @@
                             <StackLayout>
                                 <Label Text="{Binding Id}" 
                    Style="{DynamicResource ListItemTextStyle}" />
-                                <Label Text="{Binding Text}" 
+                                <Label Text="{Binding Data.Name}" 
                    Style="{DynamicResource ListItemDetailTextStyle}"/>
                             </StackLayout>
                         </ViewCell>

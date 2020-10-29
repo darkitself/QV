@@ -21,6 +21,8 @@ namespace QV
 
         private async void LoginButtonClicked(object sender, EventArgs e)
         {
+            App.Current.Properties["Logged"] = true;
+            await App.Current.SavePropertiesAsync();
             await Navigation.PopModalAsync();
         }
         private void RegistrationButton_Clicked(object sender, EventArgs e)

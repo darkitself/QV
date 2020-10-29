@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QV.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,12 @@ namespace QV
     {
         public UserDataPage()
         {
+            BindingContext = (App.Current.Properties["User"] as User).Data;
             InitializeComponent();
+        }
+        private void SaveButton_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

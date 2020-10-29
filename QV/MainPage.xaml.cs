@@ -12,13 +12,18 @@ namespace QV
     {
         public MainPage()
         {
+            if (!App.Current.Properties.ContainsKey("Logged"))
+                App.Current.Properties["Logged"] = false;
             InitializeComponent();
             Routing.RegisterRoute(nameof(BCDetailsPage), typeof(BCDetailsPage));
-            Navigation.PushModalAsync(new LoginPage());
+            if (App.Current.Properties.TryGetValue("Logged", out object logged) && !(bool)logged)
+                Navigation.PushModalAsync(new LoginPage());
         }
 
         private void Logout_Clicked(object sender, EventArgs e)
         {
+            App.Current.Properties["Logged"] = false;
+            App.Current.SavePropertiesAsync();
             Shell.Current.FlyoutIsPresented = false;
             Navigation.PushModalAsync(new LoginPage());
         }

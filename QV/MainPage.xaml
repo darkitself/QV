@@ -16,5 +16,8 @@
         <ShellContent Title="All My BCs" ContentTemplate="{DataTemplate pages:AllMyBCsPage}" />
         <ShellContent Title="Create BC" ContentTemplate="{DataTemplate pages:CreateBCPage}" />
     </FlyoutItem>
+    <FlyoutItem Title="User Data">
+        <ShellContent Title="User Data" ContentTemplate="{DataTemplate pages:UserDataPage}" />
+    </FlyoutItem>
     <MenuItem Text="Logout" Clicked="Logout_Clicked"/>
 </Shell>

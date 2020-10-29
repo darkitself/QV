@@ -30,10 +30,10 @@ namespace QV
 
         private void SetAllProperties()
         {
-            foreach (var p in Bc.GetType().GetProperties().Where(p => p.Name != "Id"))
+            foreach (var p in Bc.Data.GetType().GetProperties())
             {
                 var label = this.FindByName<Label>(p.Name);
-                label.Text = (string)p.GetValue(Bc);
+                label.Text = (string)p.GetValue(Bc.Data);
                 label.IsVisible = label.Text != null;
             }
         }
