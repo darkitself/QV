@@ -13,5 +13,10 @@
         <Color x:Key="TextGray">#B6BCC3</Color>
         <Color x:Key="Background">#F3F4F5</Color>
         <Font x:Key="Font">Roboto</Font>
+        <Style x:Key = "EntryStyle" TargetType="Entry">
+            <Setter Property="ClearButtonVisibility" Value="WhileEditing"/>
+            <Setter Property="TextColor" Value="{DynamicResource TextDarkBlue}"/>
+            <Setter Property="PlaceholderColor" Value="{DynamicResource TextDarkGray}"/>
+        </Style>
     </Application.Resources>
 </Application>

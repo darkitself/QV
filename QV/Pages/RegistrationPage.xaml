@@ -1,12 +1,66 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="QV.RegistrationPage">
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns = "http://xamarin.com/schemas/2014/forms"
+             xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class = "QV.RegistrationPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="RegistrationPage"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout HorizontalOptions = "FillAndExpand"
+                     VerticalOptions = "CenterAndExpand">
+            <Label TextColor = "{DynamicResource TextDarkBlue}"
+                   Text = "Регистрация"
+                   VerticalOptions = "Center"
+                   HorizontalOptions = "Center"
+                   HorizontalTextAlignment = "Center"
+                   VerticalTextAlignment = "Center"
+                   FontSize = "Medium" />
+            <Entry x:Name = "Login"
+                   Placeholder = "Логин"
+                   Margin="0,40,0,0"
+                   Style = "{DynamicResource EntryStyle}"
+                   HorizontalOptions = "Center"
+                   VerticalTextAlignment = "Center"
+                   HorizontalTextAlignment = "Start"
+                   WidthRequest = "300"
+                   Keyboard = "Email" />
+            <Entry x:Name = "Password"
+                   Margin="0,40,0,0"
+                   Placeholder = "Пароль"
+                   Style = "{DynamicResource EntryStyle}"
+                   HorizontalOptions = "Center"
+                   HorizontalTextAlignment = "Start"
+                   VerticalTextAlignment = "Center"
+                   WidthRequest = "300"
+                   IsPassword = "True"
+                   Keyboard = "Default" />
+            <RelativeLayout HorizontalOptions="Center"
+                            WidthRequest="300"
+                            Margin="0,40,0,0">
+                   <Entry x:Name = "ConfirmPassword"
+                          Placeholder = "Повторите пароль"
+                          Style = "{DynamicResource EntryStyle}"
+                          WidthRequest = "300"
+                          IsPassword = "True"
+                          HorizontalOptions = "Center"
+                          VerticalTextAlignment = "Center"
+                          HorizontalTextAlignment = "Start" />
+                   <Image x:Name="Image"
+                          RelativeLayout.XConstraint="250"
+                          Source="QV.Images.qvlogo.png"
+                          IsVisible="False"
+                          WidthRequest="50"
+                          HeightRequest="50"
+                          HorizontalOptions="End"
+                   />
+                   
+            </RelativeLayout>
+            <Button x:Name = "RegisterButton"
+                    Text = "Зарегистрироваться"
+                    BackgroundColor = "{DynamicResource Background}"
+                    TextColor = "{DynamicResource TextDarkBlue}"
+                    CornerRadius = "30"
+                    HorizontalOptions = "Center"
+                    FontSize = "Medium"
+                    Clicked = "RegisterButtonClicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
