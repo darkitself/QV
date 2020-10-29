@@ -8,12 +8,12 @@ namespace QV.Infrastructure
 {
     public static class QRHelper
     {
-        public static readonly QrCodeEncodingOptions Options = new QrCodeEncodingOptions
-                                                               {
-                                                                   Height = 300,
-                                                                   Width = 300,
-                                                                   PureBarcode = true
-                                                               };
+        private static readonly QrCodeEncodingOptions Options = new QrCodeEncodingOptions
+                                                                {
+                                                                    Height = 300,
+                                                                    Width = 300,
+                                                                    PureBarcode = true
+                                                                };
         
         public static Task<Result> Scan()
         {

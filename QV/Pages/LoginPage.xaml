@@ -15,31 +15,29 @@
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="CenterAndExpand">
                    <Entry x:Name = "Login"
+                          Style="{DynamicResource EntryStyle}"
                           Margin = "20"
-                          TextColor = "{StaticResource TextDarkBlue}"
                           HorizontalOptions = "CenterAndExpand"
                           Keyboard = "Email"
                           IsTextPredictionEnabled = "True"
-                          ClearButtonVisibility = "WhileEditing"
                           WidthRequest = "300"
                           Placeholder = "Логин"
-                          PlaceholderColor = "{StaticResource TextDarkGray}"
                           Unfocused="LoginUnfocused"
                           />
+                   
                    <Image x:Name="IsRightEmail"
                           HeightRequest="15"
                           WidthRequest="15"
+                          IsVisible="False"
                           />
             </StackLayout>
             <Entry x:Name = "Password"
+                   Style="{DynamicResource EntryStyle}"
                    Margin="20"
-                   ClearButtonVisibility="WhileEditing"
-                   TextColor = "{StaticResource TextDarkBlue}"
                    HorizontalOptions = "CenterAndExpand"
                    Keyboard = "Default"
                    WidthRequest="300"
                    Placeholder = "Пароль"
-                   PlaceholderColor = "{StaticResource TextDarkGray}"
                    IsPassword = "True" />
             <Button Text = "Войти"
                     TextColor = "{StaticResource TextDarkBlue}"

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace QV
 {
@@ -11,7 +8,6 @@ namespace QV
         public App()
         {
             InitializeComponent();
-
             MainPage = new MainPage();
 
             var AlienBCsDict = new Dictionary<string, BC>

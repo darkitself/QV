@@ -12,6 +12,7 @@ namespace QV
         {
             InitializeComponent();
             LogoImage.Source = ImageSource.FromResource("QV.Images.qvlogo.png");
+
         }
 
         protected override bool OnBackButtonPressed()
