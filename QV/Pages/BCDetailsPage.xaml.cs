@@ -10,17 +10,19 @@ using Xamarin.Forms.Xaml;
 namespace QV
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [QueryProperty(nameof(Dict), nameof(Dict))]
     [QueryProperty(nameof(BCId), nameof(BCId))]
     public partial class BCDetailsPage : ContentPage
     {
         private string id;
         private BC Bc { get; set; }
+        public string Dict { get; set; }
         public string BCId
         {
             get => id;
             set
             {
-                Bc = (App.Current.Properties["AlienBCsDict"] as Dictionary<string, BC>)[value];
+                Bc = (App.Current.Properties[Dict] as Dictionary<string, BC>)[value];
                 id = value;
                 SetAllProperties();
             }
@@ -28,7 +30,6 @@ namespace QV
 
         private void SetAllProperties()
         {
-            var a = this.GetType().GetFields().ToArray();
             foreach (var p in Bc.GetType().GetProperties().Where(p => p.Name != "Id"))
             {
                 var label = this.FindByName<Label>(p.Name);

@@ -14,7 +14,7 @@ namespace QV
 
             MainPage = new MainPage();
 
-            var dict = new Dictionary<string, BC>
+            var AlienBCsDict = new Dictionary<string, BC>
                        {
                            ["1"] = new BC {
                                               Id = "1",
@@ -36,8 +36,32 @@ namespace QV
                                        VKLink = "VKLink2"
                                    },
                        };
+            var MyBCsDict = new Dictionary<string, BC>
+            {
+                ["3"] = new BC
+                {
+                    Id = "3",
+                    Name = "Name",
+                    Surname = "Surname",
+                    Email = "Email",
+                    FaceBookLink = "FaceBookLink",
+                    MiddleName = "MiddleName",
+                    TelephoneNumber = "TelephoneNumber",
+                    VKLink = "VKLink"
+                },
+                ["4"] = new BC
+                {
+                    Id = "4",
+                    Name = "Name2",
+                    Surname = "Surname2",
+                    Email = "Email2",
+                    TelephoneNumber = "TelephoneNumber2",
+                    VKLink = "VKLink2"
+                },
+            };
 
-            Properties["AlienBCsDict"] = dict;
+            Properties["AlienBCsDict"] = AlienBCsDict;
+            Properties["MyBCsDict"] = MyBCsDict;
         }
 
         protected override void OnStart()

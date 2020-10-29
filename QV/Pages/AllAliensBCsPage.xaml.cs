@@ -28,10 +28,9 @@ namespace QV
         {
             if (e.Item == null)
                 return;
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
-            await Shell.Current.GoToAsync($"{nameof(BCDetailsPage)}?{nameof(BCDetailsPage.BCId)}={(e.Item as BC).Id}");
+            await Shell.Current.GoToAsync($"{nameof(BCDetailsPage)}?{nameof(BCDetailsPage.Dict)}={"AlienBCsDict"}&{nameof(BCDetailsPage.BCId)}={(e.Item as BC).Id}");
         }
     }
 }

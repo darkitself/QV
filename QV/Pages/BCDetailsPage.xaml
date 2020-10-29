@@ -7,7 +7,7 @@
             <Label x:Name ="Surname" Text="BCDetailsPage"/>
             <Label x:Name ="Name" Text="BCDetailsPage"/>
             <Label x:Name ="MiddleName" Text="BCDetailsPage"/>
-            <Label x:Name ="TeleponeNumber" Text="BCDetailsPage"/>
+            <Label x:Name ="TelephoneNumber" Text="BCDetailsPage"/>
             <Label x:Name ="Email" Text="BCDetailsPage"/>
             <Label x:Name ="VKLink" Text="BCDetailsPage"/>
             <Label x:Name ="FaceBookLink" Text="BCDetailsPage"/>
