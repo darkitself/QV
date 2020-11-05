@@ -1,11 +1,10 @@
 ﻿using QV.Infrastructure;
 using System.Collections.Generic;
-using Xamarin.Forms;
 using System.Text.Json;
 
 namespace QV
 {
-    public partial class App : Application
+    public partial class App 
     {
         public static AppData Data;
         public App()

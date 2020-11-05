@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace QV.Infrastructure
 {
     public class DataFlags
@@ -21,7 +18,7 @@ namespace QV.Infrastructure
         public DataFlags(UserData data)
         {
             foreach (var p in data.GetType().GetProperties())
-                this.GetType().GetProperty(p.Name).SetValue(this, (string)p.GetValue(data) != null && (string)p.GetValue(data) != "");
+                this.GetType().GetProperty(p.Name)?.SetValue(this, (string)p.GetValue(data) != null && (string)p.GetValue(data) != "");
         }
     }
 }
