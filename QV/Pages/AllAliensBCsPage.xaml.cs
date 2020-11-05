@@ -15,6 +15,7 @@ namespace QV
     public partial class AllAliensBCsPage : ContentPage
     {
         public ObservableCollection<BC> Items { get; set; } = new ObservableCollection<BC>();
+        public Dictionary<string, string> BCs { get; set; } = new Dictionary<string, string>();
         public AllAliensBCsPage()
         {
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace QV
         protected override void OnAppearing()
         {
             Items.Clear();
-            JsonSerializer.Deserialize<Dictionary<string, BC>>(App.Current.Properties["AlienBCsDict"] as string).ForEach(e => Items.Add(e.Value));
+            App.Data.AliensBCs.Values.ForEach(e => Items.Add(e));
         }
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -32,7 +33,7 @@ namespace QV
                 return;
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
-            await Shell.Current.GoToAsync($"{nameof(BCDetailsPage)}?{nameof(BCDetailsPage.Dict)}={"AlienBCsDict"}&{nameof(BCDetailsPage.BCId)}={(e.Item as BC).Id}");
+            await Shell.Current.GoToAsync($"{nameof(BCDetailsPage)}?{nameof(BCDetailsPage.Bc)}={JsonSerializer.Serialize(App.Data.AliensBCs[(e.Item as BC).Id])}");
         }
     }
 }

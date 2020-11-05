@@ -9,5 +9,6 @@ namespace QV
     {
         public string Id { get; set; }
         public UserData Data { get; set; }
+        public DataFlags Flags { get; set; }
     }
 }

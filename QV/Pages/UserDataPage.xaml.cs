@@ -13,14 +13,21 @@ namespace QV
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserDataPage : ContentPage
     {
+        User user;
         public UserDataPage()
         {
-            BindingContext = JsonSerializer.Deserialize<User>(App.Current.Properties["User"] as string).Data;
+            user = App.Data.CurrentUser;
+            BindingContext = user.Data;
             InitializeComponent();
         }
         private void SaveButton_Clicked(object sender, EventArgs e)
         {
-
+            foreach (var p in user.Data.GetType().GetProperties())
+            {
+                var entry = this.FindByName<Entry>(p.Name);
+                p.SetValue(user.Data, entry.Text);
+            }
+            App.Current.Properties["User"] = JsonSerializer.Serialize(user);
         }
     }
 }

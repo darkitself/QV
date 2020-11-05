@@ -42,8 +42,8 @@
                 <Label Text="FaceBookLink" WidthRequest="200"/>
                 <CheckBox x:Name="FaceBookLink" IsChecked="False" HorizontalOptions="EndAndExpand"/>
             </StackLayout>
-            <Entry x:Name="BCName" Placeholder="Your BC Name" HorizontalOptions="Fill"/>
-            <Button Text="Create" HorizontalOptions="Fill" Clicked="CreateButton_Clicked"/>
+            <Entry x:Name="BCName" Placeholder="Your BC Name" HorizontalOptions="Fill" Unfocused="BCName_Unfocused"/>
+            <Button x:Name="CreateButton" Text="Create" HorizontalOptions="Fill" Clicked="CreateButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

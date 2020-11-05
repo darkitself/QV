@@ -11,37 +11,21 @@ using Xamarin.Forms.Xaml;
 namespace QV
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    [QueryProperty(nameof(Dict), nameof(Dict))]
-    [QueryProperty(nameof(BCId), nameof(BCId))]
+    [QueryProperty(nameof(Bc), nameof(Bc))]
     public partial class BCDetailsPage : ContentPage
     {
-        private string id;
-        private BC Bc { get; set; }
-        public string Dict { get; set; }
-        public string BCId
+        public string Bc
         {
-            get => id;
-            set
+            set 
             {
-                Bc = JsonSerializer.Deserialize<Dictionary<string, BC>>(App.Current.Properties[Dict] as string)[value];
-                id = value;
-                SetAllProperties();
+                bc = JsonSerializer.Deserialize<BC>(value.Replace("%7B", "{").Replace("%22", "\"").Replace("%7D", "}"));
+                BindingContext = bc;
+                InitializeComponent();
             }
         }
-
-        private void SetAllProperties()
-        {
-            foreach (var p in Bc.Data.GetType().GetProperties())
-            {
-                var label = this.FindByName<Label>(p.Name);
-                label.Text = (string)p.GetValue(Bc.Data);
-                label.IsVisible = label.Text != null;
-            }
-        }
-
+        private BC bc { get; set; }
         public BCDetailsPage()
         {
-            InitializeComponent();
         }
     }
 }

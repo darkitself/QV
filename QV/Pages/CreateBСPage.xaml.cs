@@ -18,30 +18,27 @@ namespace QV
         public CreateBCPage()
         {
             InitializeComponent();
-            data = JsonSerializer.Deserialize<User>(App.Current.Properties["User"] as string).Data;
         }
 
         protected override void OnAppearing()
         {
+            data = App.Data.CurrentUser.Data;
             foreach (var p in data.GetType().GetProperties())
             {
                 var checkBox = this.FindByName<CheckBox>(p.Name);
-                checkBox.IsEnabled = p.GetValue(data) != null;
+                checkBox.IsEnabled = p.GetValue(data) != null && p.GetValue(data) as string != "";
             }
         }
         private void CreateButton_Clicked(object sender, EventArgs e)
         {
-            var dict = JsonSerializer.Deserialize<Dictionary<string, BC>>(App.Current.Properties["MyBCsDict"] as string);
-            var bc = new BC() { Id = this.BCName.Text, Data = new UserData()};
-            var t = bc.Data.GetType();
-            foreach (var p in data.GetType().GetProperties())
+            var bc = new BC() { Id = this.BCName.Text, Data = data, Flags = new DataFlags()};
+            foreach (var p in bc.Flags.GetType().GetProperties())
             {
                 var checkBox = this.FindByName<CheckBox>(p.Name);
-                if (checkBox.IsEnabled && checkBox.IsChecked)
-                    t.GetProperty(p.Name).SetValue(bc.Data, p.GetValue(data));
+                p.SetValue(bc.Flags, checkBox.IsEnabled && checkBox.IsChecked);
             }
-            dict[bc.Id] = bc;
-            App.Current.Properties["MyBCsDict"] = JsonSerializer.Serialize(dict);
+            App.Data.UserBCs[bc.Id] = bc;
+            App.Current.Properties["UserBCsDict"] = JsonSerializer.Serialize(App.Data.UserBCs);
         }
         private void SelectAllButton_Clicked(object sender, EventArgs e)
         {
@@ -60,6 +57,11 @@ namespace QV
                 if (checkBox.IsEnabled)
                     checkBox.IsChecked = false;
             }
+        }
+
+        private void BCName_Unfocused(object sender, FocusEventArgs e)
+        {
+            this.CreateButton.Text = App.Data.UserBCs.ContainsKey(this.BCName.Text) ? "Save" : "Create";
         }
     }
 }
