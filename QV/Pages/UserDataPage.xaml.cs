@@ -27,7 +27,7 @@ namespace QV
                 var entry = this.FindByName<Entry>(p.Name);
                 p.SetValue(user.Data, entry.Text);
             }
-            App.Current.Properties["User"] = JsonSerializer.Serialize(user);
+            Application.Current.Properties["User"] = JsonSerializer.Serialize(user);
         }
     }
 }

@@ -38,7 +38,7 @@ namespace QV
                 p.SetValue(bc.Flags, checkBox.IsEnabled && checkBox.IsChecked);
             }
             App.Data.UserBCs[bc.Id] = bc;
-            App.Current.Properties["UserBCsDict"] = JsonSerializer.Serialize(App.Data.UserBCs);
+            Application.Current.Properties["UserBCsDict"] = JsonSerializer.Serialize(App.Data.UserBCs);
         }
         private void SelectAllButton_Clicked(object sender, EventArgs e)
         {

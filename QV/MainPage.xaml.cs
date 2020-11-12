@@ -8,21 +8,21 @@ using Xamarin.Forms;
 
 namespace QV
 {
-    public partial class MainPage : Shell
+    public partial class MainPage 
     {
         public MainPage()
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(BCDetailsPage), typeof(BCDetailsPage));
-            if (!App.Current.Properties.TryGetValue("Logged", out object logged) || (logged is null) || !(bool)logged)
+            if (!Application.Current.Properties.TryGetValue("Logged", out var logged) || (logged is null) || !(bool)logged)
                 Navigation.PushModalAsync(new LoginPage());
         }
 
         private void Logout_Clicked(object sender, EventArgs e)
         {
-            App.Current.Properties["Logged"] = false;
-            App.Current.SavePropertiesAsync();
-            Shell.Current.FlyoutIsPresented = false;
+            Application.Current.Properties["Logged"] = false;
+            Application.Current.SavePropertiesAsync();
+            Current.FlyoutIsPresented = false;
             Navigation.PushModalAsync(new LoginPage());
         }
     }

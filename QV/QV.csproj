@@ -56,5 +56,14 @@
     <EmbeddedResource Include="Images\qvlogo.png">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Remove="Images\sea.jpg" />
+    <EmbeddedResource Include="Images\sea.jpg" />
+    <None Remove="Images\QvLogoWithoutBoard.png" />
+    <EmbeddedResource Include="Images\QvLogoWithoutBoard.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Images\qvlogodark.png" />
+    <EmbeddedResource Include="Images\qvlogodark.png" />
   </ItemGroup>
 </Project>

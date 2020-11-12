@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Mail;
+using System.Threading;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,8 +12,7 @@ namespace QV
         public LoginPage()
         {
             InitializeComponent();
-            LogoImage.Source = ImageSource.FromResource("QV.Images.qvlogo.png");
-
+            LogoImage.Source = ImageSource.FromResource("QV.Images.QvLogoWithoutBoard.png");
         }
 
         protected override bool OnBackButtonPressed()
@@ -22,9 +22,9 @@ namespace QV
 
         private async void LoginButtonClicked(object sender, EventArgs e)
         {
-            App.Current.Properties["Logged"] = true;
-            await App.Current.SavePropertiesAsync();
-            await Navigation.PopModalAsync();
+            // Application.Current.Properties["Logged"] = true;
+            // await Application.Current.SavePropertiesAsync();
+            // await Navigation.PopModalAsync();
         }
         private void RegistrationButton_Clicked(object sender, EventArgs e)
         {
@@ -33,7 +33,6 @@ namespace QV
         
         private void LoginUnfocused(object sender, FocusEventArgs e)
         {
-            IsRightEmail = new Image();
             //TODO icon that would be show is email right
         }
     }

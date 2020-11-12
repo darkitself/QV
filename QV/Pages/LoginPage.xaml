@@ -2,60 +2,58 @@
 
 <ContentPage xmlns = "http://xamarin.com/schemas/2014/forms"
              xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class = "QV.LoginPage">
+             xmlns:qv = "clr-namespace:QV;assembly=QV"
+             x:Class = "QV.LoginPage"
+             BackgroundColor = "{DynamicResource DarkBlue}">
     <ContentPage.Content>
         <StackLayout Orientation = "Vertical"
-                     HorizontalOptions="CenterAndExpand"
-                     VerticalOptions="CenterAndExpand"
+                     HorizontalOptions = "CenterAndExpand"
+                     VerticalOptions = "CenterAndExpand"
                      Padding = "20">
-            <Image x:Name="LogoImage"
-                   WidthRequest="150"
-                   HeightRequest="150"
-                   IsVisible="True"/>
-            <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="CenterAndExpand">
-                   <Entry x:Name = "Login"
-                          Style="{DynamicResource EntryStyle}"
-                          Margin = "20"
-                          HorizontalOptions = "CenterAndExpand"
-                          Keyboard = "Email"
-                          IsTextPredictionEnabled = "True"
-                          WidthRequest = "300"
-                          Placeholder = "Логин"
-                          Unfocused="LoginUnfocused"
-                          />
-                   
-                   <Image x:Name="IsRightEmail"
-                          HeightRequest="15"
-                          WidthRequest="15"
-                          IsVisible="False"
-                          />
-            </StackLayout>
+            <Image x:Name = "LogoImage"
+                   WidthRequest = "150"
+                   HeightRequest = "150"
+                   Margin = "20"
+                   Aspect = "AspectFit" />
+            <Entry x:Name = "Login"
+                   Style = "{DynamicResource EntryStyle}"
+                   Margin = "5"
+                   HorizontalOptions = "CenterAndExpand"
+                   Keyboard = "Email"
+                   IsTextPredictionEnabled = "True"
+                   WidthRequest = "300"
+                   FontSize="Medium"
+                   Placeholder = "Логин"
+                   Unfocused = "LoginUnfocused" />
+            
             <Entry x:Name = "Password"
-                   Style="{DynamicResource EntryStyle}"
-                   Margin="20"
+                   Style = "{DynamicResource EntryStyle}"
+                   Margin = "5"
                    HorizontalOptions = "CenterAndExpand"
                    Keyboard = "Default"
-                   WidthRequest="300"
+                   FontSize="Medium"
+                   WidthRequest = "300"
                    Placeholder = "Пароль"
                    IsPassword = "True" />
-            <Button Text = "Войти"
-                    TextColor = "{StaticResource TextDarkBlue}"
-                    BackgroundColor = "{StaticResource Background}"
-                    Font = "{StaticResource Font}"
-                    FontSize = "Medium"
-                    CornerRadius = "10"
-                    VerticalOptions = "Center"
-                    Clicked="LoginButtonClicked"
-                    />
-            <Button Text="Регистрация"
-                    TextColor="{StaticResource TextDarkBlue}"
-                    BackgroundColor="{StaticResource Background}"
-                    Font = "{StaticResource Font}"
-                    FontSize="Medium"
-                    CornerRadius="10"
-                    VerticalOptions="Center"
-                    Clicked="RegistrationButton_Clicked"/>
+            <Button x:Name = "LoginButton"
+                    Text = "Войти"
+                             TextColor = "White"
+                             BackgroundColor="{DynamicResource AlfaBrandRed}"
+                             Font = "{StaticResource Font}"
+                             FontSize = "Medium"
+                             WidthRequest="250"
+                             CornerRadius="10"
+                             HorizontalOptions="Center"
+                             Clicked = "LoginButtonClicked" />
+            <Button Text = "Регистрация"
+                             HorizontalOptions="Center"
+                             BackgroundColor="{DynamicResource AlfaBrandRed}"
+                             WidthRequest="250"
+                             CornerRadius="10"
+                             TextColor = "White"
+                             Font = "{StaticResource Font}"
+                             FontSize = "Medium"
+                             Clicked = "RegistrationButton_Clicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
