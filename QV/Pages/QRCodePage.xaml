@@ -1,19 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="QV.QRCodePage">
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns = "http://xamarin.com/schemas/2014/forms"
+             xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms = "clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             x:Class = "QV.QRCodePage"
+             BackgroundColor = "{DynamicResource DarkBlue}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label x:Name="QrScanningResult"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   Text="Здесь будет отображаться рещультат сканрования"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="CenterAndExpand" />
-            <Button x:Name="StartScanning"
-                    TextColor="{StaticResource TextDarkBlue}"
-                    Clicked="StartScanning_OnClicked"
-                    HorizontalOptions="CenterAndExpand"/>
-        </StackLayout>
+        <Grid>
+            <Image Style="{DynamicResource BackGroundImageStyle}"/>
+            <forms:ZXingScannerView x:Name = "Scanner" 
+                                    HeightRequest="500"
+                                    WidthRequest="300"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Start"
+            />
+            <forms:ZXingDefaultOverlay x:Name="Overlay"
+                                       HeightRequest="500"
+                                       WidthRequest="300"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Start"
+                                       TopText="Put your phone on barcode"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

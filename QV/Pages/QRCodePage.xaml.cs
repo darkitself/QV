@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using QV.Infrastructure;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZXing;
+using ZXing.Mobile;
+using ZXing.Net.Mobile.Forms;
 
 namespace QV
 {
@@ -15,12 +18,24 @@ namespace QV
         public QRCodePage()
         {
             InitializeComponent();
-        }
+            Overlay.ShowFlashButton = Scanner.HasTorch;
+            Scanner.Options = new MobileBarcodeScanningOptions
+                              {
+                                  AutoRotate = true,
+                                  PossibleFormats = new [] {BarcodeFormat.QR_CODE},
+                                  TryHarder = true,
+                                  TryInverted = true
+                              };
+            Scanner.IsAnalyzing = true;
+            Scanner.IsScanning = true;
+            Scanner.OnScanResult += result =>
+                                    {
+                                        Scanner.FadeTo(0, 250, Easing.BounceOut);
+                                        Overlay.FadeTo(0, 250, Easing.BounceOut);
+                                        Scanner.ToggleTorch();
+                                    };
+            Overlay.FlashButtonClicked += (sender, args) => Scanner.IsTorchOn = !Scanner.IsTorchOn;
 
-        private async void StartScanning_OnClicked(object sender, EventArgs e)
-        {
-            var result = await QRHelper.Scan();
-            QrScanningResult.Text = $"Результат сканирования:\n {result}";
         }
     }
 }

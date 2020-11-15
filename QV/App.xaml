@@ -18,5 +18,19 @@
             <Setter Property="TextColor" Value="{DynamicResource TextDarkBlue}"/>
             <Setter Property="PlaceholderColor" Value="{DynamicResource TextDarkGray}"/>
         </Style>
+        
+        <Style x:Key="BackGroundImageStyle" TargetType ="Image">
+            <Setter Property="Aspect" Value="AspectFill"/>
+            <Setter Property="Source" Value="{DynamicResource BackgroundImageSource}"/>
+            <Setter Property="Opacity" Value="0.3"/>
+        </Style>
+        
+        <Style x:Key="RedButtonStyle" TargetType = "Button">
+            <Setter Property="BackgroundColor" Value="{DynamicResource AlfaBrandRed}"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="Font" Value="{DynamicResource Font}"/>
+        </Style>
     </Application.Resources>
 </Application>

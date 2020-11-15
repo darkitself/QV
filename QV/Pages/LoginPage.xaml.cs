@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Net.Mail;
-using System.Threading;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,7 +10,6 @@ namespace QV
         public LoginPage()
         {
             InitializeComponent();
-            LogoImage.Source = ImageSource.FromResource("QV.Images.QvLogoWithoutBoard.png");
         }
 
         protected override bool OnBackButtonPressed()
@@ -22,9 +19,9 @@ namespace QV
 
         private async void LoginButtonClicked(object sender, EventArgs e)
         {
-            // Application.Current.Properties["Logged"] = true;
-            // await Application.Current.SavePropertiesAsync();
-            // await Navigation.PopModalAsync();
+            Application.Current.Properties["Logged"] = true;
+            await Application.Current.SavePropertiesAsync();
+            await Navigation.PopModalAsync();
         }
         private void RegistrationButton_Clicked(object sender, EventArgs e)
         {

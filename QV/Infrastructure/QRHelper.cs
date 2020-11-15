@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 using ZXing;
 using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
@@ -15,10 +17,21 @@ namespace QV.Infrastructure
                                                                     PureBarcode = true
                                                                 };
         
-        public static Task<Result> Scan()
+        public static ZXingScannerView GetScannerView()
         {
-            var scanner = new MobileBarcodeScanner();
-            return scanner.Scan();
+            var scanner = new ZXingScannerView
+                          {
+                              Options = new MobileBarcodeScanningOptions
+                                        {
+                                            TryHarder = true,
+                                            TryInverted = true,
+                                            PossibleFormats =
+                                                new[] {BarcodeFormat.QR_CODE}
+                                        },
+                              WidthRequest = 300,
+                              HeightRequest = 300
+                          };
+            return scanner;
         }
 
         public static ZXingBarcodeImageView CreateQrCodeFrom<T>(T item)

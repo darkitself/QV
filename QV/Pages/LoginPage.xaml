@@ -6,54 +6,50 @@
              x:Class = "QV.LoginPage"
              BackgroundColor = "{DynamicResource DarkBlue}">
     <ContentPage.Content>
-        <StackLayout Orientation = "Vertical"
-                     HorizontalOptions = "CenterAndExpand"
-                     VerticalOptions = "CenterAndExpand"
-                     Padding = "20">
-            <Image x:Name = "LogoImage"
-                   WidthRequest = "150"
-                   HeightRequest = "150"
-                   Margin = "20"
-                   Aspect = "AspectFit" />
-            <Entry x:Name = "Login"
-                   Style = "{DynamicResource EntryStyle}"
-                   Margin = "5"
-                   HorizontalOptions = "CenterAndExpand"
-                   Keyboard = "Email"
-                   IsTextPredictionEnabled = "True"
-                   WidthRequest = "300"
-                   FontSize="Medium"
-                   Placeholder = "Логин"
-                   Unfocused = "LoginUnfocused" />
-            
-            <Entry x:Name = "Password"
-                   Style = "{DynamicResource EntryStyle}"
-                   Margin = "5"
-                   HorizontalOptions = "CenterAndExpand"
-                   Keyboard = "Default"
-                   FontSize="Medium"
-                   WidthRequest = "300"
-                   Placeholder = "Пароль"
-                   IsPassword = "True" />
-            <Button x:Name = "LoginButton"
-                    Text = "Войти"
-                             TextColor = "White"
-                             BackgroundColor="{DynamicResource AlfaBrandRed}"
-                             Font = "{StaticResource Font}"
-                             FontSize = "Medium"
-                             WidthRequest="250"
-                             CornerRadius="10"
-                             HorizontalOptions="Center"
-                             Clicked = "LoginButtonClicked" />
-            <Button Text = "Регистрация"
-                             HorizontalOptions="Center"
-                             BackgroundColor="{DynamicResource AlfaBrandRed}"
-                             WidthRequest="250"
-                             CornerRadius="10"
-                             TextColor = "White"
-                             Font = "{StaticResource Font}"
-                             FontSize = "Medium"
-                             Clicked = "RegistrationButton_Clicked" />
-        </StackLayout>
+        <Grid>
+            <Image Style = "{DynamicResource BackGroundImageStyle}" />
+            <StackLayout Orientation = "Vertical"
+                         HorizontalOptions = "CenterAndExpand"
+                         VerticalOptions = "CenterAndExpand"
+                         Padding = "20">
+                <Image x:Name = "LogoImage"
+                       Source = "logo_without_board.png"
+                       WidthRequest = "150"
+                       HeightRequest = "150"
+                       Margin = "20"
+                       Aspect = "AspectFit" />
+                <Entry x:Name = "Login"
+                       Style = "{DynamicResource EntryStyle}"
+                       Margin = "5"
+                       HorizontalOptions = "CenterAndExpand"
+                       Keyboard = "Email"
+                       IsTextPredictionEnabled = "True"
+                       WidthRequest = "300"
+                       FontSize = "Medium"
+                       Placeholder = "Логин"
+                       Unfocused = "LoginUnfocused" />
+
+                <Entry x:Name = "Password"
+                       Style = "{DynamicResource EntryStyle}"
+                       Margin = "5"
+                       HorizontalOptions = "CenterAndExpand"
+                       Keyboard = "Default"
+                       FontSize = "Medium"
+                       WidthRequest = "300"
+                       Placeholder = "Пароль"
+                       IsPassword = "True" />
+                <Button x:Name = "LoginButton"
+                        Style = "{DynamicResource RedButtonStyle}"
+                        Text = "Войти"
+                        WidthRequest = "250"
+                        HorizontalOptions = "Center"
+                        Clicked = "LoginButtonClicked" />
+                <Button Text = "Регистрация"
+                        Style = "{DynamicResource RedButtonStyle}"
+                        HorizontalOptions = "Center"
+                        WidthRequest = "250"
+                        Clicked = "RegistrationButton_Clicked" />
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

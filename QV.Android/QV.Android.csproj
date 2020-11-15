@@ -61,6 +61,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renders\CustomButtonRendere.cs" />
     <Compile Include="Renders\CustomEntryRender.cs" />
+    <Compile Include="Renders\LoginPageRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,7 +72,17 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\button_background.xml" />
+    <AndroidResource Include="Resources\drawable\cat.jpg" />
+    <AndroidResource Include="Resources\drawable\login_page_bbackground.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\logo_dark_without_board.png" />
+    <AndroidResource Include="Resources\drawable\logo_without_board.png" />
+    <AndroidResource Include="Resources\drawable\main_logo.png" />
+    <AndroidResource Include="Resources\drawable\nature_background.png" />
     <AndroidResource Include="Resources\drawable\rounded_corner_entry.xml" />
+    <AndroidResource Include="Resources\drawable\sea_background.jpg" />
     <AndroidResource Include="Resources\layout\Tabbar.xml" />
     <AndroidResource Include="Resources\layout\Toolbar.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />

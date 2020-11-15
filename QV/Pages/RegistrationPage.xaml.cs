@@ -15,18 +15,11 @@ namespace QV
         public RegistrationPage()
         {
             InitializeComponent();
-            Image.Source = ImageSource.FromResource("QV.Images.qvlogo.png");
         }
 
         private void RegisterButtonClicked(object sender, EventArgs e)
         {
-            
             //TODO registratipon
-        }
-
-        protected override bool OnBackButtonPressed()
-        {
-            return false;
         }
     }
 }
