@@ -59,9 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Renders\CustomButtonRendere.cs" />
     <Compile Include="Renders\CustomEntryRender.cs" />
-    <Compile Include="Renders\LoginPageRenderer.cs" />
+    <Compile Include="Renders\ZxingRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

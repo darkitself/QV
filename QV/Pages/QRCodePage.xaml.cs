@@ -18,24 +18,32 @@ namespace QV
         public QRCodePage()
         {
             InitializeComponent();
-            Overlay.ShowFlashButton = Scanner.HasTorch;
+            Overlay.ShowFlashButton = true;
+            Overlay.IsVisible = false;
             Scanner.Options = new MobileBarcodeScanningOptions
                               {
                                   AutoRotate = true,
-                                  PossibleFormats = new [] {BarcodeFormat.QR_CODE},
                                   TryHarder = true,
                                   TryInverted = true
                               };
-            Scanner.IsAnalyzing = true;
-            Scanner.IsScanning = true;
+            Scanner.IsAnalyzing = false;
+            Scanner.IsScanning = false;
+            Scanner.IsVisible = false;
             Scanner.OnScanResult += result =>
                                     {
-                                        Scanner.FadeTo(0, 250, Easing.BounceOut);
-                                        Overlay.FadeTo(0, 250, Easing.BounceOut);
-                                        Scanner.ToggleTorch();
+                                        Scanner.IsTorchOn = !Scanner.IsTorchOn;
+                                        Scanner.IsVisible = false;
+                                        Button.Text = result.Text;
                                     };
-            Overlay.FlashButtonClicked += (sender, args) => Scanner.IsTorchOn = !Scanner.IsTorchOn;
+            Overlay.FlashButtonClicked += (sender, args) => Scanner.ToggleTorch();
 
+        }
+
+        private async void Button_OnClicked(object sender, EventArgs e)
+        {
+            Scanner.IsVisible = true;
+            Scanner.IsAnalyzing = true;
+            Scanner.IsScanning = true;
         }
     }
 }

@@ -7,19 +7,34 @@
              BackgroundColor = "{DynamicResource DarkBlue}">
     <ContentPage.Content>
         <Grid>
-            <Image Style="{DynamicResource BackGroundImageStyle}"/>
-            <forms:ZXingScannerView x:Name = "Scanner" 
-                                    HeightRequest="500"
-                                    WidthRequest="300"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Start"
-            />
-            <forms:ZXingDefaultOverlay x:Name="Overlay"
-                                       HeightRequest="500"
-                                       WidthRequest="300"
-                                       HorizontalOptions="Center"
-                                       VerticalOptions="Start"
-                                       TopText="Put your phone on barcode"/>
+            <Image Style = "{DynamicResource BackGroundImageStyle}" />
+            <StackLayout HorizontalOptions = "Center"
+                         VerticalOptions = "Center">
+                <Label Text = "Отсканируйте QR код, чтобы получить контакты"
+                       TextColor = "{DynamicResource AlfaBrandRed}"
+                       HorizontalOptions = "Center"
+                       VerticalOptions = "Center"
+                       FontSize = "Large"
+                       VerticalTextAlignment = "Center"
+                       HorizontalTextAlignment = "Center" />
+                <Button x:Name="Button" 
+                    Style = "{DynamicResource RedButtonStyle}"
+                        Text = "Сканировать"
+                        HorizontalOptions = "Center"
+                        Clicked = "Button_OnClicked" />
+                <forms:ZXingScannerView x:Name = "Scanner"
+                                        HeightRequest = "500"
+                                        WidthRequest = "300"
+                                        HorizontalOptions = "Center"
+                                        VerticalOptions = "Center" />
+                <forms:ZXingDefaultOverlay x:Name = "Overlay"
+                                           HeightRequest = "500"
+                                           WidthRequest = "300"
+                                           HorizontalOptions = "Center"
+                                           VerticalOptions = "Center"
+                                           TopText = "Put your phone on barcode" />
+            </StackLayout>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>
