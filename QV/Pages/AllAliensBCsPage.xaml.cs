@@ -12,28 +12,19 @@ using Xamarin.Forms.Xaml;
 namespace QV
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AllAliensBCsPage : ContentPage
+    public partial class AllAliensBCsPage
     {
-        public ObservableCollection<BC> Items { get; set; } = new ObservableCollection<BC>();
-        public Dictionary<string, string> BCs { get; set; } = new Dictionary<string, string>();
+        private readonly ObservableCollection<BC> Items  = new ObservableCollection<BC>();
         public AllAliensBCsPage()
         {
             InitializeComponent();
-
             MyListView.ItemsSource = Items;
         }
+        
         protected override void OnAppearing()
         {
             Items.Clear();
             App.Data.AliensBCs.Values.ForEach(e => Items.Add(e));
-        }
-        async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            if (e.Item == null)
-                return;
-            //Deselect Item
-            ((ListView)sender).SelectedItem = null;
-            await Shell.Current.GoToAsync($"{nameof(BCDetailsPage)}?{nameof(BCDetailsPage.Bc)}={JsonSerializer.Serialize(App.Data.AliensBCs[(e.Item as BC).Id])}");
         }
     }
 }

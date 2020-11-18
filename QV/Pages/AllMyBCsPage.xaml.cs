@@ -14,20 +14,21 @@ namespace QV
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AllMyBCsPage : ContentPage
     {
-        public ObservableCollection<BC> Items { get; set; } = new ObservableCollection<BC>();
+        private readonly ObservableCollection<BC> items = new ObservableCollection<BC>();
         public Dictionary<string, string> BCs { get; set; } = new Dictionary<string, string>();
         public AllMyBCsPage()
         {
             InitializeComponent();
-
-            MyListView.ItemsSource = Items;
+            MyListView.ItemsSource = items;
         }
+        
         protected override void OnAppearing()
         {
-            Items.Clear();
-            App.Data.UserBCs.Values.ForEach(e => Items.Add(e));
+            items.Clear();
+            App.Data.UserBCs.Values.ForEach(e => items.Add(e));
         }
-        async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+
+        private async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item == null)
                 return;

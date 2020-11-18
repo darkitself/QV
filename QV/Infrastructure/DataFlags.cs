@@ -1,15 +1,14 @@
-﻿
-namespace QV.Infrastructure
+﻿namespace QV.Infrastructure
 {
     public class DataFlags
     {
-        public bool Surname { get; set; } = false;
-        public bool Name { get; set; } = false;
-        public bool MiddleName { get; set; } = false;
-        public bool TelephoneNumber { get; set; } = false;
-        public bool Email { get; set; } = false;
-        public bool VKLink { get; set; } = false;
-        public bool FaceBookLink { get; set; } = false;
+        public bool Surname { get; set; }
+        public bool Name { get; set; }
+        public bool MiddleName { get; set; }
+        public bool TelephoneNumber { get; set; }
+        public bool Email { get; set; }
+        public bool VKLink { get; set; }
+        public bool FaceBookLink { get; set; }
 
         public DataFlags()
         {
@@ -18,7 +17,10 @@ namespace QV.Infrastructure
         public DataFlags(UserData data)
         {
             foreach (var p in data.GetType().GetProperties())
-                this.GetType().GetProperty(p.Name)?.SetValue(this, (string)p.GetValue(data) != null && (string)p.GetValue(data) != "");
+                GetType().GetProperty(p.Name)
+                         ?.SetValue(this,
+                                    (string) p.GetValue(data) != null &&
+                                    (string) p.GetValue(data) != "");
         }
     }
 }

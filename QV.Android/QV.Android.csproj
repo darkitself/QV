@@ -79,7 +79,9 @@
     <AndroidResource Include="Resources\drawable\logo_dark_without_board.png" />
     <AndroidResource Include="Resources\drawable\logo_without_board.png" />
     <AndroidResource Include="Resources\drawable\main_logo.png" />
+    <AndroidResource Include="Resources\drawable\me.jpg" />
     <AndroidResource Include="Resources\drawable\nature_background.png" />
+    <AndroidResource Include="Resources\drawable\nature_with_opacity.png" />
     <AndroidResource Include="Resources\drawable\rounded_corner_entry.xml" />
     <AndroidResource Include="Resources\drawable\sea_background.jpg" />
     <AndroidResource Include="Resources\layout\Tabbar.xml" />

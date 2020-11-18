@@ -42,9 +42,9 @@ namespace QV
                         Id = "1",
                         Data = new UserData
                         {
-                            Name = "Name",
-                            Surname = "Surname",
-                            Email = "Email",
+                            Name = "Egor",
+                            Surname = "Chusov",
+                            Email = "chusoveg17@gmail.com",
                             FaceBookLink = "FaceBookLink",
                             MiddleName = "MiddleName",
                             TelephoneNumber = "TelephoneNumber",
@@ -66,10 +66,10 @@ namespace QV
                         Id = "2",
                         Data = new UserData
                         {
-                            Name = "Name2",
-                            Surname = "Surname2",
-                            Email = "Email2",
-                            TelephoneNumber = "TelephoneNumber2",
+                            Name = "Zhenya",
+                            Surname = "Kalygin",
+                            Email = "Xz",
+                            TelephoneNumber = "8800000000",
                             VKLink = "VKLink2"
                         },
                         Flags = new DataFlags
@@ -81,6 +81,16 @@ namespace QV
                             VKLink = true,
                         }
                     },
+                    ["3"] = new BC
+                            {
+                                Id = "2",
+                                Data = new UserData
+                                       {
+                                           Name = "Stiv Jobs",
+                                           Email = "stivchik@",
+                                           VKLink = "!235"
+                                       }
+                            }
                 };
 
             Data.UserBCs = Properties.ContainsKey("UserBCsDict")

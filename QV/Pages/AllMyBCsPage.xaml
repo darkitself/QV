@@ -1,27 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="QV.AllMyBCsPage">
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns = "http://xamarin.com/schemas/2014/forms"
+             xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class = "QV.AllMyBCsPage"
+             BackgroundColor = "{DynamicResource DarkBlue}">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <ListView x:Name="MyListView"
-            ItemsSource="{Binding Items}"
-            ItemTapped="Handle_ItemTapped"
-            CachingStrategy="RecycleElement">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout>
-                                <Label Text="{Binding Id}" 
-                   Style="{DynamicResource ListItemTextStyle}" />
-                                <Label Text="{Binding Text}" 
-                   Style="{DynamicResource ListItemDetailTextStyle}"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Label Text="AllMyBCsPage" />
-        </StackLayout>
+        <Grid>
+            <Image Style="{DynamicResource BackGroundImageStyle}"/>
+                <CarouselView x:Name = "MyListView"
+                              IsBounceEnabled="True"
+                              IsScrollAnimated="True"
+                              IsSwipeEnabled="True"
+                              ItemsSource = "{Binding items}">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                                <StackLayout>
+                                    <Label Text = "{Binding Id}"
+                                           TextColor="{DynamicResource AlfaBrandRed}"/>
+                                    <Label Text = "{Binding Text}"
+                                           TextColor="{DynamicResource DarkBlue}" />
+                                </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

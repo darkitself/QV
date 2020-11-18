@@ -13,5 +13,6 @@ namespace QV.Infrastructure
         public string Email { get; set; }
         public string VKLink { get; set; }
         public string FaceBookLink { get; set; }
+        public string FullName => $"{Surname} {Name} {MiddleName}";
     }
 }
