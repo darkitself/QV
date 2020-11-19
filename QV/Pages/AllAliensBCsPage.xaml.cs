@@ -26,5 +26,10 @@ namespace QV
             Items.Clear();
             App.Data.AliensBCs.Values.ForEach(e => Items.Add(e));
         }
+
+        private void OnCurrentItemChanged(object sender, CurrentItemChangedEventArgs e)
+        {
+            var current = e.CurrentItem as BC;
+        }
     }
 }

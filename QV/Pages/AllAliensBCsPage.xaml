@@ -8,52 +8,85 @@
     <ContentPage.Content>
         <Grid>
             <Image Style = "{DynamicResource BackGroundImageStyle}" />
-            <CarouselView x:Name = "MyListView"
-                          IsBounceEnabled = "True"
-                          PeekAreaInsets = "200">
-                <CarouselView.ItemsLayout>
-                    <LinearItemsLayout Orientation = "Vertical"
-                                       ItemSpacing = "20" />
-                </CarouselView.ItemsLayout>
-                <CarouselView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Orientation = "Horizontal">
-                            <Frame IsClippedToBounds="True"
-                                   Padding="0"
-                                   WidthRequest="150"
-                                   CornerRadius="75"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Start"
-                                   HeightRequest="150">
-                                <Image Source = "me.jpg"
-                                       VerticalOptions="Center"
-                                       HorizontalOptions="Center"/>
-                            </Frame>
-                            <StackLayout HorizontalOptions = "Center"
-                                         VerticalOptions = "Start">
-                                <Label Text = "{Binding Data.FullName}"
-                                       TextColor = "{DynamicResource AlfaBrandRed}"
+            <StackLayout>
+                
+                <CarouselView x:Name = "MyListView"
+                              VerticalOptions="StartAndExpand"
+                              HorizontalScrollBarVisibility = "Always"
+                              CurrentItemChanged = "OnCurrentItemChanged"
+                              PeekAreaInsets = "290">
+                    <CarouselView.ItemsLayout>
+                        <LinearItemsLayout Orientation = "Vertical"/>
+                    </CarouselView.ItemsLayout>
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation = "Horizontal"
+                                         Padding="20">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="CurrentItem">
+                                            <VisualState.Setters>
+                                                <Setter Property="Scale"
+                                                        Value="1.1" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="PreviousItem">
+                                            <VisualState.Setters>
+                                                <Setter Property="Opacity"
+                                                        Value="0.5" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="NextItem">
+                                            <VisualState.Setters>
+                                                <Setter Property="Opacity"
+                                                        Value="0.5" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="DefaultItem">
+                                            <VisualState.Setters>
+                                                <Setter Property="Opacity"
+                                                        Value="0.25" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Frame IsClippedToBounds = "True"
+                                       Padding = "0"
+                                       WidthRequest = "75"
+                                       CornerRadius = "38"
                                        HorizontalOptions = "Center"
-                                       VerticalOptions = "Center"
-                                       HorizontalTextAlignment = "Start"
-                                       FontSize = "Medium" />
-                                <Label Text = "{Binding Data.Email}"
-                                       TextColor = "{DynamicResource AlfaBrandRed}"
-                                       HorizontalOptions = "Center"
-                                       VerticalOptions = "Center"
-                                       HorizontalTextAlignment = "Start"
-                                       FontSize = "Medium" />
-                                <Label Text = "{Binding Data.PhoneNumber}"
-                                       TextColor = "{DynamicResource AlfaBrandRed}"
-                                       HorizontalOptions = "Center"
-                                       VerticalOptions = "Center"
-                                       HorizontalTextAlignment = "Start"
-                                       FontSize = "Medium" />
-                            </StackLayout>
-                        </StackLayout>
-                    </DataTemplate>
-                </CarouselView.ItemTemplate>
-            </CarouselView>
+                                       VerticalOptions = "Start"
+                                       HeightRequest = "75">
+                                        <Image Source = "me.jpg"
+                                               Aspect = "AspectFill"
+                                               BackgroundColor = "Transparent" />
+                                    </Frame>
+                                    <StackLayout HorizontalOptions="Start"
+                                                 VerticalOptions="Center">
+                                        <Label Text = "{Binding Data.FullName}"
+                                               TextColor = "{DynamicResource AlfaBrandRed}"
+                                               HorizontalOptions = "Start"
+                                               VerticalOptions = "Center"
+                                               HorizontalTextAlignment = "Start"
+                                               FontSize = "Medium" />
+                                        <Label Text = "{Binding Data.Email}"
+                                               TextColor = "{DynamicResource AlfaBrandRed}"
+                                               HorizontalOptions = "Start"
+                                               VerticalOptions = "Center"
+                                               HorizontalTextAlignment = "Start"
+                                               FontSize = "Medium" />
+                                        <Label Text = "{Binding Data.PhoneNumber}"
+                                               TextColor = "{DynamicResource AlfaBrandRed}"
+                                               HorizontalOptions = "Start"
+                                               VerticalOptions = "Center"
+                                               HorizontalTextAlignment = "Start"
+                                               FontSize = "Medium" />
+                                    </StackLayout>
+                                </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
