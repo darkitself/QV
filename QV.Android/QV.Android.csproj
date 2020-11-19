@@ -72,6 +72,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\button_background.xml" />
     <AndroidResource Include="Resources\drawable\cat.jpg" />
+    <AndroidResource Include="Resources\drawable\details.png" />
     <AndroidResource Include="Resources\drawable\login_page_bbackground.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>

@@ -9,60 +9,61 @@
         <Grid>
             <Image Style = "{DynamicResource BackGroundImageStyle}" />
             <StackLayout>
-                
                 <CarouselView x:Name = "MyListView"
-                              VerticalOptions="StartAndExpand"
+                              VerticalOptions = "StartAndExpand"
                               HorizontalScrollBarVisibility = "Always"
                               CurrentItemChanged = "OnCurrentItemChanged"
                               PeekAreaInsets = "290">
                     <CarouselView.ItemsLayout>
-                        <LinearItemsLayout Orientation = "Vertical"/>
+                        <LinearItemsLayout Orientation = "Vertical"  />
                     </CarouselView.ItemsLayout>
                     <CarouselView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout Orientation = "Horizontal"
-                                         Padding="20">
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroup x:Name="CommonStates">
-                                        <VisualState x:Name="CurrentItem">
-                                            <VisualState.Setters>
-                                                <Setter Property="Scale"
-                                                        Value="1.1" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                        <VisualState x:Name="PreviousItem">
-                                            <VisualState.Setters>
-                                                <Setter Property="Opacity"
-                                                        Value="0.5" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                        <VisualState x:Name="NextItem">
-                                            <VisualState.Setters>
-                                                <Setter Property="Opacity"
-                                                        Value="0.5" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                        <VisualState x:Name="DefaultItem">
-                                            <VisualState.Setters>
-                                                <Setter Property="Opacity"
-                                                        Value="0.25" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateManager.VisualStateGroups>
-                                <Frame IsClippedToBounds = "True"
-                                       Padding = "0"
-                                       WidthRequest = "75"
-                                       CornerRadius = "38"
-                                       HorizontalOptions = "Center"
-                                       VerticalOptions = "Start"
-                                       HeightRequest = "75">
+                                <StackLayout Orientation = "Horizontal"
+                                             HorizontalOptions = "FillAndExpand"
+                                             Padding = "20"
+                                             IsEnabled="False">
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name = "CommonStates">
+                                            <VisualState x:Name = "CurrentItem">
+                                                <VisualState.Setters>
+                                                    <Setter Property = "Scale"
+                                                            Value = "1.1" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name = "PreviousItem">
+                                                <VisualState.Setters>
+                                                    <Setter Property = "Opacity"
+                                                            Value = "0.5" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name = "NextItem">
+                                                <VisualState.Setters>
+                                                    <Setter Property = "Opacity"
+                                                            Value = "0.5" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name = "DefaultItem">
+                                                <VisualState.Setters>
+                                                    <Setter Property = "Opacity"
+                                                            Value = "0.25" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                    <Frame IsClippedToBounds = "True"
+                                           Padding = "0"
+                                           WidthRequest = "75"
+                                           CornerRadius = "38"
+                                           HorizontalOptions = "Center"
+                                           VerticalOptions = "Start"
+                                           HeightRequest = "75">
                                         <Image Source = "me.jpg"
                                                Aspect = "AspectFill"
                                                BackgroundColor = "Transparent" />
                                     </Frame>
-                                    <StackLayout HorizontalOptions="Start"
-                                                 VerticalOptions="Center">
+                                    <StackLayout HorizontalOptions = "Start"
+                                                 VerticalOptions = "Center">
                                         <Label Text = "{Binding Data.FullName}"
                                                TextColor = "{DynamicResource AlfaBrandRed}"
                                                HorizontalOptions = "Start"
@@ -82,7 +83,17 @@
                                                HorizontalTextAlignment = "Start"
                                                FontSize = "Medium" />
                                     </StackLayout>
+                                    <ImageButton x:Name = "Button"
+                                                 Source = "details.png"
+                                                 WidthRequest = "20"
+                                                 HeightRequest = "30"
+                                                 Aspect = "AspectFit"
+                                                 HorizontalOptions = "End"
+                                                 VerticalOptions = "Center"
+                                                 Clicked = "ImageButton_OnClicked"
+                                                 BackgroundColor = "Transparent" />
                                 </StackLayout>
+                            <Button Clicked="Button_OnClicked"/>
                         </DataTemplate>
                     </CarouselView.ItemTemplate>
                 </CarouselView>

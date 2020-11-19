@@ -31,5 +31,15 @@ namespace QV
         {
             var current = e.CurrentItem as BC;
         }
+
+        private void ImageButton_OnClicked(object sender, EventArgs e)
+        {
+            //ToDo navigate to DetailsPage
+        }
+
+        private void Button_OnClicked(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
