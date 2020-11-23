@@ -8,15 +8,16 @@ using System.Text.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
+using QV.Infrastructure;
+using QV.Pages;
 
-namespace QV
+namespace QV.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AllAliensBCsPage : ContentPage
+    public partial class AllUserCardsPage : ContentPage
     {
-        public ObservableCollection<BC> Items { get; set; } = new ObservableCollection<BC>();
-        public Dictionary<string, string> BCs { get; set; } = new Dictionary<string, string>();
-        public AllAliensBCsPage()
+        public ObservableCollection<UserCard> Items { get; set; } = new ObservableCollection<UserCard>();
+        public AllUserCardsPage()
         {
             InitializeComponent();
 
@@ -25,7 +26,7 @@ namespace QV
         protected override void OnAppearing()
         {
             Items.Clear();
-            App.Data.AliensBCs.Values.ForEach(e => Items.Add(e));
+            App.Data.UserCards.Values.ForEach(e => Items.Add(e));
         }
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -33,7 +34,7 @@ namespace QV
                 return;
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
-            await Shell.Current.GoToAsync($"{nameof(BCDetailsPage)}?{nameof(BCDetailsPage.Bc)}={JsonSerializer.Serialize(App.Data.AliensBCs[(e.Item as BC).Id])}");
+            await Shell.Current.GoToAsync($"{nameof(UserCardDetailsPage)}?{nameof(UserCardDetailsPage.CardId)}={(e.Item as UserCard).ID}");
         }
     }
 }

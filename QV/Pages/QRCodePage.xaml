@@ -1,18 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="QV.QRCodePage">
+             x:Class="QV.Pages.QRCodePage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Orientation="Vertical">
             <Label x:Name="QrScanningResult"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"
-                   Text="Здесь будет отображаться рещультат сканрования"
+                   Text="Здесь будет отображаться результат сканрования"
                     VerticalOptions="Center" 
                     HorizontalOptions="CenterAndExpand" />
             <Button x:Name="StartScanning"
                     TextColor="{StaticResource TextDarkBlue}"
                     Clicked="StartScanning_OnClicked"
+                    HorizontalOptions="CenterAndExpand"/>
+            <Entry x:Name="LinkRequest" />
+            <Button x:Name="GetDataByLink"
+                    TextColor="{StaticResource TextDarkBlue}"
+                    Clicked="GetDataByLink_OnClicked"
                     HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>

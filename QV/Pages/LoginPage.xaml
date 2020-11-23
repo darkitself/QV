@@ -3,7 +3,7 @@
 <ContentPage xmlns = "http://xamarin.com/schemas/2014/forms"
              xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:qv = "clr-namespace:QV;assembly=QV"
-             x:Class = "QV.LoginPage"
+             x:Class = "QV.Pages.LoginPage"
              BackgroundColor = "{DynamicResource DarkBlue}">
     <ContentPage.Content>
         <StackLayout Orientation = "Vertical"

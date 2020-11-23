@@ -16,89 +16,86 @@ namespace QV
 
         protected override void OnStart()
         {
-            Data.CurrentUser = Properties.ContainsKey("User")
-                ? JsonSerializer.Deserialize<User>(Properties["User"] as string)
-                : new User
+            Data.CurrentUser = new User
+            {
+                ID = 1,
+                MainData = new UserData
                 {
-                    Login = "Login",
-                    Password = "123456",
-                    Data = new UserData
+                    Surname = "UserSurname",
+                    Name = "UserName",
+                    Patronymic = "UserPatronymic",
+                    Email = "UserEmail",
+                    Phone_Number = "UserPhone_Number",
+                    Telegram = "UserTelegram",
+                    VK = "UserVK",
+                    Facebook = "UserFacebook",
+                    Instagram = "UserInstagram",
+                    Info = "UserInfo",
+                }
+            };
+
+            Data.AliensCards = new Dictionary<long, AlienCard>
+                {
+                    [1] = new AlienCard
                     {
+                        Card_Name = "1 Alien Card",
+                        ID = 1,
+                        Name = "Name1",
+                        Surname = "Surname1",
+                        Email = "Email1",
+                        Instagram = "Inst1",
+                        Phone_Number = "Phone_Number1",
+                        VK = "VK1"
+                    },
+                    [2] = new AlienCard
+                    {
+                        Card_Name = "2 Alien Card",
+                        ID = 2,
                         Name = "Name2",
                         Surname = "Surname2",
                         Email = "Email2",
-                        TelephoneNumber = "TelephoneNumber2",
-                        VKLink = "VKLink2"
-                    }
-                };
+                        Phone_Number = "TelephoneNumber2",
+                        VK = "VKLink2"
+                    },
+            };
 
-            Data.AliensBCs = Properties.ContainsKey("AliensBCsDict")
-                ? JsonSerializer.Deserialize<Dictionary<string, BC>>(Properties["AliensBCsDict"] as string)
-                : new Dictionary<string, BC>
+            Data.UserCards = new Dictionary<long, UserCard>
                 {
-                    ["1"] = new BC
+                    [3] = new UserCard
                     {
-                        Id = "1",
-                        Data = new UserData
-                        {
-                            Name = "Name",
-                            Surname = "Surname",
-                            Email = "Email",
-                            FaceBookLink = "FaceBookLink",
-                            MiddleName = "MiddleName",
-                            TelephoneNumber = "TelephoneNumber",
-                            VKLink = "VKLink"
-                        },
-                        Flags = new DataFlags
-                        {
-                            Name = true,
-                            Surname = true,
-                            Email = true,
-                            FaceBookLink = true,
-                            MiddleName = true,
-                            TelephoneNumber = true,
-                            VKLink = true,
-                        }
+                        ID = 3,
+                        Card_Name = "My 3 Card",
+                        Alt_Data = false,
+                        Surname = true,
+                        Name = true,
+                        Patronymic = true,
+                        Image = false,
+                        Email = true,
+                        Phone_Number = false,
+                        Telegram = true,
+                        VK = false,
+                        Facebook = true,
+                        Instagram = false,
+                        Info = true,
                     },
-                    ["2"] = new BC
-                    {
-                        Id = "2",
-                        Data = new UserData
-                        {
-                            Name = "Name2",
-                            Surname = "Surname2",
-                            Email = "Email2",
-                            TelephoneNumber = "TelephoneNumber2",
-                            VKLink = "VKLink2"
-                        },
-                        Flags = new DataFlags
-                        {
-                            Name = true,
-                            Surname = true,
-                            Email = true,
-                            TelephoneNumber = true,
-                            VKLink = true,
-                        }
-                    },
-                };
-
-            Data.UserBCs = Properties.ContainsKey("UserBCsDict")
-                ? JsonSerializer.Deserialize<Dictionary<string, BC>>(Properties["UserBCsDict"] as string)
-                : new Dictionary<string, BC>
+                [4] = new UserCard
                 {
-                    ["3"] = new BC
-                    {
-                        Id = "3",
-                        Data = Data.CurrentUser.Data,
-                        Flags = new DataFlags(Data.CurrentUser.Data)
-                    },
-                    ["4"] = new BC
-                    {
-                        Id = "4",
-                        Data = Data.CurrentUser.Data,
-                        Flags = new DataFlags(Data.CurrentUser.Data)
-                    },
-                };
+                    ID = 4,
+                    Card_Name = "My 4 Card",
+                    Alt_Data = false,
+                    Surname = true,
+                    Name = true,
+                    Patronymic = false,
+                    Image = false,
+                    Email = true,
+                    Phone_Number = false,
+                    Telegram = true,
+                    VK = false,
+                    Facebook = true,
+                    Instagram = false,
+                    Info = true,
+                },
+            };
         }
 
         protected override void OnSleep()

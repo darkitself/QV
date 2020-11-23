@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="QV.CreateBCPage">
+             x:Class="QV.Pages.CreateCardPage">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Margin="20">
             <StackLayout Orientation="Horizontal">
@@ -19,13 +19,13 @@
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="MiddleName" WidthRequest="200"/>
-                <CheckBox x:Name="MiddleName" IsChecked="False" HorizontalOptions="EndAndExpand"/>
+                <Label Text="Patronymic" WidthRequest="200"/>
+                <CheckBox x:Name="Patronymic" IsChecked="False" HorizontalOptions="EndAndExpand"/>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="TelephoneNumber" WidthRequest="200"/>
-                <CheckBox x:Name="TelephoneNumber" IsChecked="False" HorizontalOptions="EndAndExpand"/>
+                <Label Text="Phone_Number" WidthRequest="200"/>
+                <CheckBox x:Name="Phone_Number" IsChecked="False" HorizontalOptions="EndAndExpand"/>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
@@ -34,15 +34,27 @@
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="VKLink" WidthRequest="200"/>
-                <CheckBox x:Name="VKLink" IsChecked="False" HorizontalOptions="EndAndExpand"/>
+                <Label Text="VK" WidthRequest="200"/>
+                <CheckBox x:Name="VK" IsChecked="False" HorizontalOptions="EndAndExpand"/>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="FaceBookLink" WidthRequest="200"/>
-                <CheckBox x:Name="FaceBookLink" IsChecked="False" HorizontalOptions="EndAndExpand"/>
+                <Label Text="Facebook" WidthRequest="200"/>
+                <CheckBox x:Name="Facebook" IsChecked="False" HorizontalOptions="EndAndExpand"/>
             </StackLayout>
-            <Entry x:Name="BCName" Placeholder="Your BC Name" HorizontalOptions="Fill" Unfocused="BCName_Unfocused"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Telegram" WidthRequest="200"/>
+                <CheckBox x:Name="Telegram" IsChecked="False" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Instagram" WidthRequest="200"/>
+                <CheckBox x:Name="Instagram" IsChecked="False" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Info" WidthRequest="200"/>
+                <CheckBox x:Name="Info" IsChecked="False" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            <Entry x:Name="BCName" Placeholder="Your BC Name" HorizontalOptions="Fill" />
             <Button x:Name="CreateButton" Text="Create" HorizontalOptions="Fill" Clicked="CreateButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>

@@ -18,20 +18,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Pages\AllMyBCsPage.xaml.cs">
-      <DependentUpon>AllMyBCsPage.xaml</DependentUpon>
+    <Compile Update="Pages\AllUserCardsPage.xaml.cs">
+      <DependentUpon>AllUserCardsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\AllAliensBCsPage.xaml.cs">
-      <DependentUpon>AllAliensBCsPage.xaml</DependentUpon>
+    <Compile Update="Pages\AllAliensCardsPage.xaml.cs">
+      <DependentUpon>AllAliensCardsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\BCDetailsPage.xaml.cs">
-      <DependentUpon>BCDetailsPage.xaml</DependentUpon>
+    <Compile Update="Pages\AlienCardDetailsPage.xaml.cs">
+      <DependentUpon>AlienCardDetailsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\CreateBСPage.xaml.cs">
-      <DependentUpon>CreateBСPage.xaml</DependentUpon>
+    <Compile Update="Pages\CreateCardPage.xaml.cs">
+      <DependentUpon>CreateCardPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Pages\LoginPage.xaml.cs">
@@ -65,5 +65,11 @@
   <ItemGroup>
     <None Remove="Images\qvlogodark.png" />
     <EmbeddedResource Include="Images\qvlogodark.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\UserCardDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

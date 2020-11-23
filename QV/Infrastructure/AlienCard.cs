@@ -4,8 +4,10 @@ using System.Text;
 
 namespace QV.Infrastructure
 {
-    public class UserData
+    public class AlienCard
     {
+        public long ID { get; set; }
+        public string Card_Name { get; set; }
         public string Surname { get; set; }
         public string Name { get; set; }
         public string Patronymic { get; set; }

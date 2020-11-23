@@ -3,18 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:pages="clr-namespace:QV"
+             xmlns:pages="clr-namespace:QV.Pages"
              mc:Ignorable="d"
              x:Class="QV.MainPage">
     <FlyoutItem Title="QR Code" Route="QRCode">
         <ShellContent Title="QR Code" ContentTemplate="{DataTemplate pages:QRCodePage}" />
     </FlyoutItem>
-    <FlyoutItem Title="All Aliens BCs">
-        <ShellContent Title="All Aliens BCs" ContentTemplate="{DataTemplate pages:AllAliensBCsPage}" />
+    <FlyoutItem Title="All Aliens Cards">
+        <ShellContent Title="All Aliens Cards" ContentTemplate="{DataTemplate pages:AllAliensCardsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="All My BCs">
-        <ShellContent Title="All My BCs" ContentTemplate="{DataTemplate pages:AllMyBCsPage}" />
-        <ShellContent Title="Create BC" ContentTemplate="{DataTemplate pages:CreateBCPage}" />
+    <FlyoutItem Title="AllUserCards">
+        <ShellContent Title="AllUserCards" ContentTemplate="{DataTemplate pages:AllUserCardsPage}" />
+        <ShellContent Title="Create Card" ContentTemplate="{DataTemplate pages:CreateCardPage}" />
     </FlyoutItem>
     <FlyoutItem Title="User Data">
         <ShellContent Title="User Data" ContentTemplate="{DataTemplate pages:UserDataPage}" />

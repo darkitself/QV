@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QV.Pages;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,7 +14,8 @@ namespace QV
         public MainPage()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(BCDetailsPage), typeof(BCDetailsPage));
+            Routing.RegisterRoute(nameof(AlienCardDetailsPage), typeof(AlienCardDetailsPage));
+            Routing.RegisterRoute(nameof(UserCardDetailsPage), typeof(UserCardDetailsPage));
             if (!Application.Current.Properties.TryGetValue("Logged", out var logged) || (logged is null) || !(bool)logged)
                 Navigation.PushModalAsync(new LoginPage());
         }

@@ -1,4 +1,5 @@
 ﻿using QV.Infrastructure;
+using QV.RequestsAndAnswers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Text.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace QV
+namespace QV.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserDataPage : ContentPage
@@ -16,18 +17,33 @@ namespace QV
         User user;
         public UserDataPage()
         {
-            user = App.Data.CurrentUser;
-            BindingContext = user.Data;
             InitializeComponent();
         }
-        private void SaveButton_Clicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            foreach (var p in user.Data.GetType().GetProperties())
+            user = App.Data.CurrentUser;
+            BindingContext = user.MainData;
+        }
+        private async void SaveButton_Clicked(object sender, EventArgs e)
+        {
+            var newData = new UserData
             {
-                var entry = this.FindByName<Entry>(p.Name);
-                p.SetValue(user.Data, entry.Text);
+                Image = user.MainData.Image,
+                Image_Ext = user.MainData.Image_Ext
+            };
+            foreach (var p in user.MainData.GetType().GetProperties())
+            {
+                var entry = this.FindByName<InputView>(p.Name);
+                if (entry != null)
+                    p.SetValue(newData, entry.Text);
             }
-            Application.Current.Properties["User"] = JsonSerializer.Serialize(user);
+            var res = Connection.RequestToServer<UpdateUserDataRequest, UpdateUserDataAnswer>(new UpdateUserDataRequest() { UserID = user.ID, Data = newData}, "09");
+            if (res.Result)
+            {
+                user.MainData = newData;
+                await DisplayAlert("", "Данные успешно изменены", "OK");
+            }
+            else await DisplayAlert("", "Чёт не так", "OK");
         }
     }
 }
