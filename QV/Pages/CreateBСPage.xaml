@@ -1,49 +1,94 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="QV.CreateBCPage">
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns = "http://xamarin.com/schemas/2014/forms"
+             xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class = "QV.CreateBCPage"
+             BackgroundColor = "{DynamicResource DarkBlue}">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" Margin="20">
-            <StackLayout Orientation="Horizontal">
-                <Button Text="Select All" HorizontalOptions="CenterAndExpand" Clicked="SelectAllButton_Clicked"/>
-                <Button Text="Deselct All" HorizontalOptions="CenterAndExpand" Clicked="DeselctAllButton_Clicked"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Surname" WidthRequest="200"/>
-                <CheckBox x:Name="Surname" IsChecked="False" HorizontalOptions="EndAndExpand"/>
-            </StackLayout>
+        <Grid>
+            <Image Style = "{DynamicResource BackGroundImageStyle}" />
+            <StackLayout Orientation = "Vertical"
+                         Padding = "15">
+                <StackLayout Orientation = "Horizontal">
+                    <Label Text = "Surname"
+                           Style = "{DynamicResource LabelStyle}" />
+                    <CheckBox x:Name = "Surname"
+                              IsChecked = "False"
+                              HorizontalOptions = "EndAndExpand"
+                              Color = "{DynamicResource AlfaBrandRed}" />
+                </StackLayout>
 
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Name" WidthRequest="200"/>
-                <CheckBox x:Name="Name" IsChecked="False" HorizontalOptions="EndAndExpand"/>
-            </StackLayout>
+                <StackLayout Orientation = "Horizontal">
+                    <Label Text = "Name"
+                           Style = "{DynamicResource LabelStyle}" />
+                    <CheckBox x:Name = "Name"
+                              IsChecked = "False"
+                              HorizontalOptions = "EndAndExpand"
+                              Color = "{DynamicResource AlfaBrandRed}" />
+                </StackLayout>
 
-            <StackLayout Orientation="Horizontal">
-                <Label Text="MiddleName" WidthRequest="200"/>
-                <CheckBox x:Name="MiddleName" IsChecked="False" HorizontalOptions="EndAndExpand"/>
-            </StackLayout>
+                <StackLayout Orientation = "Horizontal">
+                    <Label Text = "MiddleName"
+                           Style = "{DynamicResource LabelStyle}" />
+                    <CheckBox x:Name = "MiddleName"
+                              IsChecked = "False"
+                              Color = "{DynamicResource AlfaBrandRed}"
+                              HorizontalOptions = "EndAndExpand" />
+                </StackLayout>
 
-            <StackLayout Orientation="Horizontal">
-                <Label Text="TelephoneNumber" WidthRequest="200"/>
-                <CheckBox x:Name="TelephoneNumber" IsChecked="False" HorizontalOptions="EndAndExpand"/>
-            </StackLayout>
+                <StackLayout Orientation = "Horizontal">
+                    <Label Text = "TelephoneNumber"
+                           Style = "{DynamicResource LabelStyle}" />
+                    <CheckBox x:Name = "TelephoneNumber"
+                              IsChecked = "False"
+                              Color = "{DynamicResource AlfaBrandRed}"
+                              HorizontalOptions = "EndAndExpand" />
+                </StackLayout>
 
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Email" WidthRequest="200"/>
-                <CheckBox x:Name="Email" IsChecked="False" HorizontalOptions="EndAndExpand"/>
-            </StackLayout>
+                <StackLayout Orientation = "Horizontal">
+                    <Label Text = "Email"
+                           Style = "{DynamicResource LabelStyle}" />
+                    <CheckBox x:Name = "Email"
+                              IsChecked = "False"
+                              Color = "{DynamicResource AlfaBrandRed}"
+                              HorizontalOptions = "EndAndExpand" />
+                </StackLayout>
 
-            <StackLayout Orientation="Horizontal">
-                <Label Text="VKLink" WidthRequest="200"/>
-                <CheckBox x:Name="VKLink" IsChecked="False" HorizontalOptions="EndAndExpand"/>
-            </StackLayout>
+                <StackLayout Orientation = "Horizontal">
+                    <Label Text = "VKLink"
+                           Style = "{DynamicResource LabelStyle}" />
+                    <CheckBox x:Name = "VKLink"
+                              IsChecked = "False"
+                              Color = "{DynamicResource AlfaBrandRed}"
+                              HorizontalOptions = "EndAndExpand" />
+                </StackLayout>
 
-            <StackLayout Orientation="Horizontal">
-                <Label Text="FaceBookLink" WidthRequest="200"/>
-                <CheckBox x:Name="FaceBookLink" IsChecked="False" HorizontalOptions="EndAndExpand"/>
+                <StackLayout Orientation = "Horizontal">
+                    <Label Text = "FaceBookLink"
+                           Style = "{DynamicResource LabelStyle}" />
+                    <CheckBox x:Name = "FaceBookLink"
+                              IsChecked = "False"
+                              Color = "{DynamicResource AlfaBrandRed}"
+                              HorizontalOptions = "EndAndExpand" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Entry x:Name = "BCName"
+                                           Placeholder = "Your BC Name"
+                                           HorizontalOptions = "FillAndExpand"
+                                           BackgroundColor="Transparent"
+                                           VerticalOptions="Center"
+                                           PlaceholderColor="{DynamicResource TextGray}"
+                                           TextColor="{DynamicResource AlfaBrandRed}" />
+                                    <ImageButton x:Name = "CreateButton"
+                                            HorizontalOptions = "Fill"
+                                            VerticalOptions="Center"
+                                            Source="add.png"
+                                            WidthRequest="35"
+                                            HeightRequest="35"
+                                            BackgroundColor="Transparent"
+                                            Clicked = "CreateButton_Clicked" />
+                </StackLayout>
             </StackLayout>
-            <Entry x:Name="BCName" Placeholder="Your BC Name" HorizontalOptions="Fill" Unfocused="BCName_Unfocused"/>
-            <Button x:Name="CreateButton" Text="Create" HorizontalOptions="Fill" Clicked="CreateButton_Clicked"/>
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

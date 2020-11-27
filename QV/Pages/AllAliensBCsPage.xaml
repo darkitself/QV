@@ -8,96 +8,58 @@
     <ContentPage.Content>
         <Grid>
             <Image Style = "{DynamicResource BackGroundImageStyle}" />
-            <StackLayout>
-                <CarouselView x:Name = "MyListView"
-                              VerticalOptions = "StartAndExpand"
-                              HorizontalScrollBarVisibility = "Always"
-                              CurrentItemChanged = "OnCurrentItemChanged"
-                              PeekAreaInsets = "290">
-                    <CarouselView.ItemsLayout>
-                        <LinearItemsLayout Orientation = "Vertical"  />
-                    </CarouselView.ItemsLayout>
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate>
-                                <StackLayout Orientation = "Horizontal"
-                                             HorizontalOptions = "FillAndExpand"
-                                             Padding = "20"
-                                             IsEnabled="False">
-                                    <VisualStateManager.VisualStateGroups>
-                                        <VisualStateGroup x:Name = "CommonStates">
-                                            <VisualState x:Name = "CurrentItem">
-                                                <VisualState.Setters>
-                                                    <Setter Property = "Scale"
-                                                            Value = "1.1" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                            <VisualState x:Name = "PreviousItem">
-                                                <VisualState.Setters>
-                                                    <Setter Property = "Opacity"
-                                                            Value = "0.5" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                            <VisualState x:Name = "NextItem">
-                                                <VisualState.Setters>
-                                                    <Setter Property = "Opacity"
-                                                            Value = "0.5" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                            <VisualState x:Name = "DefaultItem">
-                                                <VisualState.Setters>
-                                                    <Setter Property = "Opacity"
-                                                            Value = "0.25" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                        </VisualStateGroup>
-                                    </VisualStateManager.VisualStateGroups>
-                                    <Frame IsClippedToBounds = "True"
-                                           Padding = "0"
-                                           WidthRequest = "75"
-                                           CornerRadius = "38"
-                                           HorizontalOptions = "Center"
-                                           VerticalOptions = "Start"
-                                           HeightRequest = "75">
-                                        <Image Source = "me.jpg"
-                                               Aspect = "AspectFill"
-                                               BackgroundColor = "Transparent" />
-                                    </Frame>
-                                    <StackLayout HorizontalOptions = "Start"
-                                                 VerticalOptions = "Center">
-                                        <Label Text = "{Binding Data.FullName}"
-                                               TextColor = "{DynamicResource AlfaBrandRed}"
-                                               HorizontalOptions = "Start"
-                                               VerticalOptions = "Center"
-                                               HorizontalTextAlignment = "Start"
-                                               FontSize = "Medium" />
-                                        <Label Text = "{Binding Data.Email}"
-                                               TextColor = "{DynamicResource AlfaBrandRed}"
-                                               HorizontalOptions = "Start"
-                                               VerticalOptions = "Center"
-                                               HorizontalTextAlignment = "Start"
-                                               FontSize = "Medium" />
-                                        <Label Text = "{Binding Data.PhoneNumber}"
-                                               TextColor = "{DynamicResource AlfaBrandRed}"
-                                               HorizontalOptions = "Start"
-                                               VerticalOptions = "Center"
-                                               HorizontalTextAlignment = "Start"
-                                               FontSize = "Medium" />
-                                    </StackLayout>
-                                    <ImageButton x:Name = "Button"
-                                                 Source = "details.png"
-                                                 WidthRequest = "20"
-                                                 HeightRequest = "30"
-                                                 Aspect = "AspectFit"
-                                                 HorizontalOptions = "End"
-                                                 VerticalOptions = "Center"
-                                                 Clicked = "ImageButton_OnClicked"
-                                                 BackgroundColor = "Transparent" />
+            <ListView x:Name = "ListView"
+                      HasUnevenRows = "True"
+                      ItemTapped = "ListView_OnItemTapped"
+                      SeparatorColor = "{DynamicResource AlfaBrandRed}"
+                      RefreshAllowed = "True"
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation = "Horizontal"
+                                         HorizontalOptions = "FillAndExpand"
+                                         VerticalOptions="FillAndExpand"
+                                         Padding = "10">
+                                <Frame IsClippedToBounds = "True"
+                                       Padding = "0"
+                                       WidthRequest = "75"
+                                       CornerRadius = "38"
+                                       HorizontalOptions = "Center"
+                                       VerticalOptions = "Center"
+                                       HeightRequest = "75">
+                                    <Image Source = "me.jpg"
+                                           Aspect = "AspectFill"
+                                           BackgroundColor = "Transparent" />
+                                </Frame>
+                                <StackLayout HorizontalOptions = "StartAndExpand"
+                                             VerticalOptions = "CenterAndExpand"
+                                             Padding="10">
+                                    <Label Text = "{Binding Data.FullName}"
+                                           TextColor = "{DynamicResource AlfaBrandRed}"
+                                           HorizontalOptions = "Start"
+                                           VerticalOptions = "Center"
+                                           HorizontalTextAlignment = "Start"
+                                           FontSize = "Subtitle" />
+                                    <Label Text = "{Binding Data.Email}"
+                                           TextColor = "{DynamicResource AlfaBrandRed}"
+                                           HorizontalOptions = "Start"
+                                           VerticalOptions = "Center"
+                                           HorizontalTextAlignment = "Start"
+                                           FontSize = "Subtitle" />
+                                    <Label Text = "{Binding Data.PhoneNumber}"
+                                           IsVisible="False"
+                                           TextColor = "{DynamicResource AlfaBrandRed}"
+                                           HorizontalOptions = "Start"
+                                           VerticalOptions = "Center"
+                                           HorizontalTextAlignment = "Start"
+                                           FontSize = "Subtitle" />
                                 </StackLayout>
-                            <Button Clicked="Button_OnClicked"/>
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
-            </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

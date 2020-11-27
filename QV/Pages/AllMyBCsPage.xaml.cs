@@ -19,7 +19,7 @@ namespace QV
         public AllMyBCsPage()
         {
             InitializeComponent();
-            MyListView.ItemsSource = items;
+            ListView.ItemsSource = items;
         }
         
         protected override void OnAppearing()

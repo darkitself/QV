@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -14,16 +15,21 @@ namespace QV
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreateBCPage : ContentPage
     {
-        UserData data = null;
+        private UserData data = null;
+        private readonly List<PropertyInfo> properties;
         public CreateBCPage()
         {
             InitializeComponent();
+            properties = typeof(UserData)
+                         .GetProperties()
+                         .Where(x => x.SetMethod != null)
+                         .ToList();
         }
 
         protected override void OnAppearing()
         {
             data = App.Data.CurrentUser.Data;
-            foreach (var p in data.GetType().GetProperties())
+            foreach (var p in properties)
             {
                 var checkBox = this.FindByName<CheckBox>(p.Name);
                 checkBox.IsEnabled = p.GetValue(data) != null && p.GetValue(data) as string != "";
@@ -31,7 +37,9 @@ namespace QV
         }
         private void CreateButton_Clicked(object sender, EventArgs e)
         {
-            var bc = new BC() { Id = this.BCName.Text, Data = data, Flags = new DataFlags()};
+            if (!string.IsNullOrEmpty(BCName.Text))
+                return;
+            var bc = new BC() { Id = BCName.Text, Data = data, Flags = new DataFlags()};
             foreach (var p in bc.Flags.GetType().GetProperties())
             {
                 var checkBox = this.FindByName<CheckBox>(p.Name);
@@ -42,26 +50,21 @@ namespace QV
         }
         private void SelectAllButton_Clicked(object sender, EventArgs e)
         {
-            foreach (var p in data.GetType().GetProperties())
-            {
-                var checkBox = this.FindByName<CheckBox>(p.Name);
-                if (checkBox.IsEnabled)
-                    checkBox.IsChecked = true;
-            }
+            SetFlagToAllCheckBox(true);
         }
+        
         private void DeselctAllButton_Clicked(object sender, EventArgs e)
         {
-            foreach (var p in data.GetType().GetProperties())
-            {
-                var checkBox = this.FindByName<CheckBox>(p.Name);
-                if (checkBox.IsEnabled)
-                    checkBox.IsChecked = false;
-            }
+            SetFlagToAllCheckBox(false);
         }
 
-        private void BCName_Unfocused(object sender, FocusEventArgs e)
+        private void SetFlagToAllCheckBox(bool flag)
         {
-            this.CreateButton.Text = App.Data.UserBCs.ContainsKey(this.BCName.Text) ? "Save" : "Create";
+            foreach (var checkBox in properties.Select(p => this
+                                                           .FindByName<CheckBox>(p.Name))
+                                               .Where(checkBox => checkBox != null && checkBox.IsEnabled))
+                checkBox.IsChecked = flag;
         }
+        
     }
 }

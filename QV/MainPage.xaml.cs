@@ -16,6 +16,7 @@ namespace QV
             Routing.RegisterRoute(nameof(BCDetailsPage), typeof(BCDetailsPage));
             if (!Application.Current.Properties.TryGetValue("Logged", out var logged) || (logged is null) || !(bool)logged)
                 Navigation.PushModalAsync(new LoginPage());
+            
         }
 
         private void Logout_Clicked(object sender, EventArgs e)

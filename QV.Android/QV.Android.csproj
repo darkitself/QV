@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Renders\CustomEntryRender.cs" />
     <Compile Include="Renders\ZxingRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,7 +69,10 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\add.png" />
+    <AndroidResource Include="Resources\drawable\addCard.png" />
     <AndroidResource Include="Resources\drawable\button_background.xml" />
+    <AndroidResource Include="Resources\drawable\cardList.png" />
     <AndroidResource Include="Resources\drawable\cat.jpg" />
     <AndroidResource Include="Resources\drawable\details.png" />
     <AndroidResource Include="Resources\drawable\login_page_bbackground.xml">
@@ -79,12 +81,16 @@
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\logo_dark_without_board.png" />
     <AndroidResource Include="Resources\drawable\logo_without_board.png" />
+    <AndroidResource Include="Resources\drawable\m.jpg" />
     <AndroidResource Include="Resources\drawable\main_logo.png" />
     <AndroidResource Include="Resources\drawable\me.jpg" />
+    <AndroidResource Include="Resources\drawable\myCards.png" />
     <AndroidResource Include="Resources\drawable\nature_background.png" />
     <AndroidResource Include="Resources\drawable\nature_with_opacity.png" />
+    <AndroidResource Include="Resources\drawable\qr.png" />
     <AndroidResource Include="Resources\drawable\rounded_corner_entry.xml" />
     <AndroidResource Include="Resources\drawable\sea_background.jpg" />
+    <AndroidResource Include="Resources\drawable\settings.png" />
     <AndroidResource Include="Resources\layout\Tabbar.xml" />
     <AndroidResource Include="Resources\layout\Toolbar.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
@@ -107,9 +113,6 @@
       <Project>{79D77598-4369-4762-B30C-804FBD1EC622}</Project>
       <Name>QV</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CustomViews" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -5,24 +5,60 @@
              x:Class = "QV.AllMyBCsPage"
              BackgroundColor = "{DynamicResource DarkBlue}">
     <ContentPage.Content>
-        <Grid>
-            <Image Style="{DynamicResource BackGroundImageStyle}"/>
-                <CarouselView x:Name = "MyListView"
-                              IsBounceEnabled="True"
-                              IsScrollAnimated="True"
-                              IsSwipeEnabled="True"
-                              ItemsSource = "{Binding items}">
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate>
-                                <StackLayout>
-                                    <Label Text = "{Binding Id}"
-                                           TextColor="{DynamicResource AlfaBrandRed}"/>
-                                    <Label Text = "{Binding Text}"
-                                           TextColor="{DynamicResource DarkBlue}" />
+       <Grid>
+            <Image Style = "{DynamicResource BackGroundImageStyle}" />
+            <ListView x:Name = "ListView"
+                      HasUnevenRows = "True"
+                      ItemTapped = "Handle_ItemTapped"
+                      SeparatorColor = "{DynamicResource AlfaBrandRed}"
+                      RefreshAllowed = "True"
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation = "Horizontal"
+                                         HorizontalOptions = "FillAndExpand"
+                                         VerticalOptions="FillAndExpand"
+                                         Padding = "10">
+                                <Frame IsClippedToBounds = "True"
+                                       Padding = "0"
+                                       WidthRequest = "75"
+                                       CornerRadius = "38"
+                                       HorizontalOptions = "Center"
+                                       VerticalOptions = "Center"
+                                       HeightRequest = "75">
+                                    <Image Source = "me.jpg"
+                                           Aspect = "AspectFill"
+                                           BackgroundColor = "Transparent" />
+                                </Frame>
+                                <StackLayout HorizontalOptions = "StartAndExpand"
+                                             VerticalOptions = "CenterAndExpand"
+                                             Padding="10">
+                                    <Label Text = "{Binding Data.FullName}"
+                                           TextColor = "{DynamicResource AlfaBrandRed}"
+                                           HorizontalOptions = "Start"
+                                           VerticalOptions = "Center"
+                                           HorizontalTextAlignment = "Start"
+                                           FontSize = "Subtitle" />
+                                    <Label Text = "{Binding Data.Email}"
+                                           TextColor = "{DynamicResource AlfaBrandRed}"
+                                           HorizontalOptions = "Start"
+                                           VerticalOptions = "Center"
+                                           HorizontalTextAlignment = "Start"
+                                           FontSize = "Subtitle" />
+                                    <Label Text = "{Binding Data.PhoneNumber}"
+                                           IsVisible="False"
+                                           TextColor = "{DynamicResource AlfaBrandRed}"
+                                           HorizontalOptions = "Start"
+                                           VerticalOptions = "Center"
+                                           HorizontalTextAlignment = "Start"
+                                           FontSize = "Subtitle" />
                                 </StackLayout>
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

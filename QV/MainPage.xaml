@@ -1,23 +1,43 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Shell xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:pages="clr-namespace:QV"
-             mc:Ignorable="d"
-             x:Class="QV.MainPage">
-    <FlyoutItem Title="QR Code" Route="QRCode">
-        <ShellContent Title="QR Code" ContentTemplate="{DataTemplate pages:QRCodePage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="All Aliens BCs">
-        <ShellContent Title="All Aliens BCs" ContentTemplate="{DataTemplate pages:AllAliensBCsPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="All My BCs">
-        <ShellContent Title="All My BCs" ContentTemplate="{DataTemplate pages:AllMyBCsPage}" />
-        <ShellContent Title="Create BC" ContentTemplate="{DataTemplate pages:CreateBCPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="User Data">
-        <ShellContent Title="User Data" ContentTemplate="{DataTemplate pages:UserDataPage}" />
-    </FlyoutItem>
-    <MenuItem Text="Logout" Clicked="Logout_Clicked"/>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Shell xmlns = "http://xamarin.com/schemas/2014/forms"
+       xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d = "http://xamarin.com/schemas/2014/forms/design"
+       xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:pages = "clr-namespace:QV"
+       mc:Ignorable = "d"
+       x:Class = "QV.MainPage">
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="Transparent" />
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.NavBarIsVisible" Value="False"/>
+                <Setter Property="Shell.TitleColor" Value="{DynamicResource TextGray}" />
+                <Setter Property="Shell.DisabledColor" Value="{DynamicResource DarkBlue}" />
+                <Setter Property="Shell.UnselectedColor" Value="{DynamicResource DarkBlue}" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="#3E6A9A" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource TextGray}"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource DarkBlue}"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource TextGray}"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+    <TabBar>
+        <ShellContent ContentTemplate = "{DataTemplate pages:QRCodePage}"
+                      Title="QR код"
+                      Icon="qr.png"/>
+        <ShellContent ContentTemplate = "{DataTemplate pages:AllAliensBCsPage}"
+                      Icon = "cardList.png"
+                      Title = "Полученные визитки" />
+        <ShellContent ContentTemplate = "{DataTemplate pages:AllMyBCsPage}"
+                      Icon = "myCards.png"
+                      Title = "Мои визитки" />
+        <ShellContent ContentTemplate = "{DataTemplate pages:CreateBCPage}"
+                      Title = "Создать"
+                      Icon="addCard"/>
+        <ShellContent ContentTemplate = "{DataTemplate pages:UserDataPage}"
+                      Title = "Профиль"
+                      Icon="settings"/>
+    </TabBar>
 </Shell>

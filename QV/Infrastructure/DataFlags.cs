@@ -1,4 +1,6 @@
-﻿namespace QV.Infrastructure
+﻿using System.Collections.Generic;
+
+namespace QV.Infrastructure
 {
     public class DataFlags
     {

@@ -9,7 +9,7 @@ namespace QV
         public static AppData Data;
         public App()
         {
-            Resources["BackgroundImageSource"] = "nature_background.png";
+            Resources["BackgroundImageSource"] = "m.jpg";
             Data = new AppData();
             InitializeComponent();
             MainPage = new MainPage();
