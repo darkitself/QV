@@ -1,4 +1,5 @@
 ﻿using QV.Infrastructure;
+using QV.RequestsAndAnswers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,13 +36,18 @@ namespace QV.Pages
             if (!string.IsNullOrEmpty(this.BCName.Text))
             {
                 var bc = new UserCard() { Card_Name = this.BCName.Text };
+                var req = new CreateCardRequest() { Card_Name = this.BCName.Text, User_ID = App.Data.CurrentUser.ID };
                 foreach (var p in bc.GetType().GetProperties())
                 {
                     var checkBox = this.FindByName<CheckBox>(p.Name);
                     if (checkBox != null)
+                    {
                         p.SetValue(bc, checkBox.IsEnabled && checkBox.IsChecked);
+                        req.GetType().GetProperty(p.Name).SetValue(req, checkBox.IsEnabled && checkBox.IsChecked);
+                    }
                 }
-                //App.Data.UserCards[bc.Id] = bc;
+                var res = Connection.RequestToServer<CreateCardRequest, CreateCardAnswer>(req, RequestsTypes.CreateUserCard);
+                App.Data.UserCards[bc.ID = res.ID] = bc;
             }
         }
         private void SelectAllButton_Clicked(object sender, EventArgs e)

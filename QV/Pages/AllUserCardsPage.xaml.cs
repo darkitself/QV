@@ -10,6 +10,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 using QV.Infrastructure;
 using QV.Pages;
+using QV.RequestsAndAnswers;
 
 namespace QV.Pages
 {
@@ -35,6 +36,18 @@ namespace QV.Pages
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
             await Shell.Current.GoToAsync($"{nameof(UserCardDetailsPage)}?{nameof(UserCardDetailsPage.CardId)}={(e.Item as UserCard).ID}");
+        }
+
+        private void DelButton_Clicked(object sender, EventArgs e)
+        {
+            if (!(sender is Button button)) return;
+            var card = button.BindingContext as UserCard;
+            var answer = Connection.RequestToServer<DeleteUserCardRequest, DeleteAnswer>(new DeleteUserCardRequest() { ID = card.ID }, RequestsTypes.DeleteUserCard);
+            if (answer.Result)
+            {
+                App.Data.AliensCards.Remove(card.ID);
+                Items.RemoveAt(Items.IndexOf(card));
+            }
         }
     }
 }

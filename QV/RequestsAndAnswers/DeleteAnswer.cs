@@ -4,9 +4,8 @@ using System.Text;
 
 namespace QV.RequestsAndAnswers
 {
-    public class GetCardRequest
+    public class DeleteAnswer
     {
-        public long User_ID { get; set; }
-        public long Card_ID { get; set; }
+        public bool Result { get; set; }
     }
 }

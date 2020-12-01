@@ -5,9 +5,9 @@ using System.Text;
 
 namespace QV.RequestsAndAnswers
 {
-    public class AuthorizationAnswer
+    public class GetCardAnswer
     {
-        public bool Success { get; set; }
-        public long ID { get; set; }
+        public bool Result { get; set; }
+        public AlienCard Card { get; set; }
     }
 }

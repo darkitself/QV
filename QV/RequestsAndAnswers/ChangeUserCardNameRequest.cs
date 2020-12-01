@@ -1,13 +1,12 @@
-﻿using QV.Infrastructure;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace QV.RequestsAndAnswers
 {
-    public class AuthorizationAnswer
+    public class ChangeUserCardNameRequest
     {
-        public bool Success { get; set; }
         public long ID { get; set; }
+        public string Card_Name { get; set; }
     }
 }

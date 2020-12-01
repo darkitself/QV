@@ -26,8 +26,19 @@ namespace QV.Pages
         }
         private async void GetDataByLink_OnClicked(object sender, EventArgs e)
         {
-            var card = Connection.RequestToServer<GetCardRequest, AlienCard>(new GetCardRequest { UserID = App.Data.CurrentUser.ID, CardID = Convert.ToInt64(this.LinkRequest.Text) }, "10");
-            App.Data.AliensCards[card.ID] = card;
+            var id = Convert.ToInt64(this.LinkRequest.Text);
+            if (App.Data.AliensCards.ContainsKey(id))
+            {
+                await DisplayAlert("", "У вас уже есть эта карточка", "OK");
+                return;
+            }
+            var answer = Connection.RequestToServer<GetCardRequest, GetCardAnswer>(new GetCardRequest { User_ID = App.Data.CurrentUser.ID, Card_ID = Convert.ToInt64(this.LinkRequest.Text) }, RequestsTypes.ReceiveCard);
+            if (!answer.Result)
+            {
+                await DisplayAlert("", "Карточка не существует", "OK");
+                return;
+            }
+            App.Data.AliensCards[answer.Card.ID] = answer.Card;
             await DisplayAlert("", "Карточка получена", "OK");
             return;
         }

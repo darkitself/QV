@@ -26,21 +26,25 @@ namespace QV.Pages
         }
         private async void SaveButton_Clicked(object sender, EventArgs e)
         {
-            var newData = new UserData
+            var newReq = new UpdateUserDataRequest
             {
+                User_ID = App.Data.CurrentUser.ID,
                 Image = user.MainData.Image,
                 Image_Ext = user.MainData.Image_Ext
             };
-            foreach (var p in user.MainData.GetType().GetProperties())
+
+            foreach (var p in newReq.GetType().GetProperties())
             {
                 var entry = this.FindByName<InputView>(p.Name);
                 if (entry != null)
-                    p.SetValue(newData, entry.Text);
+                    p.SetValue(newReq, entry.Text);
             }
-            var res = Connection.RequestToServer<UpdateUserDataRequest, UpdateUserDataAnswer>(new UpdateUserDataRequest() { UserID = user.ID, Data = newData}, "09");
+
+            var res = Connection.RequestToServer<UpdateUserDataRequest, UpdateUserDataAnswer>(newReq, RequestsTypes.ChangeUserData);
             if (res.Result)
             {
-                user.MainData = newData;
+                foreach (var p in user.MainData.GetType().GetProperties())
+                    p.SetValue(user.MainData, newReq.GetType().GetProperty(p.Name).GetValue(newReq));
                 await DisplayAlert("", "Данные успешно изменены", "OK");
             }
             else await DisplayAlert("", "Чёт не так", "OK");

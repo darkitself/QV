@@ -23,7 +23,7 @@ namespace QV.Pages
         private async void RegistrationButtonClicked(object sender, EventArgs e)
         {
             var id = Connection.RequestToServer<RegistrationRequest, RegistrationAnswer>(new RegistrationRequest()
-            { Login = this.Login.Text, Password = this.Password.Text }, "02").ID;
+            { Login = this.Login.Text, Password = this.Password.Text }, RequestsTypes.Registration).ID;
             if (id < 0)
                 await DisplayAlert("", "Вы не зарегестрированы", "OK");
             else await DisplayAlert("", "Вы зарегестрированы", "OK");

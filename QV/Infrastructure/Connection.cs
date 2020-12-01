@@ -25,34 +25,36 @@ namespace QV.Infrastructure
         private static void Open() => tcpClient = new TcpClient(hostname, port);
         private static void Close() => tcpClient.Close();
 
-        private static byte[] IntToBytes(int i)
+        private static List<byte> IntToBytes(int i)
         {
-            return new byte[4] {
+            return new List<byte> {
                 (byte) (i & 0xFF),
                 (byte)((i >> 8) & 0xFF),
                 (byte)((i >> 16) & 0xFF),
                 (byte)((i >> 24) & 0xFF),
             };
         }
-        public static Answer RequestToServer<Requst, Answer>(Requst requst, string type)
+        public static Answer RequestToServer<Requst, Answer>(Requst requst, RequestsTypes type)
         {
             Open();
             if (!tcpClient.Connected)
                 throw new Exception("Your TCP Client is not connected Register");
             var stream = tcpClient.GetStream();
-            WriteData(type + JsonSerializer.Serialize(requst), stream);
+            WriteData(JsonSerializer.Serialize(requst), stream, type);
             Thread.Sleep(200);
             var answer = ReadData<Answer>(stream);
             Close();
             return answer;
         }
 
-        private static void WriteData(string data, Stream stream)
+        private static void WriteData(string data, Stream stream, RequestsTypes type)
         {
             if (!tcpClient.Connected)
                 throw new Exception("Your TCP Client is not connected Write");
             var buffer = Encoding.UTF8.GetBytes(data);
-            stream.Write(IntToBytes(buffer.Length).Concat(buffer).ToArray(), 0, buffer.Length + 4);
+            var serviceData = IntToBytes(buffer.Length + 1);
+            serviceData.Add((byte)type);
+            stream.Write(serviceData.Concat(buffer).ToArray(), 0, buffer.Length + 5);
         }
 
         private static T ReadData<T>(NetworkStream stream)

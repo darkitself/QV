@@ -8,7 +8,7 @@ namespace QV.Infrastructure
 {
     public class Converter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object value, Type targetType = null, object parameter = null, CultureInfo culture = null)
         {
             return value != null && (string)value != "";
         }

@@ -6,6 +6,9 @@
     <ContentPage.Resources>
         <local:Converter x:Key="Converter" />
     </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Clicked="Edit_Clicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Margin="30">
             <Label x:Name ="Surname" Text="{Binding Surname}" IsVisible="{Binding Surname, Converter={StaticResource Converter}}"/>

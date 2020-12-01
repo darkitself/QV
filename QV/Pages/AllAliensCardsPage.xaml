@@ -11,15 +11,15 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
+                            <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding Card_Name}"
                                        Style="{DynamicResource ListItemTextStyle}" />
+                                <Button Text="DEL" Clicked="DelButton_Clicked"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Label Text="AllAliensBCsPage" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

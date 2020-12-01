@@ -4,7 +4,7 @@ using System.Text;
 
 namespace QV.RequestsAndAnswers
 {
-    class AuthorizationRequest
+    public class AuthorizationRequest
     {
         public string Login { get; set; }
         public string Password { get; set; }

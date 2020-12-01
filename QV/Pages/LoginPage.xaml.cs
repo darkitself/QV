@@ -25,15 +25,23 @@ namespace QV.Pages
 
         private async void LoginButtonClicked(object sender, EventArgs e)
         {
-            var user = Connection.RequestToServer<AuthorizationRequest, AuthorizationAnswer>(new AuthorizationRequest()
-            { Login = this.Login.Text, Password = this.Password.Text }, "01");
-            App.Data.CurrentUser.ID = user.ID;
-            App.Data.CurrentUser.MainData = user.Data;
-            App.Data.CurrentUser.AltData = user.Alt_Data;
-            App.Data.AliensCards = user.Alien_Cards.ToDictionary(c => c.ID);
-            App.Data.UserCards = user.User_Cards.ToDictionary(c => c.ID);
+            var answer = Connection.RequestToServer<AuthorizationRequest, AuthorizationAnswer>(new AuthorizationRequest()
+            { Login = this.Login.Text, Password = this.Password.Text }, RequestsTypes.Autorization);
+            if (!answer.Success)
+            {
+                await DisplayAlert("Неверный логин", "Или пароль", "OK");
+                return;
+            }
+            var data = Connection.RequestToServer<GetUserDataRequest, GetUserDataAnswer>(new GetUserDataRequest()
+            { ID = answer.ID}, RequestsTypes.GetAllUserData);
+            App.Data.CurrentUser.ID = answer.ID;
+            App.Data.CurrentUser.MainData = data.Data;
+            App.Data.CurrentUser.AltData = data.Alt_Data;
+            App.Data.AliensCards = data.Alien_Cards.ToDictionary(c => c.ID);
+            App.Data.UserCards = data.User_Cards.ToDictionary(c => c.ID);
             Application.Current.Properties["Logged"] = true;
             await Application.Current.SavePropertiesAsync();
+            await DisplayAlert("Успех", "Вы вошли", "OK");
             await Navigation.PopModalAsync();
         }
         private void RegistrationButton_Clicked(object sender, EventArgs e)
