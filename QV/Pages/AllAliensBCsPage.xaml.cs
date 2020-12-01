@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -28,6 +29,7 @@ namespace QV
         private async void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             ListView.SelectedItem = null;
+            await Shell.Current.GoToAsync($"{nameof(BCDetailsPage)}?{nameof(BCDetailsPage.Bc)}={JsonSerializer.Serialize(App.Data.AliensBCs[(e.Item as BC).Id])}");
         }
     }
 }

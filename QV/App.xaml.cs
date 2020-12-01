@@ -1,6 +1,7 @@
 ﻿using QV.Infrastructure;
 using System.Collections.Generic;
 using System.Text.Json;
+using Xamarin.Forms;
 
 namespace QV
 {
@@ -45,10 +46,10 @@ namespace QV
                             Name = "Egor",
                             Surname = "Chusov",
                             Email = "chusoveg17@gmail.com",
-                            FaceBookLink = "FaceBookLink",
-                            MiddleName = "MiddleName",
-                            TelephoneNumber = "TelephoneNumber",
-                            VKLink = "VKLink"
+                            FaceBookLink = "zuck",
+                            MiddleName = "Alekseevich",
+                            TelephoneNumber = "89014354863",
+                            VKLink = "egorchusov"
                         },
                         Flags = new DataFlags
                         {
