@@ -18,5 +18,34 @@
             <Setter Property="TextColor" Value="{DynamicResource TextDarkBlue}"/>
             <Setter Property="PlaceholderColor" Value="{DynamicResource TextDarkGray}"/>
         </Style>
+        
+        
+        <Style x:Key = "LabelStyle" TargetType = "Label">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="TextColor" Value="{DynamicResource AlfaBrandRed}"/>
+            <Setter Property="HorizontalTextAlignment" Value="Start"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="Font" Value="{DynamicResource Font}"/>
+            <Setter Property="Margin" Value="10"/>
+            
+        </Style>
+        <Style x:Key="BackGroundImageStyle" TargetType ="Image">
+            <Setter Property="Aspect" Value="AspectFill"/>
+            <Setter Property="Source" Value="{DynamicResource BackgroundImageSource}"/>
+            <Setter Property="Opacity" Value="0.1"/>
+        </Style>
+        
+        <Style x:Key="RedButtonStyle" TargetType = "Button">
+            <Setter Property="BackgroundColor" Value="{DynamicResource AlfaBrandRed}"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="Font" Value="{DynamicResource Font}"/>
+        </Style>
+        
+        <Style x:Key="ShellLabel" TargetType="Button">
+            <Setter Property="TextColor" Value="{DynamicResource AlfaBrandRed}"/>
+            <Setter Property="Font" Value="{DynamicResource Font}"/>
+        </Style>
     </Application.Resources>
 </Application>

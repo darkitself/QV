@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
 
 namespace QV.Infrastructure
 {
@@ -18,5 +16,10 @@ namespace QV.Infrastructure
         public string Info { get; set; }
         public byte[] Image { get; set; }
         public string Image_Ext { get; set; }
+        public string VKLink { get; set; }
+        public string FaceBookLink { get; set; }
+        public string FullName => $"{Surname} {Name} {MiddleName}";
+        public string VkReference => $"https://vk.com/{VKLink}";
+        public string FacebookReference => $"https://ru-ru.facebook.com/{FaceBookLink}";
     }
 }

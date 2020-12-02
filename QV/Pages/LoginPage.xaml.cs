@@ -15,7 +15,6 @@ namespace QV.Pages
         public LoginPage()
         {
             InitializeComponent();
-            LogoImage.Source = ImageSource.FromResource("QV.Images.QvLogoWithoutBoard.png");
         }
 
         protected override bool OnBackButtonPressed()

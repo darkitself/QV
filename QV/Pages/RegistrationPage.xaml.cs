@@ -17,7 +17,6 @@ namespace QV.Pages
         public RegistrationPage()
         {
             InitializeComponent();
-            Image.Source = ImageSource.FromResource("QV.Images.qvlogo.png");
         }
 
         private async void RegistrationButtonClicked(object sender, EventArgs e)

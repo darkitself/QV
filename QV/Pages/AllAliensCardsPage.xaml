@@ -1,25 +1,64 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="QV.Pages.AllAliensCardsPage">
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns = "http://xamarin.com/schemas/2014/forms"
+             xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class = "QV.AllMyBCsPage"
+             BackgroundColor = "{DynamicResource DarkBlue}">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <ListView x:Name="MyListView"
-            ItemsSource="{Binding Items}"
-            ItemTapped="Handle_ItemTapped"
-            CachingStrategy="RecycleElement">
+       <Grid>
+            <Image Style = "{DynamicResource BackGroundImageStyle}" />
+            <ListView x:Name = "ListView"
+                      HasUnevenRows = "True"
+                      ItemTapped = "Handle_ItemTapped"
+                      SeparatorColor = "{DynamicResource AlfaBrandRed}"
+                      RefreshAllowed = "True"
+                      >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Card_Name}"
-                                       Style="{DynamicResource ListItemTextStyle}" />
-                                <Button Text="DEL" Clicked="DelButton_Clicked"/>
+                            <StackLayout Orientation = "Horizontal"
+                                         HorizontalOptions = "FillAndExpand"
+                                         VerticalOptions="FillAndExpand"
+                                         Padding = "10">
+                                <Frame IsClippedToBounds = "True"
+                                       Padding = "0"
+                                       WidthRequest = "75"
+                                       CornerRadius = "38"
+                                       HorizontalOptions = "Center"
+                                       VerticalOptions = "Center"
+                                       HeightRequest = "75">
+                                    <Image Source = "me.jpg"
+                                           Aspect = "AspectFill"
+                                           BackgroundColor = "Transparent" />
+                                </Frame>
+                                <StackLayout HorizontalOptions = "StartAndExpand"
+                                             VerticalOptions = "CenterAndExpand"
+                                             Padding="10">
+                                    <Label Text = "{Binding Data.FullName}"
+                                           TextColor = "{DynamicResource AlfaBrandRed}"
+                                           HorizontalOptions = "Start"
+                                           VerticalOptions = "Center"
+                                           HorizontalTextAlignment = "Start"
+                                           FontSize = "Subtitle" />
+                                    <Label Text = "{Binding Data.Email}"
+                                           TextColor = "{DynamicResource AlfaBrandRed}"
+                                           HorizontalOptions = "Start"
+                                           VerticalOptions = "Center"
+                                           HorizontalTextAlignment = "Start"
+                                           FontSize = "Subtitle" />
+                                    <Label Text = "{Binding Data.PhoneNumber}"
+                                           IsVisible="False"
+                                           TextColor = "{DynamicResource AlfaBrandRed}"
+                                           HorizontalOptions = "Start"
+                                           VerticalOptions = "Center"
+                                           HorizontalTextAlignment = "Start"
+                                           FontSize = "Subtitle" />
+                                </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -1,6 +1,7 @@
 ﻿using QV.Infrastructure;
 using System.Collections.Generic;
 using System.Text.Json;
+using Xamarin.Forms;
 
 namespace QV
 {
@@ -9,6 +10,7 @@ namespace QV
         public static AppData Data;
         public App()
         {
+            Resources["BackgroundImageSource"] = "m.jpg";
             Data = new AppData();
             InitializeComponent();
             MainPage = new MainPage();
@@ -38,26 +40,59 @@ namespace QV
                 {
                     [1] = new AlienCard
                     {
-                        Card_Name = "1 Alien Card",
-                        ID = 1,
-                        Name = "Name1",
-                        Surname = "Surname1",
-                        Email = "Email1",
-                        Instagram = "Inst1",
-                        Phone_Number = "Phone_Number1",
-                        VK = "VK1"
+                        Id = "1",
+                        Data = new UserData
+                        {
+                            Name = "Egor",
+                            Surname = "Chusov",
+                            Email = "chusoveg17@gmail.com",
+                            FaceBookLink = "zuck",
+                            MiddleName = "Alekseevich",
+                            TelephoneNumber = "89014354863",
+                            VKLink = "egorchusov"
+                        },
+                        Flags = new DataFlags
+                        {
+                            Name = true,
+                            Surname = true,
+                            Email = true,
+                            FaceBookLink = true,
+                            MiddleName = true,
+                            TelephoneNumber = true,
+                            VKLink = true,
+                        }
                     },
                     [2] = new AlienCard
                     {
-                        Card_Name = "2 Alien Card",
-                        ID = 2,
-                        Name = "Name2",
-                        Surname = "Surname2",
-                        Email = "Email2",
-                        Phone_Number = "TelephoneNumber2",
-                        VK = "VKLink2"
+                        Id = "2",
+                        Data = new UserData
+                        {
+                            Name = "Zhenya",
+                            Surname = "Kalygin",
+                            Email = "Xz",
+                            TelephoneNumber = "8800000000",
+                            VKLink = "VKLink2"
+                        },
+                        Flags = new DataFlags
+                        {
+                            Name = true,
+                            Surname = true,
+                            Email = true,
+                            TelephoneNumber = true,
+                            VKLink = true,
+                        }
                     },
-            };
+                    ["3"] = new BC
+                            {
+                                Id = "2",
+                                Data = new UserData
+                                       {
+                                           Name = "Stiv Jobs",
+                                           Email = "stivchik@",
+                                           VKLink = "!235"
+                                       }
+                            }
+                };
 
             Data.UserCards = new Dictionary<long, UserCard>
                 {

@@ -1,20 +1,45 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="QV.Pages.UserDataPage">
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns = "http://xamarin.com/schemas/2014/forms"
+             xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class = "QV.UserDataPage"
+             BackgroundColor = "{DynamicResource DarkBlue}">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" Margin="20">
-            <Entry x:Name ="Surname" Text="{Binding Surname}" Placeholder="Surname" WidthRequest = "300"/>
-            <Entry x:Name ="Name" Text="{Binding Name}" Placeholder="Name" WidthRequest = "300"/>
-            <Entry x:Name ="Patronymic" Text="{Binding Patronymic}" Placeholder="Patronymic" WidthRequest = "300"/>
-            <Entry x:Name ="Phone_Number" Text="{Binding Phone_Number}" Placeholder="Phone_Number" WidthRequest = "300"/>
-            <Entry x:Name ="Email" Text="{Binding Email}" Placeholder="Email" WidthRequest = "300"/>
-            <Entry x:Name ="VK" Text="{Binding VK}" Placeholder="VK" WidthRequest = "300"/>
-            <Entry x:Name ="Facebook" Text="{Binding Facebook}" Placeholder="Facebook" WidthRequest = "300"/>
-            <Entry x:Name ="Telegram" Text="{Binding Telegram}" Placeholder="Telegram" WidthRequest = "300"/>
-            <Entry x:Name ="Instagram" Text="{Binding Instagram}" Placeholder="Instagram" WidthRequest = "300"/>
-            <Editor x:Name ="Info" Text="{Binding Info}" Placeholder="Info" WidthRequest = "300"/>
-            <Button Text="Save" Clicked="SaveButton_Clicked"/>
-        </StackLayout>
+        <Grid>
+            <Image Style = "{DynamicResource BackGroundImageStyle}" />
+            <StackLayout Orientation = "Vertical"
+                         Margin = "20">
+                <Entry x:Name = "Surname"
+                       Text = "{Binding Surname}"
+                       Placeholder = "Surname"
+                       WidthRequest = "300" />
+                <Entry x:Name = "Name"
+                       Text = "{Binding Name}"
+                       Placeholder = "Name"
+                       WidthRequest = "300" />
+                <Entry x:Name = "MiddleName"
+                       Text = "{Binding MiddleName}"
+                       Placeholder = "MiddleName"
+                       WidthRequest = "300" />
+                <Entry x:Name = "TelephoneNumber"
+                       Text = "{Binding TelephoneNumber}"
+                       Placeholder = "TelephoneNumber"
+                       WidthRequest = "300" />
+                <Entry x:Name = "Email"
+                       Text = "{Binding Email}"
+                       Placeholder = "Email"
+                       WidthRequest = "300" />
+                <Entry x:Name = "VKLink"
+                       Text = "{Binding VKLink}"
+                       Placeholder = "VKLink"
+                       WidthRequest = "300" />
+                <Entry x:Name = "FaceBookLink"
+                       Text = "{Binding FaceBookLink}"
+                       Placeholder = "FaceBookLink"
+                       WidthRequest = "300" />
+                <Button Text = "Save"
+                        Clicked = "SaveButton_Clicked" />
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
