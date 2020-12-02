@@ -22,7 +22,7 @@ namespace QV.Pages
         {
             InitializeComponent();
 
-            MyListView.ItemsSource = Items;
+            ListView.ItemsSource = Items;
         }
         protected override void OnAppearing()
         {

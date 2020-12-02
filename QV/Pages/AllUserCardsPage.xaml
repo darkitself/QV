@@ -3,14 +3,14 @@
 <ContentPage xmlns = "http://xamarin.com/schemas/2014/forms"
              xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:qv = "clr-namespace:QV;assembly=QV"
-             x:Class = "QV.AllAliensBCsPage"
+             x:Class = "QV.Pages.AllUserCardsPage"
              BackgroundColor = "{DynamicResource DarkBlue}">
     <ContentPage.Content>
         <Grid>
             <Image Style = "{DynamicResource BackGroundImageStyle}" />
             <ListView x:Name = "ListView"
                       HasUnevenRows = "True"
-                      ItemTapped = "ListView_OnItemTapped"
+                      ItemTapped = "Handle_ItemTapped"
                       SeparatorColor = "{DynamicResource AlfaBrandRed}"
                       RefreshAllowed = "True"
                       >
@@ -35,19 +35,19 @@
                                 <StackLayout HorizontalOptions = "StartAndExpand"
                                              VerticalOptions = "CenterAndExpand"
                                              Padding="10">
-                                    <Label Text = "{Binding Data.FullName}"
+                                    <Label Text = "{Binding FullName}"
                                            TextColor = "{DynamicResource AlfaBrandRed}"
                                            HorizontalOptions = "Start"
                                            VerticalOptions = "Center"
                                            HorizontalTextAlignment = "Start"
                                            FontSize = "Subtitle" />
-                                    <Label Text = "{Binding Data.Email}"
+                                    <Label Text = "{Binding Email}"
                                            TextColor = "{DynamicResource AlfaBrandRed}"
                                            HorizontalOptions = "Start"
                                            VerticalOptions = "Center"
                                            HorizontalTextAlignment = "Start"
                                            FontSize = "Subtitle" />
-                                    <Label Text = "{Binding Data.PhoneNumber}"
+                                    <Label Text = "{Binding Phone_Number}"
                                            IsVisible="False"
                                            TextColor = "{DynamicResource AlfaBrandRed}"
                                            HorizontalOptions = "Start"

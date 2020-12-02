@@ -58,6 +58,7 @@ namespace QV.Pages
             Overlay.IsVisible = true;
             Scanner.IsAnalyzing = true;
         }
+        
         private async void GetDataByLink_OnClicked(object sender, EventArgs e)
         {
             var id = Convert.ToInt64(this.LinkRequest.Text);

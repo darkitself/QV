@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Shell xmlns = "http://xamarin.com/schemas/2014/forms"
-       xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:d = "http://xamarin.com/schemas/2014/forms/design"
-       xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
-       xmlns:pages = "clr-namespace:QV"
-       mc:Ignorable = "d"
-       x:Class = "QV.MainPage">
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:pages="clr-namespace:QV.Pages"
+       mc:Ignorable="d"
+       x:Class="QV.MainPage">
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
@@ -27,13 +27,13 @@
         <ShellContent ContentTemplate = "{DataTemplate pages:QRCodePage}"
                       Title="QR код"
                       Icon="qr.png"/>
-        <ShellContent ContentTemplate = "{DataTemplate pages:AllAliensBCsPage}"
+        <ShellContent ContentTemplate = "{DataTemplate pages:AllAliensCardsPage}"
                       Icon = "cardList.png"
                       Title = "Полученные визитки" />
-        <ShellContent ContentTemplate = "{DataTemplate pages:AllMyBCsPage}"
+        <ShellContent ContentTemplate = "{DataTemplate pages:AllUserCardsPage}"
                       Icon = "myCards.png"
                       Title = "Мои визитки" />
-        <ShellContent ContentTemplate = "{DataTemplate pages:CreateBCPage}"
+        <ShellContent ContentTemplate = "{DataTemplate pages:CreateCardPage}"
                       Title = "Создать"
                       Icon="addCard"/>
         <ShellContent ContentTemplate = "{DataTemplate pages:UserDataPage}"

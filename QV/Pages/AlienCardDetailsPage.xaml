@@ -1,26 +1,49 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:QV.Infrastructure"
-             x:Class="QV.Pages.AlienCardDetailsPage">
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns = "http://xamarin.com/schemas/2014/forms"
+             xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local = "clr-namespace:QV.Infrastructure"
+             x:Class = "QV.Pages.AlienCardDetailsPage">
     <ContentPage.Resources>
-        <local:Converter x:Key="Converter" />
+        <local:Converter x:Key = "Converter" />
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Edit" Clicked="Edit_Clicked"/>
+        <ToolbarItem Text = "Edit"
+                     Clicked = "Edit_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" Margin="30">
-            <Label x:Name ="Surname" Text="{Binding Surname}" IsVisible="{Binding Surname, Converter={StaticResource Converter}}"/>
-            <Label x:Name ="Name" Text="{Binding Name}" IsVisible="{Binding Name, Converter={StaticResource Converter}}"/>
-            <Label x:Name ="Patronymic" Text="{Binding Patronymic}" IsVisible="{Binding Patronymic, Converter={StaticResource Converter}}"/>
-            <Label x:Name ="Phone_Number" Text="{Binding Phone_Number}" IsVisible="{Binding Phone_Number, Converter={StaticResource Converter}}"/>
-            <Label x:Name ="Email" Text="{Binding Email}" IsVisible="{Binding Email, Converter={StaticResource Converter}}"/>
-            <Label x:Name ="VK" Text="{Binding VK}" IsVisible="{Binding VK, Converter={StaticResource Converter}}"/>
-            <Label x:Name ="Facebook" Text="{Binding Facebook}" IsVisible="{Binding Facebook, Converter={StaticResource Converter}}"/>
-            <Label x:Name ="Telegram" Text="{Binding Telegram}" IsVisible="{Binding Telegram, Converter={StaticResource Converter}}"/>
-            <Label x:Name ="Instagram" Text="{Binding Instagram}" IsVisible="{Binding Instagram, Converter={StaticResource Converter}}"/>
-            <Label x:Name ="Info" Text="{Binding Info}" IsVisible="{Binding Info, Converter={StaticResource Converter}}"/>
+        <StackLayout Orientation = "Vertical"
+                     Margin = "30">
+            <Label x:Name = "Surname"
+                   Text = "{Binding Surname}"
+                   IsVisible = "{Binding Surname, Converter={StaticResource Converter}}" />
+            <Label x:Name = "Name"
+                   Text = "{Binding Name}"
+                   IsVisible = "{Binding Name, Converter={StaticResource Converter}}" />
+            <Label x:Name = "Patronymic"
+                   Text = "{Binding Patronymic}"
+                   IsVisible = "{Binding Patronymic, Converter={StaticResource Converter}}" />
+            <Label x:Name = "Phone_Number"
+                   Text = "{Binding Phone_Number}"
+                   IsVisible = "{Binding Phone_Number, Converter={StaticResource Converter}}" />
+            <Label x:Name = "Email"
+                   Text = "{Binding Email}"
+                   IsVisible = "{Binding Email, Converter={StaticResource Converter}}" />
+            <Label x:Name = "VK"
+                   Text = "{Binding VK}"
+                   IsVisible = "{Binding VK, Converter={StaticResource Converter}}" />
+            <Label x:Name = "Facebook"
+                   Text = "{Binding Facebook}"
+                   IsVisible = "{Binding Facebook, Converter={StaticResource Converter}}" />
+            <Label x:Name = "Telegram"
+                   Text = "{Binding Telegram}"
+                   IsVisible = "{Binding Telegram, Converter={StaticResource Converter}}" />
+            <Label x:Name = "Instagram"
+                   Text = "{Binding Instagram}"
+                   IsVisible = "{Binding Instagram, Converter={StaticResource Converter}}" />
+            <Label x:Name = "Info"
+                   Text = "{Binding Info}"
+                   IsVisible = "{Binding Info, Converter={StaticResource Converter}}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
