@@ -29,7 +29,7 @@ namespace QV.Pages
                 return;
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
-            await Shell.Current.GoToAsync($"{nameof(AlienCardDetailsPage)}?{nameof(AlienCardDetailsPage.CardId)}={(e.Item as AlienCard).ID}");
+            await Shell.Current.GoToAsync($"{nameof(CardDetailsPage)}?{nameof(CardDetailsPage.CardId)}={"0" + (e.Item as AlienCard).ID.ToString()}");
         }
 
         private void DelButton_Clicked(object sender, EventArgs e)

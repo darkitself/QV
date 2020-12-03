@@ -10,7 +10,7 @@ namespace QV.Infrastructure
     {
         public object Convert(object value, Type targetType = null, object parameter = null, CultureInfo culture = null)
         {
-            return value != null && (string)value != "";
+            return !string.IsNullOrEmpty((string)value);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -28,18 +28,9 @@
                 </StackLayout>
 
                 <StackLayout Orientation = "Horizontal">
-                    <Label Text = "MiddleName"
+                    <Label Text = "Patronymic"
                            Style = "{DynamicResource LabelStyle}" />
-                    <CheckBox x:Name = "MiddleName"
-                              IsChecked = "False"
-                              Color = "{DynamicResource AlfaBrandRed}"
-                              HorizontalOptions = "EndAndExpand" />
-                </StackLayout>
-
-                <StackLayout Orientation = "Horizontal">
-                    <Label Text = "TelephoneNumber"
-                           Style = "{DynamicResource LabelStyle}" />
-                    <CheckBox x:Name = "TelephoneNumber"
+                    <CheckBox x:Name = "Patronymic"
                               IsChecked = "False"
                               Color = "{DynamicResource AlfaBrandRed}"
                               HorizontalOptions = "EndAndExpand" />
@@ -55,25 +46,62 @@
                 </StackLayout>
 
                 <StackLayout Orientation = "Horizontal">
-                    <Label Text = "VKLink"
+                    <Label Text = "Phone_Number"
                            Style = "{DynamicResource LabelStyle}" />
-                    <CheckBox x:Name = "VKLink"
+                    <CheckBox x:Name = "Phone_Number"
                               IsChecked = "False"
                               Color = "{DynamicResource AlfaBrandRed}"
                               HorizontalOptions = "EndAndExpand" />
                 </StackLayout>
 
                 <StackLayout Orientation = "Horizontal">
-                    <Label Text = "FaceBookLink"
+                    <Label Text = "Telegram"
                            Style = "{DynamicResource LabelStyle}" />
-                    <CheckBox x:Name = "FaceBookLink"
+                    <CheckBox x:Name = "Telegram"
                               IsChecked = "False"
                               Color = "{DynamicResource AlfaBrandRed}"
                               HorizontalOptions = "EndAndExpand" />
                 </StackLayout>
+
+                <StackLayout Orientation = "Horizontal">
+                    <Label Text = "VK"
+                           Style = "{DynamicResource LabelStyle}" />
+                    <CheckBox x:Name = "VK"
+                              IsChecked = "False"
+                              Color = "{DynamicResource AlfaBrandRed}"
+                              HorizontalOptions = "EndAndExpand" />
+                </StackLayout>
+
+                <StackLayout Orientation = "Horizontal">
+                    <Label Text = "Facebook"
+                           Style = "{DynamicResource LabelStyle}" />
+                    <CheckBox x:Name = "Facebook"
+                              IsChecked = "False"
+                              Color = "{DynamicResource AlfaBrandRed}"
+                              HorizontalOptions = "EndAndExpand" />
+                </StackLayout>
+                
+                <StackLayout Orientation = "Horizontal">
+                    <Label Text = "Instagram"
+                           Style = "{DynamicResource LabelStyle}" />
+                    <CheckBox x:Name = "Instagram"
+                              IsChecked = "False"
+                              Color = "{DynamicResource AlfaBrandRed}"
+                              HorizontalOptions = "EndAndExpand" />
+                </StackLayout>
+                
+                <StackLayout Orientation = "Horizontal">
+                    <Label Text = "Info"
+                           Style = "{DynamicResource LabelStyle}" />
+                    <CheckBox x:Name = "Info"
+                              IsChecked = "False"
+                              Color = "{DynamicResource AlfaBrandRed}"
+                              HorizontalOptions = "EndAndExpand" />
+                </StackLayout>
+
                 <StackLayout Orientation="Horizontal">
-                    <Entry x:Name = "BCName"
-                                           Placeholder = "Your BC Name"
+                    <Entry x:Name = "Card_Name"
+                                           Placeholder = "Your card name"
                                            HorizontalOptions = "FillAndExpand"
                                            BackgroundColor="Transparent"
                                            VerticalOptions="Center"

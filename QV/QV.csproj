@@ -26,10 +26,6 @@
       <DependentUpon>AllAliensCardsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\AlienCardDetailsPage.xaml.cs">
-      <DependentUpon>AlienCardDetailsPage.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Pages\CreateCardPage.xaml.cs">
       <DependentUpon>CreateCardPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -50,5 +46,11 @@
       <DependentUpon>UserDataPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\CardDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

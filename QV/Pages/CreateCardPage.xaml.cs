@@ -31,12 +31,13 @@ namespace QV.Pages
                     checkBox.IsEnabled = p.GetValue(data) != null && p.GetValue(data) as string != "";
             }
         }
+
         private void CreateButton_Clicked(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(this.BCName.Text))
+            if (!string.IsNullOrEmpty(this.Card_Name.Text))
             {
-                var bc = new UserCard() { Card_Name = this.BCName.Text };
-                var req = new CreateCardRequest() { Card_Name = this.BCName.Text, User_ID = App.Data.CurrentUser.ID };
+                var bc = new UserCard() { Card_Name = this.Card_Name.Text };
+                var req = new CreateCardRequest() { Card_Name = this.Card_Name.Text, User_ID = App.Data.CurrentUser.ID };
                 foreach (var p in bc.GetType().GetProperties())
                 {
                     var checkBox = this.FindByName<CheckBox>(p.Name);
@@ -50,6 +51,7 @@ namespace QV.Pages
                 App.Data.UserCards[bc.ID = res.ID] = bc;
             }
         }
+
         private void SelectAllButton_Clicked(object sender, EventArgs e)
         {
             foreach (var p in data.GetType().GetProperties())
@@ -60,6 +62,7 @@ namespace QV.Pages
                         checkBox.IsChecked = true;
             }
         }
+
         private void DeselctAllButton_Clicked(object sender, EventArgs e)
         {
             foreach (var p in data.GetType().GetProperties())

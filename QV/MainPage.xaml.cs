@@ -14,8 +14,7 @@ namespace QV
         public MainPage()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(AlienCardDetailsPage), typeof(AlienCardDetailsPage));
-            Routing.RegisterRoute(nameof(UserCardDetailsPage), typeof(UserCardDetailsPage));
+            Routing.RegisterRoute(nameof(CardDetailsPage), typeof(CardDetailsPage));
             if (!Application.Current.Properties.TryGetValue("Logged", out var logged) || (logged is null) || !(bool)logged)
                 Navigation.PushModalAsync(new LoginPage());
             
