@@ -1,11 +1,8 @@
 ﻿using QV.Infrastructure;
 using QV.RequestsAndAnswers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.ComponentModel;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -49,8 +46,10 @@ namespace QV.Pages
             }
         }
 
+        private readonly UserData userData;
         public CardDetailsPage()
         {
+            userData = BindingContext as UserData;
         }
 
         private async void Edit_Clicked(object sender, EventArgs e)
@@ -73,6 +72,55 @@ namespace QV.Pages
                         Title = App.Data.AliensCards[ID].Card_Name = newName;
                 }
             }
+        }
+
+        private async void MailButtonClicked(object sender, EventArgs e)
+        {
+            await Launcher.OpenAsync(new Uri($"mailto:{userData.Email}"));
+        }
+
+        private async void TelephoneButtonClicked(object sender, EventArgs e)
+        {
+            await Launcher.OpenAsync($"tel:{userData.Phone_Number}");
+        }
+
+        private async void FacebookButtonClicked(object sender, EventArgs e)
+        {
+            if (await Launcher.CanOpenAsync("fb://"))
+                await Launcher.OpenAsync(new Uri($"fb://page/{userData.Facebook}"));
+            else
+                await Launcher.OpenAsync($"https://ru-ru.facebook.com/{userData.Facebook}");
+        }
+
+        private async void VkButtonClicked(object sender, EventArgs e)
+        {
+            if (await Launcher.CanOpenAsync("vk://"))
+                await Launcher.OpenAsync($"vk://vk.com/.{userData.VK}");
+            else
+                await Launcher.OpenAsync($"https://vk.com/{userData.VK}");
+        }
+
+        private async void FacebookCopy(object sender, EventArgs e)
+        {
+            DependencyService.Get<ICanMakeToast>().MakeToast("Скопировано");
+
+        }
+
+        private async void VkCopy(object sender, EventArgs e)
+        {
+            DependencyService.Get<ICanMakeToast>().MakeToast("Скопировано");
+
+        }
+
+        private async void EmailCopy(object sender, EventArgs e)
+        {
+            DependencyService.Get<ICanMakeToast>().MakeToast("Скопировано");
+
+        }
+
+        private async void NumberCopy(object sender, EventArgs e)
+        {
+            DependencyService.Get<ICanMakeToast>().MakeToast("Скопировано");
         }
     }
 }

@@ -12,6 +12,7 @@ namespace QV
         public App()
         {
             Resources["BackgroundImageSource"] = "m.jpg";
+            Resources["Converter"] = new Converter();
             Data = new AppData();
             InitializeComponent();
             MainPage = new MainPage();
