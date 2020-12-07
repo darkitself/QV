@@ -110,6 +110,52 @@
                                      Clicked = "FacebookCopy" />
                     </StackLayout>
                 </Grid>
+                <Grid IsVisible = "{Binding Telegram, Converter={StaticResource Converter}}">
+                    <StackLayout BackgroundColor = "#041222"
+                                 Opacity = "0.5"/>
+                    <StackLayout Orientation = "Horizontal"
+                                 HorizontalOptions="FillAndExpand">
+                        <ImageButton Source = "telegram.png"
+                                     BackgroundColor = "Transparent"
+                                     WidthRequest = "50"
+                                     HeightRequest = "50"
+                                     Clicked = "TelegramOpen" />
+                        <Label x:Name = "Telegram"
+                               Style = "{DynamicResource LabelStyle}"
+                               Text = "{Binding Telegram}" />
+                        <ImageButton WidthRequest = "40"
+                                     HeightRequest = "40"
+                                     VerticalOptions = "Center"
+                                     HorizontalOptions = "EndAndExpand"
+                                     BackgroundColor = "Transparent"
+                                     Source = "copy.png"
+                                     Clicked = "TelegramCopy" />
+                    </StackLayout>
+                </Grid>
+                <Grid IsVisible = "{Binding Instagram, Converter={StaticResource Converter}}">
+                    <StackLayout BackgroundColor = "#041222"
+                                 Opacity = "0.5"/>
+                    <StackLayout Orientation = "Horizontal"
+                                 HorizontalOptions="FillAndExpand">
+                        <ImageButton Source = "instagram.png"
+                                     BackgroundColor = "Transparent"
+                                     WidthRequest = "50"
+                                     HeightRequest = "50"
+                                     Clicked = "InstagramOpen" />
+                        <Label x:Name = "Instagram"
+                               Style = "{DynamicResource LabelStyle}"
+                               Text = "{Binding Instagram}" />
+                        <ImageButton WidthRequest = "40"
+                                     HeightRequest = "40"
+                                     VerticalOptions = "Center"
+                                     HorizontalOptions = "EndAndExpand"
+                                     BackgroundColor = "Transparent"
+                                     Source = "copy.png"
+                                     Clicked = "InstagramCopy" />
+                    </StackLayout>
+                </Grid>
+                <Button Text="Save"
+                        Clicked="Button_OnClicked"/> 
             </StackLayout>
         </Grid>
     </ContentPage.Content>

@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AndroidToastNotifications.cs" />
+    <Compile Include="ContactSaver.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renders\ZxingRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -79,6 +80,7 @@
     <AndroidResource Include="Resources\drawable\details.png" />
     <AndroidResource Include="Resources\drawable\facebook.png" />
     <AndroidResource Include="Resources\drawable\gmail.png" />
+    <AndroidResource Include="Resources\drawable\instagram.png" />
     <AndroidResource Include="Resources\drawable\login_page_bbackground.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -95,6 +97,7 @@
     <AndroidResource Include="Resources\drawable\rounded_corner_entry.xml" />
     <AndroidResource Include="Resources\drawable\sea_background.jpg" />
     <AndroidResource Include="Resources\drawable\settings.png" />
+    <AndroidResource Include="Resources\drawable\telegram.png" />
     <AndroidResource Include="Resources\drawable\telephone.png" />
     <AndroidResource Include="Resources\drawable\vk.png" />
     <AndroidResource Include="Resources\layout\Tabbar.xml" />

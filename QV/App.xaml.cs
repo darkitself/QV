@@ -49,7 +49,10 @@ namespace QV
                                              Facebook = "zuck",
                                              Patronymic = "Alekseevich",
                                              Phone_Number = "89014354863",
-                                             VK = "egorchusov"
+                                             Telegram = "chusoveg",
+                                             Instagram = "chusoveg_",
+                                             VK = "egorchusov",
+                                             Info = "Эта инфа для тестов, смотрим и кайфуем"
                                          },
                                    [2] = new AlienCard
                                          {
