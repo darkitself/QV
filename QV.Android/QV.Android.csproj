@@ -61,7 +61,7 @@
     <Compile Include="AndroidToastNotifications.cs" />
     <Compile Include="ContactSaver.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Renders\ZxingRenderer.cs" />
+    <Compile Include="PhotoPickerService.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -76,6 +76,7 @@
     <AndroidResource Include="Resources\drawable\button_background.xml" />
     <AndroidResource Include="Resources\drawable\cardList.png" />
     <AndroidResource Include="Resources\drawable\cat.jpg" />
+    <AndroidResource Include="Resources\drawable\contacts.png" />
     <AndroidResource Include="Resources\drawable\copy.png" />
     <AndroidResource Include="Resources\drawable\details.png" />
     <AndroidResource Include="Resources\drawable\facebook.png" />
@@ -122,6 +123,9 @@
       <Project>{79D77598-4369-4762-B30C-804FBD1EC622}</Project>
       <Name>QV</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renders" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

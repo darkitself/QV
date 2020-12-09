@@ -5,6 +5,7 @@
              xmlns:qv = "clr-namespace:QV;assembly=QV"
              x:Class = "QV.Pages.AllUserCardsPage"
              BackgroundColor = "{DynamicResource DarkBlue}">
+
     <ContentPage.Content>
         <Grid>
             <Image Style = "{DynamicResource BackGroundImageStyle}" />

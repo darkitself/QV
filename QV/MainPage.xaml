@@ -5,7 +5,9 @@
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        xmlns:pages="clr-namespace:QV.Pages"
        mc:Ignorable="d"
-       x:Class="QV.MainPage">
+       x:Class="QV.MainPage"
+       FlyoutBehavior="Disabled"
+       PresentationMode="NotAnimated">
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
@@ -24,20 +26,28 @@
         </ResourceDictionary>
     </Shell.Resources>
     <TabBar>
-        <ShellContent ContentTemplate = "{DataTemplate pages:QRCodePage}"
-                      Title="QR код"
-                      Icon="qr.png"/>
+        <Tab Title="QR код"
+             Icon="qr.png">
+            <ShellContent ContentTemplate = "{DataTemplate pages:QRCodePage}"/>
+        </Tab>
+        <Tab Icon = "cardList.png"
+             Title = "Полученные">
         <ShellContent ContentTemplate = "{DataTemplate pages:AllAliensCardsPage}"
-                      Icon = "cardList.png"
-                      Title = "Полученные визитки" />
+                       />
+        </Tab>
+        <Tab Icon = "myCards.png"
+             Title = "Мои">
         <ShellContent ContentTemplate = "{DataTemplate pages:AllUserCardsPage}"
-                      Icon = "myCards.png"
-                      Title = "Мои визитки" />
+                       />
+        </Tab>
+        <Tab Title = "Создать"
+             Icon="addCard">
         <ShellContent ContentTemplate = "{DataTemplate pages:CreateCardPage}"
-                      Title = "Создать"
-                      Icon="addCard"/>
-        <ShellContent ContentTemplate = "{DataTemplate pages:UserDataPage}"
-                      Title = "Профиль"
-                      Icon="settings"/>
+                      />
+        </Tab>
+        <Tab Title = "Настройки"
+             Icon="settings">
+        <ShellContent ContentTemplate = "{DataTemplate pages:UserDataPage}"/>
+        </Tab>
     </TabBar>
 </Shell>

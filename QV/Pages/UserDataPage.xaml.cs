@@ -44,5 +44,10 @@ namespace QV.Pages
             }
             else await DisplayAlert("", "Чёт не так", "OK");
         }
+
+        private async void ImageChangeButtonClicked(object sender, EventArgs e)
+        {
+            var streamAsync = await DependencyService.Get<IPhotoPickerService>().GetImageStreamAsync();
+        }
     }
 }

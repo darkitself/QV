@@ -154,7 +154,12 @@
                                      Clicked = "InstagramCopy" />
                     </StackLayout>
                 </Grid>
-                <Button Text="Save"
+                <ImageButton Source="contacts.png"
+                             WidthRequest = "80"
+                             HeightRequest = "80"
+                             VerticalOptions = "Center"
+                             HorizontalOptions = "Center"
+                             BackgroundColor = "Transparent"
                         Clicked="Button_OnClicked"/> 
             </StackLayout>
         </Grid>
