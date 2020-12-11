@@ -9,60 +9,110 @@
             <Image Style = "{DynamicResource BackGroundImageStyle}" />
             <StackLayout Orientation = "Vertical"
                          Margin = "20">
-                <Entry x:Name = "Surname"
-                       TextColor = "White"
-                       Text = "{Binding Surname}"
-                       Placeholder = "Surname"
-                       WidthRequest = "300" />
+                   <StackLayout Orientation="Horizontal"
+                                WidthRequest="500"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand">
+                   <Frame IsClippedToBounds = "True"
+                          Padding = "0"
+                          WidthRequest = "150"
+                          CornerRadius = "30"
+                          HorizontalOptions = "Center"
+                          VerticalOptions = "Start"
+                          HeightRequest = "150">
+                          <ImageButton x:Name="Image"
+                                 Source = "me.jpg"
+                                 Aspect = "AspectFill"
+                                 BackgroundColor = "Transparent"
+                                 Clicked="ImageChangeButtonClicked"/>
+                   </Frame>
+                          <ImageButton x:Name="Logout"
+                                       HeightRequest="50"
+                                       WidthRequest="50"
+                                       Source="logout.png"
+                                       IsVisible="False"
+                                       BackgroundColor="Transparent"
+                                       HorizontalOptions="EndAndExpand"
+                                       VerticalOptions="Center"/>
+                          <ImageButton x:Name="AcceptChangesButton"
+                                       WidthRequest="50"
+                                       HeightRequest="50"
+                                       IsVisible="False"
+                                       BackgroundColor="Transparent"
+                                       Source="accept.png"
+                                       HorizontalOptions="EndAndExpand"
+                                       VerticalOptions="StartAndExpand"
+                                       />
+                   </StackLayout>
+                   <Entry x:Name = "Surname"
+                          TextColor = "White"
+                          Text = "{Binding Surname}"
+                          Placeholder = "Surname"
+                          Unfocused="EntryTextChanged"
+                          WidthRequest = "300" />
                 <Entry x:Name = "Name"
                        TextColor = "White"
+                       Unfocused="EntryTextChanged"
+
                        Text = "{Binding Name}"
                        Placeholder = "Name"
                        WidthRequest = "300" />
                 <Entry x:Name = "Patronymic"
                        TextColor = "White"
+                       Unfocused="EntryTextChanged"
+
                        Text = "{Binding Patronymic}"
                        Placeholder = "Patronymic"
                        WidthRequest = "300" />
                 <Entry x:Name = "Email"
                        Text = "{Binding Email}"
                        TextColor = "White"
+                       Unfocused="EntryTextChanged"
+
                        Placeholder = "Email"
                        WidthRequest = "300" />
                 <Entry x:Name = "Phone_Number"
                        Text = "{Binding Phone_Number}"
                        Placeholder = "Phone_Number"
+                       Unfocused="EntryTextChanged"
+
                        TextColor = "White"
                        WidthRequest = "300" />
                 <Entry x:Name = "Telegram"
                        Text = "{Binding Telegram}"
                        Placeholder = "Telegram"
+                       Unfocused="EntryTextChanged"
+
                        TextColor = "White"
                        WidthRequest = "300" />
                 <Entry x:Name = "VK"
                        Text = "{Binding VK}"
                        Placeholder = "VK"
                        TextColor = "White"
+                       Unfocused="EntryTextChanged"
+
                        WidthRequest = "300" />
                 <Entry x:Name = "Facebook"
                        Text = "{Binding Facebook}"
                        Placeholder = "Facebook"
+                       Unfocused="EntryTextChanged"
+
                        TextColor = "White"
                        WidthRequest = "300" />
                 <Entry x:Name = "Instagram"
                        Text = "{Binding Instagram}"
                        Placeholder = "Instagram"
+                       Unfocused="EntryTextChanged"
+
                        TextColor = "White"
                        WidthRequest = "300" />
                 <Editor x:Name = "Info"
                         Text = "{Binding Info}"
                         Placeholder = "Info"
+                        Unfocused="EntryTextChanged"
+
                         TextColor = "White"
                         WidthRequest = "300" />
-                <Button Text = "Save"
-                        Clicked = "SaveButton_Clicked" />
-                <Button Text = "Image"
-                        Clicked = "ImageChangeButtonClicked" />
             </StackLayout>
         </Grid>
     </ContentPage.Content>

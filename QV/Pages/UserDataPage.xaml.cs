@@ -39,15 +39,31 @@ namespace QV.Pages
             if (res.Result)
             {
                 foreach (var p in user.MainData.GetType().GetProperties())
-                    p.SetValue(user.MainData, newReq.GetType().GetProperty(p.Name).GetValue(newReq));
-                await DisplayAlert("", "Данные успешно изменены", "OK");
+                    p.SetValue(user.MainData,
+                               newReq.GetType().GetProperty(p.Name).GetValue(newReq));
+                DependencyService.Get<ICanMakeToast>().MakeToast("Данные сохранены!");
             }
-            else await DisplayAlert("", "Чёт не так", "OK");
+            else
+                DependencyService.Get<ICanMakeToast>().MakeToast("Что-то пошло не так :(");
+
+            AcceptChangesButton.IsVisible = false;
         }
 
         private async void ImageChangeButtonClicked(object sender, EventArgs e)
         {
             var streamAsync = await DependencyService.Get<IPhotoPickerService>().GetImageStreamAsync();
+            if (streamAsync != null)
+                Image.Source = ImageSource.FromStream(() => streamAsync);
+        }
+
+        private async void Logout_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LoginPage());
+        }
+
+        private void EntryTextChanged(object sender, FocusEventArgs focusEventArgs)
+        {
+            AcceptChangesButton.IsVisible = true;
         }
     }
 }

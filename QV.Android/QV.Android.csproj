@@ -71,6 +71,7 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\accept.png" />
     <AndroidResource Include="Resources\drawable\add.png" />
     <AndroidResource Include="Resources\drawable\addCard.png" />
     <AndroidResource Include="Resources\drawable\button_background.xml" />
@@ -86,6 +87,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\logout.png" />
     <AndroidResource Include="Resources\drawable\logo_dark_without_board.png" />
     <AndroidResource Include="Resources\drawable\logo_without_board.png" />
     <AndroidResource Include="Resources\drawable\m.jpg" />
