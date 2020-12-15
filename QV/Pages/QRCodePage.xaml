@@ -18,11 +18,9 @@
                            VerticalTextAlignment = "Center"
                            FontSize = "Large" />
                     <Entry x:Name="LinkRequest" />
-                    <forms:ZXingBarcodeImageView x:Name = "QRCode"
-                                                 HeightRequest = "300"
-                                                 WidthRequest = "300"
-                                                 BarcodeFormat = "QR_CODE"
-                                                 BarcodeValue = "Здесь был Егор!" />
+                    <Image x:Name="QRImage"
+                           HeightRequest="300"
+                           WidthRequest="300"/>
                 </StackLayout>
             </Grid>
         </ContentPage.Content>

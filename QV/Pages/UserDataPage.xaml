@@ -30,7 +30,6 @@
                                        HeightRequest="50"
                                        WidthRequest="50"
                                        Source="logout.png"
-                                       IsVisible="False"
                                        BackgroundColor="Transparent"
                                        HorizontalOptions="EndAndExpand"
                                        VerticalOptions="Center"/>
