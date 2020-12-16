@@ -102,6 +102,7 @@
     <AndroidResource Include="Resources\drawable\nature_with_opacity.png" />
     <AndroidResource Include="Resources\drawable\qr.png" />
     <AndroidResource Include="Resources\drawable\rounded_corner_entry.xml" />
+    <AndroidResource Include="Resources\drawable\search.png" />
     <AndroidResource Include="Resources\drawable\sea_background.jpg" />
     <AndroidResource Include="Resources\drawable\settings.png" />
     <AndroidResource Include="Resources\drawable\telegram.png" />

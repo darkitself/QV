@@ -8,19 +8,51 @@
         <ContentPage.Content>
             <Grid>
                 <Image Style = "{DynamicResource BackGroundImageStyle}" />
-                <StackLayout HorizontalOptions = "Center"
-                             VerticalOptions = "Center">
+                <StackLayout HorizontalOptions = "FillAndExpand"
+                             VerticalOptions = "FillAndExpand"
+                             Padding="20">
+                    <StackLayout Orientation = "Horizontal"
+                                 VerticalOptions = "Start"
+                                 HorizontalOptions = "Center">
+                        <Entry x:Name = "LinkRequest"
+                               VerticalOptions = "Start"
+                               BackgroundColor = "{DynamicResource TextDarkBlue}"
+                               TextColor = "Firebrick"
+                               Placeholder = "Поиск визитки"
+                               PlaceholderColor = "LightSteelBlue"
+                               WidthRequest = "350" />
+                        <ImageButton Source = "search.png"
+                                     WidthRequest = "30"
+                                     HeightRequest = "30"
+                                     BackgroundColor = "Transparent"
+                                     Clicked = "GetDataByLink_OnClicked" />
+                    </StackLayout>
                     <Label Text = "Ваши данные"
                            TextColor = "{DynamicResource AlfaBrandRed}"
-                           HorizontalOptions = "CenterAndExpand"
-                           VerticalOptions = "CenterAndExpand"
+                           HorizontalOptions = "Center"
+                           VerticalOptions = "Center"
                            HorizontalTextAlignment = "Center"
                            VerticalTextAlignment = "Center"
                            FontSize = "Large" />
-                    <Entry x:Name="LinkRequest" />
-                    <Image x:Name="QRImage"
-                           HeightRequest="300"
-                           WidthRequest="300"/>
+
+                    <CarouselView x:Name="CarouselView"
+                                  CurrentItemChanged="ElementChanged"
+                        WidthRequest="300"
+                                  IsSwipeEnabled="True">
+                       <CarouselView.ItemTemplate>
+                           <DataTemplate>
+                               <Label Text="{Binding Card_Name}"
+                                      Style="{DynamicResource LabelStyle}"/>
+                               <Image>
+                               </Image>
+                           </DataTemplate>
+                       </CarouselView.ItemTemplate>
+                    </CarouselView>
+                    <Image x:Name = "QRImage"
+                           VerticalOptions = "End"
+                           HorizontalOptions = "Center"
+                           HeightRequest = "300"
+                           WidthRequest = "300" />
                 </StackLayout>
             </Grid>
         </ContentPage.Content>
@@ -29,22 +61,6 @@
         <ContentPage.Content>
             <Grid>
                 <Image Style = "{DynamicResource BackGroundImageStyle}" />
-                <StackLayout HorizontalOptions = "Center"
-                             VerticalOptions = "Center">
-                    <Label Text = "Отсканируйте QR код, чтобы получить контакты"
-                           TextColor = "{DynamicResource AlfaBrandRed}"
-                           HorizontalOptions = "Center"
-                           VerticalOptions = "Center"
-                           FontSize = "Large"
-                           VerticalTextAlignment = "Center"
-                           HorizontalTextAlignment = "Center" />
-                    <Button x:Name = "Button"
-                            Style = "{DynamicResource RedButtonStyle}"
-                            Text = "Сканировать"
-                            HorizontalOptions = "Center"
-                            Clicked = "Button_OnClicked" />
-                </StackLayout>
-
                 <forms:ZXingScannerView x:Name = "Scanner"
                                         HeightRequest = "500"
                                         WidthRequest = "300" />

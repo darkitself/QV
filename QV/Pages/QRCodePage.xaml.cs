@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Reflection;
 using QRCodeEncoder;
 using QV.Infrastructure;
 using QV.RequestsAndAnswers;
 using SkiaSharp;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 using ZXing;
 using ZXing.Mobile;
@@ -15,79 +19,64 @@ namespace QV.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QRCodePage
     {
-        private readonly MobileBarcodeScanningOptions options = new MobileBarcodeScanningOptions
-                                                                {
-                                                                    AutoRotate = true,
-                                                                    TryHarder = true,
-                                                                    DisableAutofocus = false,
-                                                                    UseNativeScanning = true,
-                                                                    TryInverted = true,
-                                                                    PossibleFormats = new []
-                                                                        {
-                                                                            BarcodeFormat.QR_CODE
-                                                                        }
-                                                                };
-
+        public ObservableCollection<UserCard> Items { get; set; } = new ObservableCollection<UserCard>();
 
         public QRCodePage()
         {
             InitializeComponent();
-            Refresh();
-            Scanner.Options = options;
+            CarouselView.ItemsSource = Items;
+            Scanner.IsAnalyzing = true;
+            Scanner.IsScanning = true;
             Scanner.OnScanResult += OnScanResult;
         }
 
-        public void Refresh()
+        protected override void OnAppearing()
         {
-            var encoder = new Encoder();
-            var encoderRes = encoder.Encode("Egor aws here!!!", CorrectionLevel.H);
-            var renderer = new QrRenderer();
-            var qrCodeImgStream = renderer.Draw(encoderRes.Data,
-                                                encoderRes.Version,
-                                                CorrectionLevel.H, 
-                                                SKColors.Black,
-                                                new SKColor(239,51,36));
-            QRImage.Source = ImageSource.FromStream(() => qrCodeImgStream);
+            base.OnAppearing();
+            Items.Clear();
+            App.Data.UserCards.Values.ForEach(e => Items.Add(e));
         }
+
+        
 
         private void OnScanResult(Result result)
         {
-            DependencyService.Get<ICanMakeToast>().MakeToast(result.Text);
-            //ToDo message to user than scanning is success 
+            DependencyService.Get<ICanMakeToast>().MakeToast("Готово");
+            // GetDataByLink(result.Text);
+        }
+        
+        private void GetDataByLink_OnClicked(object sender, EventArgs e)
+        {
+            GetDataByLink(LinkRequest.Text);
         }
 
-        private void Button_OnClicked(object sender, EventArgs e)
+        private void GetDataByLink(string link)
         {
-            Scanner.IsTorchOn = true;
-            Scanner.IsVisible = true;
-            Scanner.IsScanning = true;
-            Overlay.IsVisible = true;
-            Scanner.IsAnalyzing = true;
-        }
-
-        private async void GetDataByLink_OnClicked(object sender, EventArgs e)
-        {
-            var id = Convert.ToInt64(this.LinkRequest.Text);
+            var id = Convert.ToInt64(link);
             if (App.Data.AliensCards.ContainsKey(id))
             {
-                await DisplayAlert("", "У вас уже есть эта карточка", "OK");
+                DependencyService.Get<ICanMakeToast>().MakeToast("У вас уже есть эта карточка");
                 return;
             }
 
             var answer =
                 Connection
                     .RequestToServer<GetCardRequest, GetCardAnswer
-                    >(new GetCardRequest {User_ID = App.Data.CurrentUser.ID, Card_ID = Convert.ToInt64(this.LinkRequest.Text)},
+                    >(new GetCardRequest {User_ID = App.Data.CurrentUser.ID, Card_ID = Convert.ToInt64(link)},
                       RequestsTypes.ReceiveCard);
             if (!answer.Result)
             {
-                await DisplayAlert("", "Карточка не существует", "OK");
+                DependencyService.Get<ICanMakeToast>().MakeToast( "Карточка не существует");
                 return;
             }
 
             App.Data.AliensCards[answer.Card.ID] = answer.Card;
-            await DisplayAlert("", "Карточка получена", "OK");
-            return;
+            DependencyService.Get<ICanMakeToast>().MakeToast( "Карточка получена");
+        }
+
+        private void ElementChanged(object sender, CurrentItemChangedEventArgs e)
+        {
+            QRImage.Source = (e.CurrentItem as UserCard)?.GetQrCodeSource();
         }
     }
 }
