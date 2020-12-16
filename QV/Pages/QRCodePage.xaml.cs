@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using QRCodeEncoder;
 using QV.Infrastructure;
 using QV.RequestsAndAnswers;
@@ -32,9 +33,14 @@ namespace QV.Pages
         public QRCodePage()
         {
             InitializeComponent();
-            Refresh();
             Scanner.Options = options;
             Scanner.OnScanResult += OnScanResult;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Refresh(); 
         }
 
         public void Refresh()
@@ -47,7 +53,7 @@ namespace QV.Pages
                                                 CorrectionLevel.H, 
                                                 SKColors.Black,
                                                 new SKColor(239,51,36));
-            QRImage.Source = ImageSource.FromStream(() => qrCodeImgStream);
+            QRImage.Source = ImageSource.FromStream(() => new BufferedStream(qrCodeImgStream));
         }
 
         private void OnScanResult(Result result)
