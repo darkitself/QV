@@ -10,14 +10,11 @@
                 <Image Style = "{DynamicResource BackGroundImageStyle}" />
                 <StackLayout HorizontalOptions = "Center"
                              VerticalOptions = "Center">
-                    <Label Text = "Ваши данные"
-                           TextColor = "{DynamicResource AlfaBrandRed}"
-                           HorizontalOptions = "CenterAndExpand"
-                           VerticalOptions = "CenterAndExpand"
-                           HorizontalTextAlignment = "Center"
-                           VerticalTextAlignment = "Center"
-                           FontSize = "Large" />
-                    <Entry x:Name="LinkRequest" />
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text = "Текущая визитка: " TextColor = "{DynamicResource AlfaBrandRed}"/>
+                        <Picker x:Name="CurrentCard" WidthRequest="200" SelectedIndexChanged="CurrentCard_SelectedIndexChanged" ItemDisplayBinding="{Binding Card_Name}"/>
+                    </StackLayout>
+                    <Entry x:Name="Link" IsEnabled="False" Placeholder="Здесь будет ссылка на визитку"/>
                     <Image x:Name="QRImage"
                            HeightRequest="300"
                            WidthRequest="300"/>

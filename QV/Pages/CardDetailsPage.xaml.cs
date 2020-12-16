@@ -68,8 +68,7 @@ namespace QV.Pages
                 if (Type == 0)
                 {
                     var result = Connection
-                        .RequestToServer<ChangeReceivedCardNameRequest, ChangeReceivedCardNameAnswer
-                            >
+                        .RequestToServer<ChangeReceivedCardNameRequest, ChangeReceivedCardNameAnswer>
                             (new ChangeReceivedCardNameRequest {Card_ID = ID, Card_Name = newName, User_ID = App.Data.CurrentUser.ID},
                              RequestsTypes.ChangeReceivedCardName);
                     if (result.Success)

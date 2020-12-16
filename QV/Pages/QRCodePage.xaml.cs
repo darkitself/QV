@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using QRCodeEncoder;
 using QV.Infrastructure;
@@ -10,6 +13,8 @@ using ZXing;
 using ZXing.Mobile;
 using ZXing.QrCode;
 using Encoder = QV.Infrastructure.Encoder;
+using System.Collections.ObjectModel;
+using Xamarin.Forms.Internals;
 
 namespace QV.Pages
 {
@@ -28,25 +33,28 @@ namespace QV.Pages
                                                                             BarcodeFormat.QR_CODE
                                                                         }
                                                                 };
-
+        public ObservableCollection<UserCard> Items { get; set; } = new ObservableCollection<UserCard>();
 
         public QRCodePage()
         {
             InitializeComponent();
             Scanner.Options = options;
             Scanner.OnScanResult += OnScanResult;
+            CurrentCard.ItemsSource = Items;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Refresh(); 
+            Items.Clear();
+            App.Data.UserCards.Values.ForEach(c => Items.Add(c));
+            CreateQR(); 
         }
 
-        public void Refresh()
+        public void CreateQR(string data = null)
         {
             var encoder = new Encoder();
-            var encoderRes = encoder.Encode("Egor aws here!!!", CorrectionLevel.H);
+            var encoderRes = encoder.Encode(data ?? "", CorrectionLevel.H);
             var renderer = new QrRenderer();
             var qrCodeImgStream = renderer.Draw(encoderRes.Data,
                                                 encoderRes.Version,
@@ -73,7 +81,7 @@ namespace QV.Pages
 
         private async void GetDataByLink_OnClicked(object sender, EventArgs e)
         {
-            var id = Convert.ToInt64(this.LinkRequest.Text);
+            var id = Convert.ToInt64(this.Link.Text);
             if (App.Data.AliensCards.ContainsKey(id))
             {
                 await DisplayAlert("", "У вас уже есть эта карточка", "OK");
@@ -83,7 +91,7 @@ namespace QV.Pages
             var answer =
                 Connection
                     .RequestToServer<GetCardRequest, GetCardAnswer
-                    >(new GetCardRequest {User_ID = App.Data.CurrentUser.ID, Card_ID = Convert.ToInt64(this.LinkRequest.Text)},
+                    >(new GetCardRequest {User_ID = App.Data.CurrentUser.ID, Card_ID = Convert.ToInt64(this.Link.Text)},
                       RequestsTypes.ReceiveCard);
             if (!answer.Result)
             {
@@ -94,6 +102,12 @@ namespace QV.Pages
             App.Data.AliensCards[answer.Card.ID] = answer.Card;
             await DisplayAlert("", "Карточка получена", "OK");
             return;
+        }
+
+        private void CurrentCard_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Link.Text = ((UserCard)CurrentCard.ItemsSource[CurrentCard.SelectedIndex]).ID.ToString();
+            CreateQR(Link.Text);
         }
     }
 }
