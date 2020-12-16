@@ -3,7 +3,8 @@
 <CarouselPage xmlns = "http://xamarin.com/schemas/2014/forms"
               xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:forms = "clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
-              x:Class = "QV.Pages.QRCodePage">
+              x:Class = "QV.Pages.QRCodePage"
+              CurrentPageChanged="PageChanged">
     <ContentPage BackgroundColor = "{DynamicResource DarkBlue}">
         <ContentPage.Content>
             <Grid>
@@ -34,20 +35,6 @@
                            HorizontalTextAlignment = "Center"
                            VerticalTextAlignment = "Center"
                            FontSize = "Large" />
-
-                    <CarouselView x:Name="CarouselView"
-                                  CurrentItemChanged="ElementChanged"
-                        WidthRequest="300"
-                                  IsSwipeEnabled="True">
-                       <CarouselView.ItemTemplate>
-                           <DataTemplate>
-                               <Label Text="{Binding Card_Name}"
-                                      Style="{DynamicResource LabelStyle}"/>
-                               <Image>
-                               </Image>
-                           </DataTemplate>
-                       </CarouselView.ItemTemplate>
-                    </CarouselView>
                     <Image x:Name = "QRImage"
                            VerticalOptions = "End"
                            HorizontalOptions = "Center"
@@ -57,7 +44,7 @@
             </Grid>
         </ContentPage.Content>
     </ContentPage>
-    <ContentPage BackgroundColor = "{DynamicResource DarkBlue}">
+    <ContentPage x:Name="ScannerPage" BackgroundColor = "{DynamicResource DarkBlue}">
         <ContentPage.Content>
             <Grid>
                 <Image Style = "{DynamicResource BackGroundImageStyle}" />

@@ -1,7 +1,5 @@
 ﻿using QV.Infrastructure;
 using System.Collections.Generic;
-using System.Text.Json;
-using Xamarin.Forms;
 
 namespace QV
 {

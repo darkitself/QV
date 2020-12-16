@@ -24,29 +24,33 @@
                                  Source = "me.jpg"
                                  Aspect = "AspectFill"
                                  BackgroundColor = "Transparent"
-                                 Clicked="ImageChangeButtonClicked"/>
+                                 Clicked="MainImageClicked"/>
                    </Frame>
+                          <Grid HorizontalOptions="EndAndExpand"
+                                VerticalOptions="Center"
+                                HeightRequest="50"
+                                WidthRequest="50">
                           <ImageButton x:Name="Logout"
                                        HeightRequest="50"
+                                       Clicked="Logout_OnClicked"
                                        WidthRequest="50"
                                        Source="logout.png"
                                        BackgroundColor="Transparent"
-                                       HorizontalOptions="EndAndExpand"
-                                       VerticalOptions="Center"/>
+                                       />
                           <ImageButton x:Name="AcceptChangesButton"
                                        WidthRequest="50"
                                        HeightRequest="50"
                                        IsVisible="False"
+                                       Clicked="AcceptButtonClicked"
                                        BackgroundColor="Transparent"
-                                       Source="accept.png"
-                                       HorizontalOptions="EndAndExpand"
-                                       VerticalOptions="StartAndExpand"
-                                       />
+                                       Source="accept.png"/>
+                          </Grid>
                    </StackLayout>
                    <Entry x:Name = "Surname"
                           TextColor = "White"
                           Text = "{Binding Surname}"
                           Placeholder = "Surname"
+                          
                           Unfocused="EntryTextChanged"
                           WidthRequest = "300" />
                 <Entry x:Name = "Name"

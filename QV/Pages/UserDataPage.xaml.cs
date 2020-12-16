@@ -19,7 +19,7 @@ namespace QV.Pages
             user = App.Data.CurrentUser;
             BindingContext = user.MainData;
         }
-        private async void SaveButton_Clicked(object sender, EventArgs e)
+        private void AcceptButtonClicked(object sender, EventArgs e)
         {
             var newReq = new UpdateUserDataRequest
             {
@@ -47,9 +47,10 @@ namespace QV.Pages
                 DependencyService.Get<ICanMakeToast>().MakeToast("Что-то пошло не так :(");
 
             AcceptChangesButton.IsVisible = false;
+            Logout.IsVisible = true;
         }
 
-        private async void ImageChangeButtonClicked(object sender, EventArgs e)
+        private async void MainImageClicked(object sender, EventArgs e)
         {
             var streamAsync = await DependencyService.Get<IPhotoPickerService>().GetImageStreamAsync();
             if (streamAsync != null)
@@ -58,11 +59,13 @@ namespace QV.Pages
 
         private async void Logout_OnClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LoginPage());
+            Application.Current.Properties["Logged"] = false;
+            await Navigation.PushModalAsync(new LoginPage());
         }
 
         private void EntryTextChanged(object sender, FocusEventArgs focusEventArgs)
         {
+            Logout.IsVisible = false;
             AcceptChangesButton.IsVisible = true;
         }
     }

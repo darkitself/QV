@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace QV.Infrastructure
+﻿namespace QV.Infrastructure
 {
     public class AlienCard
     {

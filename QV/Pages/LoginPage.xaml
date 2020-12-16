@@ -5,6 +5,7 @@
              xmlns:qv = "clr-namespace:QV;assembly=QV"
              x:Class = "QV.Pages.LoginPage"
              BackgroundColor = "{DynamicResource DarkBlue}">
+    <Shell.TabBarIsVisible>False</Shell.TabBarIsVisible>
     <ContentPage.Content>
         <Grid>
             <Image Style = "{DynamicResource BackGroundImageStyle}" />

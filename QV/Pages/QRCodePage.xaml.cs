@@ -1,50 +1,57 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.IO;
-using System.Reflection;
 using QRCodeEncoder;
 using QV.Infrastructure;
 using QV.RequestsAndAnswers;
 using SkiaSharp;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 using ZXing;
 using ZXing.Mobile;
-using ZXing.QrCode;
-using Encoder = QV.Infrastructure.Encoder;
 
 namespace QV.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QRCodePage
     {
-        public ObservableCollection<UserCard> Items { get; set; } = new ObservableCollection<UserCard>();
-
+        private bool isSecondPageActive = true;
         public QRCodePage()
-        {
+        { 
             InitializeComponent();
-            CarouselView.ItemsSource = Items;
-            Scanner.IsAnalyzing = true;
-            Scanner.IsScanning = true;
+            Scanner.IsAnalyzing = false;
+            Scanner.IsScanning = false;
+            Scanner.IsVisible = false;
+            Scanner.Options = MobileBarcodeScanningOptions.Default;
+            Overlay.IsVisible = false;
             Scanner.OnScanResult += OnScanResult;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Items.Clear();
-            App.Data.UserCards.Values.ForEach(e => Items.Add(e));
+            Refresh();
         }
 
-        
+
+        public void Refresh()
+        {
+            var encoder = new Encoder();
+            var encoderRes = encoder.Encode("Egor was here!!!", CorrectionLevel.H);
+            var renderer = new QrRenderer();
+            var qrCodeImgStream = renderer.Draw(encoderRes.Data,
+                                                encoderRes.Version,
+                                                CorrectionLevel.H,
+                                                SKColors.Black,
+                                                new SKColor(239, 51, 36));
+            QRImage.Source = ImageSource.FromStream(() => new BufferedStream(qrCodeImgStream));
+        }
 
         private void OnScanResult(Result result)
         {
             DependencyService.Get<ICanMakeToast>().MakeToast("Готово");
             // GetDataByLink(result.Text);
         }
-        
+
         private void GetDataByLink_OnClicked(object sender, EventArgs e)
         {
             GetDataByLink(LinkRequest.Text);
@@ -66,17 +73,31 @@ namespace QV.Pages
                       RequestsTypes.ReceiveCard);
             if (!answer.Result)
             {
-                DependencyService.Get<ICanMakeToast>().MakeToast( "Карточка не существует");
+                DependencyService.Get<ICanMakeToast>().MakeToast("Карточка не существует");
                 return;
             }
 
             App.Data.AliensCards[answer.Card.ID] = answer.Card;
-            DependencyService.Get<ICanMakeToast>().MakeToast( "Карточка получена");
+            DependencyService.Get<ICanMakeToast>().MakeToast("Карточка получена");
         }
 
-        private void ElementChanged(object sender, CurrentItemChangedEventArgs e)
+        private void PageChanged(object sender, EventArgs e)
         {
-            QRImage.Source = (e.CurrentItem as UserCard)?.GetQrCodeSource();
+            isSecondPageActive = !isSecondPageActive;
+            if (isSecondPageActive)
+            {
+                Scanner.IsScanning = true;
+                Overlay.IsVisible = true;
+                Scanner.IsVisible = true;
+                Scanner.IsAnalyzing = true;
+            }
+            else
+            {
+                Scanner.IsScanning = false;
+                Overlay.IsVisible = false;
+                Scanner.IsVisible = false;
+                Scanner.IsAnalyzing = false;
+            }
         }
     }
 }

@@ -2,8 +2,6 @@
 using QV.RequestsAndAnswers;
 using System;
 using System.Linq;
-using System.Net.Mail;
-using System.Threading;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,6 +22,9 @@ namespace QV.Pages
 
         private async void LoginButtonClicked(object sender, EventArgs e)
         {
+            Application.Current.Properties["Logged"] = true;
+            await Navigation.PopModalAsync();
+            return;
             var answer = Connection.RequestToServer<AuthorizationRequest, AuthorizationAnswer>(new AuthorizationRequest()
             { Login = this.Login.Text, Password = this.Password.Text }, RequestsTypes.Autorization);
             if (!answer.Success)
@@ -40,7 +41,7 @@ namespace QV.Pages
             App.Data.UserCards = data.User_Cards.ToDictionary(c => c.ID);
             Application.Current.Properties["Logged"] = true;
             await Application.Current.SavePropertiesAsync();
-            await DisplayAlert("Успех", "Вы вошли", "OK");
+            DependencyService.Get<ICanMakeToast>().MakeToast("Успех");
             await Navigation.PopModalAsync();
         }
         private void RegistrationButton_Clicked(object sender, EventArgs e)
