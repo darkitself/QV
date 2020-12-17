@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using QRCodeEncoder;
 using QV.Infrastructure;
 using QV.RequestsAndAnswers;
 using SkiaSharp;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 using ZXing;
 using ZXing.Mobile;
-using ZXing.QrCode;
 using Encoder = QV.Infrastructure.Encoder;
-using System.Collections.ObjectModel;
-using Xamarin.Forms.Internals;
 
 namespace QV.Pages
 {
@@ -22,16 +18,18 @@ namespace QV.Pages
     public partial class QRCodePage
     {
         private bool isSecondPageActive = true;
+        public ObservableCollection<UserCard> Items { get; set; } = new ObservableCollection<UserCard>();
+
         public QRCodePage()
         { 
             InitializeComponent();
+            CurrentCard.ItemsSource = Items;
             Scanner.IsAnalyzing = false;
             Scanner.IsScanning = false;
             Scanner.IsVisible = false;
             Scanner.Options = MobileBarcodeScanningOptions.Default;
             Overlay.IsVisible = false;
             Scanner.OnScanResult += OnScanResult;
-            CurrentCard.ItemsSource = Items;
         }
 
         protected override void OnAppearing()
@@ -41,18 +39,7 @@ namespace QV.Pages
             App.Data.UserCards.Values.ForEach(c => Items.Add(c));
             CreateQR(); 
         }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            Refresh();
-        }
-
-
-        public void Refresh()
-        {
-            var encoder = new Encoder();
-            var encoderRes = encoder.Encode("Egor was here!!", CorrectionLevel.H);
+        
         public void CreateQR(string data = null)
         {
             var encoder = new Encoder();
@@ -74,7 +61,7 @@ namespace QV.Pages
 
         private void GetDataByLink_OnClicked(object sender, EventArgs e)
         {
-            GetDataByLink(LinkRequest.Text);
+            GetDataByLink(Link.Text);
         }
 
         private void GetDataByLink(string link)

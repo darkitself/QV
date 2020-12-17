@@ -4,26 +4,35 @@
               xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:forms = "clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
               x:Class = "QV.Pages.QRCodePage"
-              CurrentPageChanged="PageChanged">
+              CurrentPageChanged = "PageChanged">
     <ContentPage BackgroundColor = "{DynamicResource DarkBlue}">
         <ContentPage.Content>
             <Grid>
                 <Image Style = "{DynamicResource BackGroundImageStyle}" />
                 <StackLayout HorizontalOptions = "Center"
                              VerticalOptions = "Center">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text = "Текущая визитка: " TextColor = "{DynamicResource AlfaBrandRed}"/>
-                        <Picker x:Name="CurrentCard" WidthRequest="200" SelectedIndexChanged="CurrentCard_SelectedIndexChanged" ItemDisplayBinding="{Binding Card_Name}"/>
-                    </StackLayout>
-                    <Entry x:Name="Link" IsEnabled="False" Placeholder="Здесь будет ссылка на визитку"/>
-                    <Image x:Name="QRImage"
-                           HeightRequest="300"
-                           WidthRequest="300"/>
+                    <Label Text = "Текущая визитка:"
+                           HorizontalOptions="Center"
+                           Style="{DynamicResource LabelStyle}" />
+                    <Picker x:Name = "CurrentCard"
+                            HorizontalOptions="Center"
+                            TextColor="{DynamicResource AlfaBrandRed}"
+                            BackgroundColor="Transparent"
+                            WidthRequest="200"
+                            SelectedIndexChanged = "CurrentCard_SelectedIndexChanged"
+                            ItemDisplayBinding = "{Binding Card_Name}" />
+                    <Entry x:Name = "Link"
+                           IsEnabled = "False"
+                           Placeholder = "Здесь будет ссылка на визитку" />
+                    <Image x:Name = "QRImage"
+                           HeightRequest = "300"
+                           WidthRequest = "300" />
                 </StackLayout>
             </Grid>
         </ContentPage.Content>
     </ContentPage>
-    <ContentPage x:Name="ScannerPage" BackgroundColor = "{DynamicResource DarkBlue}">
+    <ContentPage x:Name = "ScannerPage"
+                 BackgroundColor = "{DynamicResource DarkBlue}">
         <ContentPage.Content>
             <Grid>
                 <Image Style = "{DynamicResource BackGroundImageStyle}" />
