@@ -195,7 +195,6 @@ namespace QV.Infrastructure
    
         private EncodingType GetEncodingType(string str)
         {
-            
             return EncodingType.Byte;
         }
         

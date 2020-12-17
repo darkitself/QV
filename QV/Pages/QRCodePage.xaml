@@ -3,8 +3,7 @@
 <CarouselPage xmlns = "http://xamarin.com/schemas/2014/forms"
               xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:forms = "clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
-              x:Class = "QV.Pages.QRCodePage"
-              CurrentPageChanged = "PageChanged">
+              x:Class = "QV.Pages.QRCodePage">
     <ContentPage BackgroundColor = "{DynamicResource DarkBlue}">
         <ContentPage.Content>
             <Grid>
@@ -12,18 +11,17 @@
                 <StackLayout HorizontalOptions = "Center"
                              VerticalOptions = "Center">
                     <Label Text = "Текущая визитка:"
-                           HorizontalOptions="Center"
-                           Style="{DynamicResource LabelStyle}" />
+                           HorizontalOptions = "Center"
+                           Style = "{DynamicResource LabelStyle}" />
                     <Picker x:Name = "CurrentCard"
-                            HorizontalOptions="Center"
-                            TextColor="{DynamicResource AlfaBrandRed}"
-                            BackgroundColor="Transparent"
-                            WidthRequest="200"
+                            HorizontalOptions = "Center"
+                            TextColor = "{DynamicResource AlfaBrandRed}"
+                            BackgroundColor = "Transparent"
+                            WidthRequest = "200"
                             SelectedIndexChanged = "CurrentCard_SelectedIndexChanged"
                             ItemDisplayBinding = "{Binding Card_Name}" />
-                    <Entry x:Name = "Link"
-                           IsEnabled = "False"
-                           Placeholder = "Здесь будет ссылка на визитку" />
+                    <Label x:Name = "Link"
+                           HorizontalOptions = "Center" />
                     <Image x:Name = "QRImage"
                            HeightRequest = "300"
                            WidthRequest = "300" />
@@ -36,13 +34,28 @@
         <ContentPage.Content>
             <Grid>
                 <Image Style = "{DynamicResource BackGroundImageStyle}" />
-                <forms:ZXingScannerView x:Name = "Scanner"
-                                        HeightRequest = "500"
-                                        WidthRequest = "300" />
-                <forms:ZXingDefaultOverlay x:Name = "Overlay"
-                                           HeightRequest = "500"
-                                           WidthRequest = "300"
-                                           TopText = "Put your phone on barcode" />
+                <StackLayout Orientation="Vertical"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center">
+                    <StackLayout Orientation = "Horizontal">
+                        <Entry x:Name = "LinkEntry"
+                               TextColor = "{DynamicResource AlfaBrandRed}"
+                               Placeholder = "Введите ссылку на визитку"
+                               PlaceholderColor = "White" />
+                        <ImageButton x:Name = "SearchButton"
+                                     Source = "search.png"
+                                     WidthRequest = "30"
+                                     HeightRequest = "30"
+                                     BackgroundColor = "Transparent"
+                                     Clicked = "GetDataByLink_OnClicked" />
+                    </StackLayout>
+                    <Button x:Name = "ScanButton"
+                            HorizontalOptions = "Center"
+                            VerticalOptions = "Center"
+                            Text = "Сканировать"
+                            Style = "{DynamicResource RedButtonStyle}"
+                            Clicked = "ScanButton_OnClicked" />
+                </StackLayout>
             </Grid>
         </ContentPage.Content>
     </ContentPage>

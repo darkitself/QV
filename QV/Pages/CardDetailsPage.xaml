@@ -21,6 +21,11 @@
                            Aspect = "AspectFill"
                            BackgroundColor = "Transparent" />
                 </Frame>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Egor Alekseevich"
+                    Style="{DynamicResource LabelStyle}"
+                    />
                 <Grid IsVisible = "{Binding Phone_Number, Converter={StaticResource Converter}}">
                     <StackLayout BackgroundColor = "#041222"
                                  Opacity = "0.5" />
@@ -39,7 +44,7 @@
                                      HorizontalOptions = "EndAndExpand"
                                      Source = "copy.png"
                                      BackgroundColor = "Transparent"
-                                     Clicked = "NumberCopy" />
+                                     Clicked = "NumberCopy"/>
                     </StackLayout>
                 </Grid>
                 <Grid IsVisible="{Binding Email, Converter={StaticResource Converter}}">

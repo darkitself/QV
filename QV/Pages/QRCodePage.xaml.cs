@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.IO;
+using System.Reflection;
 using QRCodeEncoder;
 using QV.Infrastructure;
 using QV.RequestsAndAnswers;
@@ -10,6 +12,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 using ZXing;
 using ZXing.Mobile;
+using ZXing.Net.Mobile.Forms;
 using Encoder = QV.Infrastructure.Encoder;
 
 namespace QV.Pages
@@ -17,19 +20,36 @@ namespace QV.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QRCodePage
     {
-        private bool isSecondPageActive = true;
-        public ObservableCollection<UserCard> Items { get; set; } = new ObservableCollection<UserCard>();
+        private bool isScannerOpen = false;
+        private readonly MobileBarcodeScanningOptions options = new MobileBarcodeScanningOptions
+                                                                {
+                                                                    AutoRotate = true,
+                                                                    TryHarder = true,
+                                                                    DisableAutofocus = false,
+                                                                    UseNativeScanning = true,
+                                                                    TryInverted = true,
+                                                                    PossibleFormats = new []
+                                                                        {
+                                                                            BarcodeFormat.QR_CODE
+                                                                        }
+                                                                };
+        public ObservableCollection<UserCard> Items { get; set; } =
+            new ObservableCollection<UserCard>();
 
         public QRCodePage()
-        { 
+        {
             InitializeComponent();
             CurrentCard.ItemsSource = Items;
-            Scanner.IsAnalyzing = false;
-            Scanner.IsScanning = false;
-            Scanner.IsVisible = false;
-            Scanner.Options = MobileBarcodeScanningOptions.Default;
-            Overlay.IsVisible = false;
-            Scanner.OnScanResult += OnScanResult;
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            if (isScannerOpen)
+            {
+                isScannerOpen = false;
+                Navigation.PopModalAsync();
+            }
+            return base.OnBackButtonPressed();
         }
 
         protected override void OnAppearing()
@@ -37,9 +57,9 @@ namespace QV.Pages
             base.OnAppearing();
             Items.Clear();
             App.Data.UserCards.Values.ForEach(c => Items.Add(c));
-            CreateQR(); 
+            CreateQR();
         }
-        
+
         public void CreateQR(string data = null)
         {
             var encoder = new Encoder();
@@ -49,13 +69,14 @@ namespace QV.Pages
                                                 encoderRes.Version,
                                                 CorrectionLevel.H,
                                                 SKColors.Black,
-                                                new SKColor(239,51,36));
+                                                new SKColor(239, 51, 36));
             QRImage.Source = ImageSource.FromStream(() => new BufferedStream(qrCodeImgStream));
         }
 
         private void OnScanResult(Result result)
         {
-            DependencyService.Get<ICanMakeToast>().MakeToast("Готово");
+            isScannerOpen = false;
+            Navigation.PopModalAsync();
             // GetDataByLink(result.Text);
         }
 
@@ -75,9 +96,8 @@ namespace QV.Pages
 
             var answer =
                 Connection
-                    .RequestToServer<GetCardRequest, GetCardAnswer
-                    >(new GetCardRequest {User_ID = App.Data.CurrentUser.ID, Card_ID = Convert.ToInt64(link)},
-                      RequestsTypes.ReceiveCard);
+                    .RequestToServer<GetCardRequest, GetCardAnswer>(new GetCardRequest {User_ID = App.Data.CurrentUser.ID, Card_ID = Convert.ToInt64(link)},
+                          RequestsTypes.ReceiveCard);
             if (!answer.Result)
             {
                 DependencyService.Get<ICanMakeToast>().MakeToast("Карточка не существует");
@@ -87,30 +107,23 @@ namespace QV.Pages
             App.Data.AliensCards[answer.Card.ID] = answer.Card;
             DependencyService.Get<ICanMakeToast>().MakeToast("Карточка получена");
         }
-
-        private void PageChanged(object sender, EventArgs e)
-        {
-            isSecondPageActive = !isSecondPageActive;
-            if (isSecondPageActive)
-            {
-                Scanner.IsScanning = true;
-                Overlay.IsVisible = true;
-                Scanner.IsVisible = true;
-                Scanner.IsAnalyzing = true;
-            }
-            else
-            {
-                Scanner.IsScanning = false;
-                Overlay.IsVisible = false;
-                Scanner.IsVisible = false;
-                Scanner.IsAnalyzing = false;
-            }
-        }
+        
 
         private void CurrentCard_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Link.Text = ((UserCard)CurrentCard.ItemsSource[CurrentCard.SelectedIndex]).ID.ToString();
+            Link.Text =
+                ((UserCard) CurrentCard.ItemsSource[CurrentCard.SelectedIndex]).ID.ToString();
             CreateQR(Link.Text);
+        }
+
+        private async void ScanButton_OnClicked(object sender, EventArgs e)
+        {
+            var page = new ZXingScannerPage(options);
+            page.IsAnalyzing = true;
+            page.IsScanning = true;
+            page.OnScanResult += OnScanResult;
+            await Navigation.PushModalAsync(page);
+            isScannerOpen = true;
         }
     }
 }
