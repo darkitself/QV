@@ -36,7 +36,7 @@ namespace QV.Pages
         public void Refresh()
         {
             var encoder = new Encoder();
-            var encoderRes = encoder.Encode("Egor was here!!!", CorrectionLevel.H);
+            var encoderRes = encoder.Encode("Egor was here!!", CorrectionLevel.H);
             var renderer = new QrRenderer();
             var qrCodeImgStream = renderer.Draw(encoderRes.Data,
                                                 encoderRes.Version,

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using QV.Infrastructure;
+using ZXing;
 
 
 namespace QRCodeEncoder
@@ -14,8 +15,7 @@ namespace QRCodeEncoder
                            SKColor squaresColor)
         {
             var img = GetQrCodeArray(bytes, ver, level);
-
-            var scale = 10;
+            var scale = 100;
             var dx = 0;
             var dy = 0;
 

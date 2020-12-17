@@ -195,10 +195,7 @@ namespace QV.Infrastructure
    
         private EncodingType GetEncodingType(string str)
         {
-            if (str.All(char.IsDigit))
-                return EncodingType.Numeric; 
-            if (str.All(x => AlfanumericCodes.ContainsKey(x)))
-                return EncodingType.Alphanumeric; 
+            
             return EncodingType.Byte;
         }
         
