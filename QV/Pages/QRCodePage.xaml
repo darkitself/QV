@@ -9,37 +9,16 @@
         <ContentPage.Content>
             <Grid>
                 <Image Style = "{DynamicResource BackGroundImageStyle}" />
-                <StackLayout HorizontalOptions = "FillAndExpand"
-                             VerticalOptions = "FillAndExpand"
-                             Padding="20">
-                    <StackLayout Orientation = "Horizontal"
-                                 VerticalOptions = "Start"
-                                 HorizontalOptions = "Center">
-                        <Entry x:Name = "LinkRequest"
-                               VerticalOptions = "Start"
-                               BackgroundColor = "{DynamicResource TextDarkBlue}"
-                               TextColor = "Firebrick"
-                               Placeholder = "Поиск визитки"
-                               PlaceholderColor = "LightSteelBlue"
-                               WidthRequest = "350" />
-                        <ImageButton Source = "search.png"
-                                     WidthRequest = "30"
-                                     HeightRequest = "30"
-                                     BackgroundColor = "Transparent"
-                                     Clicked = "GetDataByLink_OnClicked" />
+                <StackLayout HorizontalOptions = "Center"
+                             VerticalOptions = "Center">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text = "Текущая визитка: " TextColor = "{DynamicResource AlfaBrandRed}"/>
+                        <Picker x:Name="CurrentCard" WidthRequest="200" SelectedIndexChanged="CurrentCard_SelectedIndexChanged" ItemDisplayBinding="{Binding Card_Name}"/>
                     </StackLayout>
-                    <Label Text = "Ваши данные"
-                           TextColor = "{DynamicResource AlfaBrandRed}"
-                           HorizontalOptions = "Center"
-                           VerticalOptions = "Center"
-                           HorizontalTextAlignment = "Center"
-                           VerticalTextAlignment = "Center"
-                           FontSize = "Large" />
-                    <Image x:Name = "QRImage"
-                           VerticalOptions = "End"
-                           HorizontalOptions = "Center"
-                           HeightRequest = "300"
-                           WidthRequest = "300" />
+                    <Entry x:Name="Link" IsEnabled="False" Placeholder="Здесь будет ссылка на визитку"/>
+                    <Image x:Name="QRImage"
+                           HeightRequest="300"
+                           WidthRequest="300"/>
                 </StackLayout>
             </Grid>
         </ContentPage.Content>

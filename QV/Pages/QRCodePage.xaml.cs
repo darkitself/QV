@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using QRCodeEncoder;
 using QV.Infrastructure;
@@ -8,6 +11,10 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing;
 using ZXing.Mobile;
+using ZXing.QrCode;
+using Encoder = QV.Infrastructure.Encoder;
+using System.Collections.ObjectModel;
+using Xamarin.Forms.Internals;
 
 namespace QV.Pages
 {
@@ -24,6 +31,15 @@ namespace QV.Pages
             Scanner.Options = MobileBarcodeScanningOptions.Default;
             Overlay.IsVisible = false;
             Scanner.OnScanResult += OnScanResult;
+            CurrentCard.ItemsSource = Items;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Items.Clear();
+            App.Data.UserCards.Values.ForEach(c => Items.Add(c));
+            CreateQR(); 
         }
 
         protected override void OnAppearing()
@@ -37,12 +53,16 @@ namespace QV.Pages
         {
             var encoder = new Encoder();
             var encoderRes = encoder.Encode("Egor was here!!", CorrectionLevel.H);
+        public void CreateQR(string data = null)
+        {
+            var encoder = new Encoder();
+            var encoderRes = encoder.Encode(data ?? "", CorrectionLevel.H);
             var renderer = new QrRenderer();
             var qrCodeImgStream = renderer.Draw(encoderRes.Data,
                                                 encoderRes.Version,
                                                 CorrectionLevel.H,
                                                 SKColors.Black,
-                                                new SKColor(239, 51, 36));
+                                                new SKColor(239,51,36));
             QRImage.Source = ImageSource.FromStream(() => new BufferedStream(qrCodeImgStream));
         }
 
@@ -98,6 +118,12 @@ namespace QV.Pages
                 Scanner.IsVisible = false;
                 Scanner.IsAnalyzing = false;
             }
+        }
+
+        private void CurrentCard_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Link.Text = ((UserCard)CurrentCard.ItemsSource[CurrentCard.SelectedIndex]).ID.ToString();
+            CreateQR(Link.Text);
         }
     }
 }
