@@ -1,6 +1,7 @@
 ﻿using QV.Infrastructure;
 using QV.RequestsAndAnswers;
 using System;
+using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,14 +19,15 @@ namespace QV.Pages
         {
             user = App.Data.CurrentUser;
             BindingContext = user.MainData;
+            if (user.MainData.Image != null && user.MainData.Image.Length != 0)
+                Image.Source = ImageSource.FromStream(() => new MemoryStream(user.MainData.Image));
         }
         private void AcceptButtonClicked(object sender, EventArgs e)
         {
             var newReq = new UpdateUserDataRequest
             {
                 User_ID = App.Data.CurrentUser.ID,
-                Image = user.MainData.Image,
-                Image_Ext = user.MainData.Image_Ext
+                Image = user.MainData.Image
             };
 
             foreach (var p in newReq.GetType().GetProperties())
@@ -54,7 +56,12 @@ namespace QV.Pages
         {
             var streamAsync = await DependencyService.Get<IPhotoPickerService>().GetImageStreamAsync();
             if (streamAsync != null)
-                Image.Source = ImageSource.FromStream(() => streamAsync);
+            {
+                var m = new MemoryStream();
+                streamAsync.CopyTo(m);
+                Image.Source = ImageSource.FromStream(() => new BufferedStream(streamAsync));
+                user.MainData.Image = m.ToArray();
+            }
         }
 
         private async void Logout_OnClicked(object sender, EventArgs e)

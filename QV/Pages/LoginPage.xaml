@@ -20,6 +20,8 @@
                        Margin = "20"
                        Aspect = "AspectFit" />
                 <Entry x:Name = "Login"
+                       TextColor = "{DynamicResource AlfaBrandRed}"
+                       PlaceholderColor = "White"
                        Style = "{DynamicResource EntryStyle}"
                        Margin = "5"
                        HorizontalOptions = "CenterAndExpand"
@@ -31,6 +33,8 @@
                        Unfocused = "LoginUnfocused" />
 
                 <Entry x:Name = "Password"
+                       TextColor = "{DynamicResource AlfaBrandRed}"
+                       PlaceholderColor = "White"
                        Style = "{DynamicResource EntryStyle}"
                        Margin = "5"
                        HorizontalOptions = "CenterAndExpand"

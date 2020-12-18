@@ -7,6 +7,7 @@ using QRCodeEncoder;
 using QV.Infrastructure;
 using QV.RequestsAndAnswers;
 using SkiaSharp;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
@@ -26,7 +27,7 @@ namespace QV.Pages
                                                                     AutoRotate = true,
                                                                     TryHarder = true,
                                                                     DisableAutofocus = false,
-                                                                    UseNativeScanning = true,
+                                                                    UseNativeScanning = false,
                                                                     TryInverted = true,
                                                                     PossibleFormats = new []
                                                                         {
@@ -40,6 +41,7 @@ namespace QV.Pages
         {
             InitializeComponent();
             CurrentCard.ItemsSource = Items;
+            CreateQR();
         }
 
         protected override bool OnBackButtonPressed()
@@ -54,10 +56,9 @@ namespace QV.Pages
 
         protected override void OnAppearing()
         {
-            base.OnAppearing();
             Items.Clear();
             App.Data.UserCards.Values.ForEach(c => Items.Add(c));
-            CreateQR();
+            base.OnAppearing();
         }
 
         public void CreateQR(string data = null)
@@ -77,12 +78,12 @@ namespace QV.Pages
         {
             isScannerOpen = false;
             Navigation.PopModalAsync();
-            // GetDataByLink(result.Text);
+            GetDataByLink(result.Text);
         }
 
         private void GetDataByLink_OnClicked(object sender, EventArgs e)
         {
-            GetDataByLink(Link.Text);
+            GetDataByLink(LinkEntry.Text);
         }
 
         private void GetDataByLink(string link)
@@ -107,13 +108,13 @@ namespace QV.Pages
             App.Data.AliensCards[answer.Card.ID] = answer.Card;
             DependencyService.Get<ICanMakeToast>().MakeToast("Карточка получена");
         }
-        
 
         private void CurrentCard_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Link.Text =
-                ((UserCard) CurrentCard.ItemsSource[CurrentCard.SelectedIndex]).ID.ToString();
-            CreateQR(Link.Text);
+            if (CurrentCard.SelectedIndex != -1)
+            {
+                CreateQR(((UserCard)CurrentCard.ItemsSource[CurrentCard.SelectedIndex]).ID.ToString());
+            }
         }
 
         private async void ScanButton_OnClicked(object sender, EventArgs e)
@@ -124,6 +125,17 @@ namespace QV.Pages
             page.OnScanResult += OnScanResult;
             await Navigation.PushModalAsync(page);
             isScannerOpen = true;
+        }
+
+        private async void CopyLinkButton_Clicked(object sender, EventArgs e)
+        {
+            if (CurrentCard.SelectedIndex == -1)
+            {
+                DependencyService.Get<ICanMakeToast>().MakeToast("Визитка не выбрана");
+                return;
+            }
+            await Clipboard.SetTextAsync(((UserCard)CurrentCard.ItemsSource[CurrentCard.SelectedIndex]).ID.ToString());
+            DependencyService.Get<ICanMakeToast>().MakeToast("Ссылка скопирована");
         }
     }
 }

@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="AndroidToastNotifications.cs" />
     <Compile Include="ContactSaver.cs" />
+    <Compile Include="ImageButtonLongClickRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="PhotoPickerService.cs" />
     <Compile Include="Resources\Resource.designer.cs" />

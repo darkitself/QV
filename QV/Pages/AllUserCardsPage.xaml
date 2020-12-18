@@ -2,10 +2,17 @@
 
 <ContentPage xmlns = "http://xamarin.com/schemas/2014/forms"
              xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local = "clr-namespace:QV.Infrastructure"
              xmlns:qv = "clr-namespace:QV;assembly=QV"
              x:Class = "QV.Pages.AllUserCardsPage"
              BackgroundColor = "{DynamicResource DarkBlue}">
-
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageToStreamConverter x:Key="imageToStreamConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <Grid>
             <Image Style = "{DynamicResource BackGroundImageStyle}" />
@@ -22,17 +29,6 @@
                                          HorizontalOptions = "FillAndExpand"
                                          VerticalOptions="FillAndExpand"
                                          Padding = "10">
-                                <Frame IsClippedToBounds = "True"
-                                       Padding = "0"
-                                       WidthRequest = "75"
-                                       CornerRadius = "38"
-                                       HorizontalOptions = "Center"
-                                       VerticalOptions = "Center"
-                                       HeightRequest = "75">
-                                    <Image Source = "me.jpg"
-                                           Aspect = "AspectFill"
-                                           BackgroundColor = "Transparent" />
-                                </Frame>
                                 <StackLayout HorizontalOptions = "StartAndExpand"
                                              VerticalOptions = "CenterAndExpand"
                                              Padding="10">

@@ -22,7 +22,7 @@ namespace QV.Pages
             {
                 var checkBox = this.FindByName<CheckBox>(p.Name);
                 if (checkBox != null)
-                    checkBox.IsEnabled = p.GetValue(data) != null && p.GetValue(data) as string != "";
+                    checkBox.IsEnabled = p.GetValue(data) != null && (p.Name == "Image" ? (p.GetValue(data) as byte[]).Length != 0 : p.GetValue(data) as string != "");
             }
         }
 
@@ -43,6 +43,7 @@ namespace QV.Pages
                 }
                 var res = Connection.RequestToServer<CreateCardRequest, CreateCardAnswer>(req, RequestsTypes.CreateUserCard);
                 App.Data.UserCards[bc.ID = res.ID] = bc;
+                DependencyService.Get<ICanMakeToast>().MakeToast("Карточка создана");
             }
         }
 

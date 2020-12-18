@@ -28,8 +28,8 @@ namespace QRCodeEncoder
             {
                canvas.Clear(backgroudImg);
 
-                var paint1 = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Fill, Color = SKColors.DeepSkyBlue };
-                var paint2 = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Fill, Color = squaresColor };
+                var paint1 = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Fill, Color = SKColors.White };
+                var paint2 = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Fill, Color = SKColors.White };
                 var paint3 = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Fill, Color = SKColors.Gold };
 
                 for (var x = 0; x <= img.GetUpperBound(0); x++)

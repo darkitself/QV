@@ -15,7 +15,6 @@
         public string Instagram { get; set; }
         public string Info { get; set; }
         public byte[] Image { get; set; }
-        public string Image_Ext { get; set; }
-        public string FullName => $"{Name} {Surname} {Patronymic}";
+        public string FullName => $"{Surname} {Name} {Patronymic}";
     }
 }

@@ -65,7 +65,8 @@ namespace QV.Infrastructure
             var size = new byte[4];
             stream.Read(size, 0, 4);
             var data = new byte[BitConverter.ToInt32(size, 0)];
-            for (int i = 0; i < data.Length;)
+            int i = 0;
+            while (i < data.Length)
                 if (stream.DataAvailable)
                 {
                     stream.Read(data, i, 1);

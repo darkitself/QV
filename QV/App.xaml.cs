@@ -10,7 +10,7 @@ namespace QV
         public App()
         {
             Resources["BackgroundImageSource"] = "m.jpg";
-            Resources["Converter"] = new Converter();
+            Resources["Converter"] = new DataToBoolConverter();
             Data = new AppData();
             InitializeComponent();
             MainPage = new MainPage();
@@ -37,6 +37,7 @@ namespace QV
                 [1] = new AlienCard
                 {
                     ID = 1,
+                    Card_Name = "Мальчик красивый",
                     Name = "Egor",
                     Surname = "Chusov",
                     Email = "chusoveg17@gmail.com",
@@ -76,7 +77,7 @@ namespace QV
                     Surname = true,
                     Name = true,
                     Patronymic = true,
-                    Image = false,
+                    Image = true,
                     Email = true,
                     Phone_Number = false,
                     Telegram = true,
@@ -93,7 +94,7 @@ namespace QV
                     Surname = true,
                     Name = true,
                     Patronymic = false,
-                    Image = false,
+                    Image = true,
                     Email = true,
                     Phone_Number = false,
                     Telegram = true,

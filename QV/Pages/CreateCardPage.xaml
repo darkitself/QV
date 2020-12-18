@@ -35,61 +35,14 @@
                               Color = "{DynamicResource AlfaBrandRed}"
                               HorizontalOptions = "EndAndExpand" />
                 </StackLayout>
-
                 <StackLayout Orientation = "Horizontal">
-                    <Label Text = "Email"
+                    <Label Text = "Image"
                            Style = "{DynamicResource LabelStyle}" />
-                    <CheckBox x:Name = "Email"
+                    <CheckBox x:Name = "Image"
                               IsChecked = "False"
                               Color = "{DynamicResource AlfaBrandRed}"
                               HorizontalOptions = "EndAndExpand" />
                 </StackLayout>
-
-                <StackLayout Orientation = "Horizontal">
-                    <Label Text = "Phone_Number"
-                           Style = "{DynamicResource LabelStyle}" />
-                    <CheckBox x:Name = "Phone_Number"
-                              IsChecked = "False"
-                              Color = "{DynamicResource AlfaBrandRed}"
-                              HorizontalOptions = "EndAndExpand" />
-                </StackLayout>
-
-                <StackLayout Orientation = "Horizontal">
-                    <Label Text = "Telegram"
-                           Style = "{DynamicResource LabelStyle}" />
-                    <CheckBox x:Name = "Telegram"
-                              IsChecked = "False"
-                              Color = "{DynamicResource AlfaBrandRed}"
-                              HorizontalOptions = "EndAndExpand" />
-                </StackLayout>
-
-                <StackLayout Orientation = "Horizontal">
-                    <Label Text = "VK"
-                           Style = "{DynamicResource LabelStyle}" />
-                    <CheckBox x:Name = "VK"
-                              IsChecked = "False"
-                              Color = "{DynamicResource AlfaBrandRed}"
-                              HorizontalOptions = "EndAndExpand" />
-                </StackLayout>
-
-                <StackLayout Orientation = "Horizontal">
-                    <Label Text = "Facebook"
-                           Style = "{DynamicResource LabelStyle}" />
-                    <CheckBox x:Name = "Facebook"
-                              IsChecked = "False"
-                              Color = "{DynamicResource AlfaBrandRed}"
-                              HorizontalOptions = "EndAndExpand" />
-                </StackLayout>
-                
-                <StackLayout Orientation = "Horizontal">
-                    <Label Text = "Instagram"
-                           Style = "{DynamicResource LabelStyle}" />
-                    <CheckBox x:Name = "Instagram"
-                              IsChecked = "False"
-                              Color = "{DynamicResource AlfaBrandRed}"
-                              HorizontalOptions = "EndAndExpand" />
-                </StackLayout>
-                
                 <StackLayout Orientation = "Horizontal">
                     <Label Text = "Info"
                            Style = "{DynamicResource LabelStyle}" />
@@ -97,6 +50,121 @@
                               IsChecked = "False"
                               Color = "{DynamicResource AlfaBrandRed}"
                               HorizontalOptions = "EndAndExpand" />
+                </StackLayout>
+                <StackLayout Orientation = "Horizontal" HorizontalOptions="CenterAndExpand">
+                    <StackLayout Orientation = "Vertical">
+                        <Grid HorizontalOptions="CenterAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Image Source = "gmail.png"
+                                WidthRequest = "50"
+                                HeightRequest = "50" Grid.Column="0" Grid.Row="0" />
+                            <CheckBox x:Name = "Email"
+                              IsChecked = "False"
+                              Color = "{DynamicResource AlfaBrandRed}"
+                              HorizontalOptions = "CenterAndExpand"  Grid.Column="0" Grid.Row="1" />
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Orientation = "Vertical">
+                        <Grid VerticalOptions="CenterAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Image Source = "telephone.png"
+                            WidthRequest = "50"
+                            HeightRequest = "50" Grid.Column="0" Grid.Row="0" />
+                            <CheckBox x:Name = "Phone_Number"
+                              IsChecked = "False"
+                              Color = "{DynamicResource AlfaBrandRed}"
+                              HorizontalOptions = "CenterAndExpand" Grid.Column="0" Grid.Row="1" />
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Orientation = "Vertical">
+                        <Grid VerticalOptions="CenterAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Image Source = "telegram.png"
+                            WidthRequest = "50"
+                            HeightRequest = "50" Grid.Column="0" Grid.Row="0" />
+                            <CheckBox x:Name = "Telegram"
+                              IsChecked = "False"
+                              Color = "{DynamicResource AlfaBrandRed}"
+                              HorizontalOptions = "CenterAndExpand" Grid.Column="0" Grid.Row="1" />
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Orientation = "Vertical">
+                        <Grid VerticalOptions="CenterAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Image Source = "vk.png"
+                            WidthRequest = "50"
+                            HeightRequest = "50" Grid.Column="0" Grid.Row="0" />
+                            <CheckBox x:Name = "VK"
+                              IsChecked = "False"
+                              Color = "{DynamicResource AlfaBrandRed}"
+                              HorizontalOptions = "CenterAndExpand" Grid.Column="0" Grid.Row="1" />
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Orientation = "Vertical">
+                        <Grid VerticalOptions="CenterAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Image Source = "facebook.png"
+                            WidthRequest = "50"
+                            HeightRequest = "50" Grid.Column="0" Grid.Row="0" />
+                            <CheckBox x:Name = "Facebook"
+                              IsChecked = "False"
+                              Color = "{DynamicResource AlfaBrandRed}"
+                              HorizontalOptions = "CenterAndExpand" Grid.Column="0" Grid.Row="1" />
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Orientation = "Vertical">
+                        <Grid VerticalOptions="CenterAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Image Source = "instagram.png"
+                            WidthRequest = "50"
+                            HeightRequest = "50" Grid.Column="0" Grid.Row="0" />
+                            <CheckBox x:Name = "Instagram"
+                              IsChecked = "False"
+                              Color = "{DynamicResource AlfaBrandRed}"
+                              HorizontalOptions = "CenterAndExpand" Grid.Column="0" Grid.Row="1" />
+                        </Grid>
+                    </StackLayout>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">

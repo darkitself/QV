@@ -18,6 +18,8 @@
                        VerticalTextAlignment = "Center"
                        FontSize = "Large" />
                 <Entry x:Name = "Login"
+                       TextColor = "{DynamicResource AlfaBrandRed}"
+                       PlaceholderColor = "White"
                        Placeholder = "Логин"
                        Style = "{DynamicResource EntryStyle}"
                        Margin="5"
@@ -27,6 +29,8 @@
                        WidthRequest = "300"
                        Keyboard = "Email" />
                 <Entry x:Name = "Password"
+                       TextColor = "{DynamicResource AlfaBrandRed}"
+                       PlaceholderColor = "White"
                        Placeholder = "Пароль"
                        Margin="5"
                        Style = "{DynamicResource EntryStyle}"
@@ -38,6 +42,8 @@
                        Keyboard = "Default" />
 
                 <Entry x:Name = "ConfirmPassword"
+                       TextColor = "{DynamicResource AlfaBrandRed}"
+                       PlaceholderColor = "White"
                        Placeholder = "Повторите пароль"
                        Style = "{DynamicResource EntryStyle}"
                        Margin="5"

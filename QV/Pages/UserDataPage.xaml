@@ -2,8 +2,15 @@
 
 <ContentPage xmlns = "http://xamarin.com/schemas/2014/forms"
              xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local = "clr-namespace:QV.Infrastructure"
              x:Class = "QV.Pages.UserDataPage"
              BackgroundColor = "{DynamicResource DarkBlue}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageToStreamConverter x:Key="imageConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <Grid>
             <Image Style = "{DynamicResource BackGroundImageStyle}" />
@@ -13,7 +20,7 @@
                                 WidthRequest="500"
                                 VerticalOptions="FillAndExpand"
                                 HorizontalOptions="FillAndExpand">
-                   <Frame IsClippedToBounds = "True"
+                   <Frame IsClippedToBounds = "False"
                           Padding = "0"
                           WidthRequest = "150"
                           CornerRadius = "30"
@@ -21,7 +28,7 @@
                           VerticalOptions = "Start"
                           HeightRequest = "150">
                           <ImageButton x:Name="Image"
-                                 Source = "me.jpg"
+                                       Source="{Binding Image, Converter={StaticResource imageConverter}}"
                                  Aspect = "AspectFill"
                                  BackgroundColor = "Transparent"
                                  Clicked="MainImageClicked"/>
@@ -46,22 +53,24 @@
                                        Source="accept.png"/>
                           </Grid>
                    </StackLayout>
-                   <Entry x:Name = "Surname"
-                          TextColor = "White"
-                          Text = "{Binding Surname}"
-                          Placeholder = "Surname"
-                          
-                          Unfocused="EntryTextChanged"
-                          WidthRequest = "300" />
+                <Entry x:Name = "Surname"
+                       TextColor = "{DynamicResource AlfaBrandRed}"
+                       PlaceholderColor = "White"
+                       Text = "{Binding Surname}"
+                       Placeholder = "Surname"
+                       Unfocused="EntryTextChanged"
+                       WidthRequest = "300" />
                 <Entry x:Name = "Name"
-                       TextColor = "White"
+                       TextColor = "{DynamicResource AlfaBrandRed}"
+                       PlaceholderColor = "White"
                        Unfocused="EntryTextChanged"
 
                        Text = "{Binding Name}"
                        Placeholder = "Name"
                        WidthRequest = "300" />
                 <Entry x:Name = "Patronymic"
-                       TextColor = "White"
+                       TextColor = "{DynamicResource AlfaBrandRed}"
+                       PlaceholderColor = "White"
                        Unfocused="EntryTextChanged"
 
                        Text = "{Binding Patronymic}"
@@ -69,7 +78,8 @@
                        WidthRequest = "300" />
                 <Entry x:Name = "Email"
                        Text = "{Binding Email}"
-                       TextColor = "White"
+                       TextColor = "{DynamicResource AlfaBrandRed}"
+                       PlaceholderColor = "White"
                        Unfocused="EntryTextChanged"
 
                        Placeholder = "Email"
@@ -78,20 +88,21 @@
                        Text = "{Binding Phone_Number}"
                        Placeholder = "Phone_Number"
                        Unfocused="EntryTextChanged"
-
-                       TextColor = "White"
+                       TextColor = "{DynamicResource AlfaBrandRed}"
+                       PlaceholderColor = "White"
                        WidthRequest = "300" />
                 <Entry x:Name = "Telegram"
                        Text = "{Binding Telegram}"
                        Placeholder = "Telegram"
                        Unfocused="EntryTextChanged"
-
-                       TextColor = "White"
+                       TextColor = "{DynamicResource AlfaBrandRed}"
+                       PlaceholderColor = "White"
                        WidthRequest = "300" />
                 <Entry x:Name = "VK"
                        Text = "{Binding VK}"
                        Placeholder = "VK"
-                       TextColor = "White"
+                       TextColor = "{DynamicResource AlfaBrandRed}"
+                       PlaceholderColor = "White"
                        Unfocused="EntryTextChanged"
 
                        WidthRequest = "300" />
@@ -99,22 +110,22 @@
                        Text = "{Binding Facebook}"
                        Placeholder = "Facebook"
                        Unfocused="EntryTextChanged"
-
-                       TextColor = "White"
+                       TextColor = "{DynamicResource AlfaBrandRed}"
+                       PlaceholderColor = "White"
                        WidthRequest = "300" />
                 <Entry x:Name = "Instagram"
                        Text = "{Binding Instagram}"
                        Placeholder = "Instagram"
                        Unfocused="EntryTextChanged"
-
-                       TextColor = "White"
+                       TextColor = "{DynamicResource AlfaBrandRed}"
+                       PlaceholderColor = "White"
                        WidthRequest = "300" />
                 <Editor x:Name = "Info"
                         Text = "{Binding Info}"
                         Placeholder = "Info"
-                        Unfocused="EntryTextChanged"
-
-                        TextColor = "White"
+                        Unfocused="EntryTextChanged" 
+                        TextColor = "{DynamicResource AlfaBrandRed}"
+                        PlaceholderColor = "White"
                         WidthRequest = "300" />
             </StackLayout>
         </Grid>

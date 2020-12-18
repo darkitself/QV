@@ -1,5 +1,8 @@
 ﻿
 
+using System.IO;
+using Xamarin.Forms;
+
 namespace QV.Infrastructure
 {
     public class UserData
@@ -15,6 +18,5 @@ namespace QV.Infrastructure
         public string Instagram { get; set; }
         public string Info { get; set; }
         public byte[] Image { get; set; }
-        public string Image_Ext { get; set; }
     }
 }

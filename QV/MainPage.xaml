@@ -38,8 +38,9 @@
                    BasedOn = "{StaticResource BaseStyle}" />
         </ResourceDictionary>
     </Shell.Resources>
-    <TabBar>
-        <Tab Title = "QR код"
+    <TabBar Route="TabBar">
+        <Tab Route="QRCodePage"
+            Title = "QR код"
              Icon = "qr.png">
             <ShellContent ContentTemplate = "{DataTemplate pages:QRCodePage}" />
         </Tab>

@@ -2,9 +2,18 @@
 
 <ContentPage xmlns = "http://xamarin.com/schemas/2014/forms"
              xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local = "clr-namespace:QV.Infrastructure"
              xmlns:qv = "clr-namespace:QV;assembly=QV"
              x:Class = "QV.Pages.AllAliensCardsPage"
              BackgroundColor = "{DynamicResource DarkBlue}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageToBoolConverter x:Key="imageToBoolConverter" />
+            <local:ImageToStreamConverter x:Key="imageToStreamConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
        <Grid>
             <Image Style = "{DynamicResource BackGroundImageStyle}" />
@@ -27,28 +36,22 @@
                                        CornerRadius = "38"
                                        HorizontalOptions = "Center"
                                        VerticalOptions = "Center"
-                                       HeightRequest = "75">
-                                    <Image Source = "me.jpg"
-                                           Aspect = "AspectFill"
-                                           BackgroundColor = "Transparent" />
+                                       HeightRequest = "75"
+                                       IsVisible="{Binding Image, Converter={StaticResource imageToBoolConverter}}">
+                                    <Image Aspect = "AspectFill"
+                                           BackgroundColor = "Transparent"
+                                           Source="{Binding Image, Converter={StaticResource imageToStreamConverter}}" />
                                 </Frame>
                                 <StackLayout HorizontalOptions = "StartAndExpand"
                                              VerticalOptions = "CenterAndExpand"
                                              Padding="10">
+                                    <Label Text = "{Binding Card_Name}"
+                                           TextColor = "{DynamicResource AlfaBrandRed}"
+                                           HorizontalOptions = "Start"
+                                           VerticalOptions = "Center"
+                                           HorizontalTextAlignment = "Start"
+                                           FontSize = "Title" />
                                     <Label Text = "{Binding FullName}"
-                                           TextColor = "{DynamicResource AlfaBrandRed}"
-                                           HorizontalOptions = "Start"
-                                           VerticalOptions = "Center"
-                                           HorizontalTextAlignment = "Start"
-                                           FontSize = "Subtitle" />
-                                    <Label Text = "{Binding Email}"
-                                           TextColor = "{DynamicResource AlfaBrandRed}"
-                                           HorizontalOptions = "Start"
-                                           VerticalOptions = "Center"
-                                           HorizontalTextAlignment = "Start"
-                                           FontSize = "Subtitle" />
-                                    <Label Text = "{Binding Phone_Number}"
-                                           IsVisible="False"
                                            TextColor = "{DynamicResource AlfaBrandRed}"
                                            HorizontalOptions = "Start"
                                            VerticalOptions = "Center"

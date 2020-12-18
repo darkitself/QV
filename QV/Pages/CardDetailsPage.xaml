@@ -3,12 +3,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local = "clr-namespace:QV.Infrastructure"
+             xmlns:elems = "clr-namespace:QV.CustomElements"
              x:Class="QV.Pages.CardDetailsPage"
              BackgroundColor="{DynamicResource DarkBlue}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:DataToBoolConverter x:Key="dataConverter" />
+            <local:FullNameGenerator x:Key="fullNameGenerator" />
+            <local:ImageToStreamConverter x:Key="imageConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
             <Image Style = "{DynamicResource BackGroundImageStyle}" />
             <StackLayout Orientation = "Vertical"
+                         VerticalOptions="FillAndExpand"
                          Margin = "30">
                 <Frame IsClippedToBounds = "True"
                        Padding = "0"
@@ -17,155 +27,73 @@
                        HorizontalOptions = "Center"
                        VerticalOptions = "Start"
                        HeightRequest = "200">
-                    <Image Source = "me.jpg"
+                    <Image x:Name="Image"
                            Aspect = "AspectFill"
-                           BackgroundColor = "Transparent" />
+                           BackgroundColor = "Transparent"
+                           Source="{Binding userData.Image, Converter={StaticResource imageConverter}}" />
                 </Frame>
                 <Label
                     HorizontalOptions="Center"
-                    Text="Egor Alekseevich"
+                    Text="{Binding userData, Converter={StaticResource fullNameGenerator}}"
                     Style="{DynamicResource LabelStyle}"
                     />
-                <Grid IsVisible = "{Binding Phone_Number, Converter={StaticResource Converter}}">
-                    <StackLayout BackgroundColor = "#041222"
-                                 Opacity = "0.5" />
-                    <StackLayout Orientation = "Horizontal">
-                        <ImageButton Source = "telephone.png"
-                                     BackgroundColor = "Transparent"
-                                     WidthRequest = "50"
-                                     HeightRequest = "50"
-                                     Clicked = "TelephoneButtonClicked" />
-                        <Label x:Name = "TelephoneNumber"
-                               Style = "{DynamicResource LabelStyle}"
-                               Text = "{Binding Phone_Number}" />
-                        <ImageButton WidthRequest = "40"
-                                     HeightRequest = "40"
-                                     VerticalOptions = "Center"
-                                     HorizontalOptions = "EndAndExpand"
-                                     Source = "copy.png"
-                                     BackgroundColor = "Transparent"
-                                     Clicked = "NumberCopy"/>
-                    </StackLayout>
-                </Grid>
-                <Grid IsVisible="{Binding Email, Converter={StaticResource Converter}}">
-                    <StackLayout BackgroundColor = "#041222"
-                                 Opacity = "0.5"/>
-                    <StackLayout Orientation = "Horizontal"
-                                 HorizontalOptions="FillAndExpand">
-                        <ImageButton Source = "gmail.png"
-                                     BackgroundColor = "Transparent"
-                                     WidthRequest = "50"
-                                     HeightRequest = "50"
-                                     Clicked = "MailButtonClicked" />
-                        <Label x:Name = "Email"
-                               Style = "{DynamicResource LabelStyle}"
-                               Text = "{Binding Email}" />
-                        <ImageButton WidthRequest = "40"
-                                     HeightRequest = "40"
-                                     VerticalOptions = "Center"
-                                     HorizontalOptions = "EndAndExpand"
-                                     BackgroundColor = "Transparent"
-                                     Source = "copy.png"
-                                     Clicked = "EmailCopy" />
-
-                    </StackLayout>
-                </Grid>
-                <Grid IsVisible = "{Binding VK, Converter={StaticResource Converter}}">
-                    <StackLayout BackgroundColor = "#041222"
-                                 Opacity = "0.5" />
-                    <StackLayout Orientation = "Horizontal"
-                                 HorizontalOptions="FillAndExpand">
-                        <ImageButton Source = "vk.png"
-                                     BackgroundColor = "Transparent"
-                                     WidthRequest = "50"
-                                     HeightRequest = "50"
-                                     Clicked = "VkButtonClicked" />
-                        <Label x:Name = "VkLink"
-                               Style = "{DynamicResource LabelStyle}"
-                               Text = "{Binding VK}" />
-                        <ImageButton WidthRequest = "40"
-                                     HeightRequest = "40"
-                                     VerticalOptions = "Center"
-                                     BackgroundColor = "Transparent"
-                                     HorizontalOptions = "EndAndExpand"
-                                     Source = "copy.png"
-                                     Clicked = "VkCopy" />
-
-                    </StackLayout>
-                </Grid>
-                <Grid IsVisible = "{Binding Facebook, Converter={StaticResource Converter}}">
-                    <StackLayout BackgroundColor = "#041222"
-                                 Opacity = "0.5"/>
-                    <StackLayout Orientation = "Horizontal"
-                                 HorizontalOptions="FillAndExpand">
-                        <ImageButton Source = "facebook.png"
-                                     BackgroundColor = "Transparent"
-                                     WidthRequest = "50"
-                                     HeightRequest = "50"
-                                     Clicked = "FacebookButtonClicked" />
-                        <Label x:Name = "FacebookLink"
-                               Style = "{DynamicResource LabelStyle}"
-                               Text = "{Binding Facebook}" />
-                        <ImageButton WidthRequest = "40"
-                                     HeightRequest = "40"
-                                     VerticalOptions = "Center"
-                                     HorizontalOptions = "EndAndExpand"
-                                     BackgroundColor = "Transparent"
-                                     Source = "copy.png"
-                                     Clicked = "FacebookCopy" />
-                    </StackLayout>
-                </Grid>
-                <Grid IsVisible = "{Binding Telegram, Converter={StaticResource Converter}}">
-                    <StackLayout BackgroundColor = "#041222"
-                                 Opacity = "0.5"/>
-                    <StackLayout Orientation = "Horizontal"
-                                 HorizontalOptions="FillAndExpand">
-                        <ImageButton Source = "telegram.png"
-                                     BackgroundColor = "Transparent"
-                                     WidthRequest = "50"
-                                     HeightRequest = "50"
-                                     Clicked = "TelegramOpen" />
-                        <Label x:Name = "Telegram"
-                               Style = "{DynamicResource LabelStyle}"
-                               Text = "{Binding Telegram}" />
-                        <ImageButton WidthRequest = "40"
-                                     HeightRequest = "40"
-                                     VerticalOptions = "Center"
-                                     HorizontalOptions = "EndAndExpand"
-                                     BackgroundColor = "Transparent"
-                                     Source = "copy.png"
-                                     Clicked = "TelegramCopy" />
-                    </StackLayout>
-                </Grid>
-                <Grid IsVisible = "{Binding Instagram, Converter={StaticResource Converter}}">
-                    <StackLayout BackgroundColor = "#041222"
-                                 Opacity = "0.5"/>
-                    <StackLayout Orientation = "Horizontal"
-                                 HorizontalOptions="FillAndExpand">
-                        <ImageButton Source = "instagram.png"
-                                     BackgroundColor = "Transparent"
-                                     WidthRequest = "50"
-                                     HeightRequest = "50"
-                                     Clicked = "InstagramOpen" />
-                        <Label x:Name = "Instagram"
-                               Style = "{DynamicResource LabelStyle}"
-                               Text = "{Binding Instagram}" />
-                        <ImageButton WidthRequest = "40"
-                                     HeightRequest = "40"
-                                     VerticalOptions = "Center"
-                                     HorizontalOptions = "EndAndExpand"
-                                     BackgroundColor = "Transparent"
-                                     Source = "copy.png"
-                                     Clicked = "InstagramCopy" />
-                    </StackLayout>
-                </Grid>
+                <StackLayout Orientation = "Horizontal" HorizontalOptions="CenterAndExpand">
+                    <elems:LongClickImageButton 
+                            Source = "telephone.png"
+                            BackgroundColor = "Transparent"
+                            WidthRequest = "50"
+                            HeightRequest = "50"
+                            Clicked = "TelephoneButtonClicked"
+                            LongPressActivated="TelephoneButtonLongPress"
+                            IsVisible = "{Binding userData.Phone_Number, Converter={StaticResource dataConverter}}"/>
+                    <elems:LongClickImageButton
+                            Source = "gmail.png"
+                            BackgroundColor = "Transparent"
+                            WidthRequest = "50"
+                            HeightRequest = "50"
+                            Clicked = "EmailButtonClicked"
+                            LongPressActivated="EmailButtonLongPress"
+                            IsVisible = "{Binding userData.Email, Converter={StaticResource dataConverter}}" />
+                    <elems:LongClickImageButton
+                            Source = "vk.png"
+                            BackgroundColor = "Transparent"
+                            WidthRequest = "50"
+                            HeightRequest = "50"
+                            Clicked = "VkButtonClicked"
+                            LongPressActivated="VkButtonLongPress"
+                            IsVisible = "{Binding userData.VK, Converter={StaticResource dataConverter}}" />
+                    <elems:LongClickImageButton
+                            Source = "facebook.png"
+                            BackgroundColor = "Transparent"
+                            WidthRequest = "50"
+                            HeightRequest = "50"
+                            Clicked = "FacebookButtonClicked"
+                            LongPressActivated="FacebookButtonLongPress"
+                            IsVisible = "{Binding userData.Facebook, Converter={StaticResource dataConverter}}" />
+                    <elems:LongClickImageButton
+                            Source = "telegram.png"
+                            BackgroundColor = "Transparent"
+                            WidthRequest = "50"
+                            HeightRequest = "50"
+                            Clicked = "TelegramButtonClicked"
+                            LongPressActivated="TelegramButtonLongPress"
+                            IsVisible = "{Binding userData.Telegram, Converter={StaticResource dataConverter}}" />
+                    <elems:LongClickImageButton
+                            Source = "instagram.png"
+                            BackgroundColor = "Transparent"
+                            WidthRequest = "50"
+                            HeightRequest = "50"
+                            Clicked = "InstagramButtonClicked"
+                            LongPressActivated="InstagramButtonLongPress"
+                            IsVisible = "{Binding userData.Instagram, Converter={StaticResource dataConverter}}" />
+                </StackLayout>
                 <ImageButton Source="contacts.png"
                              WidthRequest = "80"
                              HeightRequest = "80"
-                             VerticalOptions = "Center"
-                             HorizontalOptions = "Center"
+                             VerticalOptions = "End"
+                             HorizontalOptions = "End"
                              BackgroundColor = "Transparent"
-                        Clicked="Button_OnClicked"/> 
+                             Clicked="Button_OnClicked"/> 
             </StackLayout>
         </Grid>
     </ContentPage.Content>

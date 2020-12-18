@@ -19,7 +19,11 @@ namespace QV.Pages
             { Login = this.Login.Text, Password = this.Password.Text }, RequestsTypes.Registration).ID;
             if (id < 0)
                 await DisplayAlert("", "Вы не зарегестрированы", "OK");
-            else await DisplayAlert("", "Вы зарегестрированы", "OK");
+            else
+            {
+                await DisplayAlert("", "Вы зарегестрированы", "OK");
+                await Navigation.PopModalAsync();
+            }
         }
     }
 }

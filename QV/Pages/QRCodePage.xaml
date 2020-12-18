@@ -13,15 +13,22 @@
                     <Label Text = "Текущая визитка:"
                            HorizontalOptions = "Center"
                            Style = "{DynamicResource LabelStyle}" />
-                    <Picker x:Name = "CurrentCard"
+                    <StackLayout HorizontalOptions = "Center"
+                             VerticalOptions = "Center"
+                                 Orientation="Horizontal">
+                        <Picker x:Name = "CurrentCard"
                             HorizontalOptions = "Center"
                             TextColor = "{DynamicResource AlfaBrandRed}"
                             BackgroundColor = "Transparent"
                             WidthRequest = "200"
                             SelectedIndexChanged = "CurrentCard_SelectedIndexChanged"
                             ItemDisplayBinding = "{Binding Card_Name}" />
-                    <Label x:Name = "Link"
-                           HorizontalOptions = "Center" />
+                        <ImageButton Source = "copy.png"
+                                     WidthRequest = "35"
+                                     HeightRequest = "35"
+                                     BackgroundColor = "Transparent"
+                                     Clicked="CopyLinkButton_Clicked"/>
+                    </StackLayout>
                     <Image x:Name = "QRImage"
                            HeightRequest = "300"
                            WidthRequest = "300" />
@@ -39,8 +46,8 @@
                              VerticalOptions="Center">
                     <StackLayout Orientation = "Horizontal">
                         <Entry x:Name = "LinkEntry"
-                               TextColor = "{DynamicResource AlfaBrandRed}"
                                Placeholder = "Введите ссылку на визитку"
+                               TextColor = "{DynamicResource AlfaBrandRed}"
                                PlaceholderColor = "White" />
                         <ImageButton x:Name = "SearchButton"
                                      Source = "search.png"
