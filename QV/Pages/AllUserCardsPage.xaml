@@ -37,7 +37,7 @@
                                            HorizontalOptions = "Start"
                                            VerticalOptions = "Center"
                                            HorizontalTextAlignment = "Start"
-                                           FontSize = "20" />
+                                           FontSize = "14" />
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

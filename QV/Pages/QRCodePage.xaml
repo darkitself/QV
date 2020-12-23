@@ -30,8 +30,7 @@
                                      Clicked="CopyLinkButton_Clicked"/>
                     </StackLayout>
                     <Image x:Name = "QRImage"
-                           HeightRequest = "300"
-                           WidthRequest = "300" />
+                           Margin="50" />
                 </StackLayout>
             </Grid>
         </ContentPage.Content>

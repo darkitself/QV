@@ -4,15 +4,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using QV.Infrastructure;
-using ZXing;
 
 
 namespace QRCodeEncoder
 {
     public class QrRenderer
     {
-        public Stream Draw(byte[] bytes, int ver, CorrectionLevel level, SKColor backgroudImg,
-                           SKColor squaresColor)
+        public Stream Draw(byte[] bytes, int ver, CorrectionLevel level, SKColor backgroudImg)
         {
             var img = GetQrCodeArray(bytes, ver, level);
             var scale = 100;
@@ -26,10 +24,10 @@ namespace QRCodeEncoder
 
             using (var canvas = new SKCanvas(bitmap2))
             {
-               canvas.Clear(backgroudImg);
+               canvas.Clear(SKColors.Black);
 
-                var paint1 = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Fill, Color = SKColors.White };
-                var paint2 = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Fill, Color = SKColors.White };
+                var paint1 = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Fill, Color = SKColors.Gold };
+                var paint2 = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Fill, Color = SKColors.Red };
                 var paint3 = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Fill, Color = SKColors.Gold };
 
                 for (var x = 0; x <= img.GetUpperBound(0); x++)
@@ -64,7 +62,7 @@ namespace QRCodeEncoder
                             }
                             else
                             {
-                                canvas.DrawCircle(x * scale + scale / 2 + dx, y * scale + scale / 2 + dy, scale / 2, paint1);
+                                canvas.DrawCircle(x * scale + scale / 2 + dx, y * scale + scale / 2 + dy, scale / 2 , paint1);
 
                                 // сглаживание линий
                                 if (x > 0 && img[x - 1, y] == 0)

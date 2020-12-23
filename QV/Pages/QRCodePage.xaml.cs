@@ -24,11 +24,7 @@ namespace QV.Pages
         private bool isScannerOpen = false;
         private readonly MobileBarcodeScanningOptions options = new MobileBarcodeScanningOptions
                                                                 {
-                                                                    AutoRotate = true,
                                                                     TryHarder = true,
-                                                                    DisableAutofocus = false,
-                                                                    UseNativeScanning = false,
-                                                                    TryInverted = true,
                                                                     PossibleFormats = new []
                                                                         {
                                                                             BarcodeFormat.QR_CODE
@@ -61,16 +57,15 @@ namespace QV.Pages
             base.OnAppearing();
         }
 
-        public void CreateQR(string data = null)
+        public void CreateQR(string data = "")
         {
             var encoder = new Encoder();
-            var encoderRes = encoder.Encode(data ?? "", CorrectionLevel.H);
+            var encoderRes = encoder.Encode(data, CorrectionLevel.L);
             var renderer = new QrRenderer();
             var qrCodeImgStream = renderer.Draw(encoderRes.Data,
                                                 encoderRes.Version,
-                                                CorrectionLevel.H,
-                                                SKColors.Black,
-                                                new SKColor(239, 51, 36));
+                                                CorrectionLevel.L,
+                                                SKColors.Black);
             QRImage.Source = ImageSource.FromStream(() => new BufferedStream(qrCodeImgStream));
         }
 
@@ -119,9 +114,10 @@ namespace QV.Pages
 
         private async void ScanButton_OnClicked(object sender, EventArgs e)
         {
-            var page = new ZXingScannerPage(options);
+            var page = new ZXingScannerPage();
             page.IsAnalyzing = true;
             page.IsScanning = true;
+            page.AutoFocus();
             page.OnScanResult += OnScanResult;
             await Navigation.PushModalAsync(page);
             isScannerOpen = true;
