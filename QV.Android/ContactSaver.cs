@@ -46,13 +46,11 @@ namespace QV.Droid
 
         private bool IsContactsContainNumber(string phoneNumber)
         {
-            using var phones =
+            var phones =
                 Application.Context.ContentResolver.Query(
                                                           ContactsContract.CommonDataKinds.Phone
                                                               .ContentUri,
-                                                          null,
-                                                          ContactsContract.CommonDataKinds.Phone
-                                                              .InterfaceConsts.DisplayName,
+                                                          null, null,
                                                           null,
                                                           null);
             if (phones == null) return false;
@@ -61,7 +59,7 @@ namespace QV.Droid
                 var number =
                     phones.GetString(phones.GetColumnIndex(ContactsContract.CommonDataKinds.Phone
                                                                .Number));
-                if (number == null || !number.Equals(phoneNumber)) continue;
+                if (number == null || !number.Replace("+7", "8").Replace("-", "").Replace(" ", "").Equals(phoneNumber.Replace("+7", "8").Replace("-", "").Replace(" ", ""))) continue;
                 return true;
             }
 

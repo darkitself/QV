@@ -71,8 +71,8 @@ namespace QV.Pages
 
         private void OnScanResult(Result result)
         {
-            isScannerOpen = false;
             Navigation.PopModalAsync();
+            isScannerOpen = false;
             GetDataByLink(result.Text);
         }
 
