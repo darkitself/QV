@@ -87,6 +87,11 @@
                             LongPressActivated="InstagramButtonLongPress"
                             IsVisible = "{Binding userData.Instagram, Converter={StaticResource dataConverter}}" />
                 </StackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="{Binding userData.Info}"
+                    Style="{DynamicResource LabelStyle}"
+                    />
                 <ImageButton Source="contacts.png"
                              WidthRequest = "80"
                              HeightRequest = "80"
